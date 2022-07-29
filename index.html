@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Box blockly</title>
+</head>
+
+<body overflow-y: hidden;>
+    <script src="./blockly/blockly_compressed.js"></script>
+    <script src="./blockly/blocks_compressed.js"></script>
+    <script src="./blockly/zh-hans.js"></script>
+    <script src="./blockly/javascript_compressed.js"></script>
+    <div id="blocklyDiv" style="height: 900px; width: 1080px;"></div>
+    <xml id="toolbox" style="display: none">
+        <category name="事件" expanded="true">
+        </category>
+        <category name="控制" expanded="true">
+            <block type="controls_if"></block>
+
+            <block type="controls_whileUntil"></block>
+
+            <block type="controls_for">
+                <value name="FROM">
+                  <block type="math_number">
+                    <field name="NUM">1</field>
+                  </block>
+                </value>
+                <value name="TO">
+                  <block type="math_number">
+                    <field name="NUM">10</field>
+                  </block>
+                </value>
+                <value name="BY">
+                  <block type="math_number">
+                    <field name="NUM">1</field>
+                  </block>
+                </value>
+              </block>
+        </category>
+        <category name="世界" expanded="true">
+        </category>
+        <category name="实体" expanded="true">
+        </category>
+        <category name="方块" expanded="true">
+        </category>
+        <category name="玩家" expanded="true">
+        </category>
+        <category name="字符串" expanded="true">
+        </category>
+        <category name="运算" expanded="true">
+            <block type="math_number"></block>
+
+            <block type="logic_compare"></block>
+
+            <block type="logic_operation"></block>
+            
+            <block type="logic_boolean"></block>
+        </category>
+        <category name="声音" expanded="true">
+        </category>
+        <category name="颜色" expanded="true">
+        </category>
+        <category name="变量" expanded="true">
+        </category>
+        <category name="数组" expanded="true">
+        </category>
+        <category name="函数" expanded="true">
+        </category>
+        <category name="SQLite">
+        </category>
+    </xml>
+    <script>
+        var workspace = Blockly.inject('blocklyDiv',
+            { toolbox: document.getElementById('toolbox') });
+        var code = Blockly.JavaScript.workspaceToCode(workspace);
+    </script>
+</body>
+</html>
