@@ -5,11 +5,11 @@ Blockly.defineBlocksWithJsonArray([
     args0: [
       {
         type: "input_value",
-        name: "MESSAGE",
+        name: "NAME",
       },
     ],
-    previousStatement: null,
-    nextStatement: null,
+    inputsInline: true,
+    output: null,
     colour: 230,
     tooltip: "",
     helpUrl: "",
@@ -20,8 +20,23 @@ Blockly.defineBlocksWithJsonArray([
     args0: [
       {
         type: "field_label_serializable",
-        name: "NAME",
+        name: "MESSAGE",
         text: "地图名称",
+      },
+    ],
+    output: null,
+    colour: 230,
+    tooltip: "",
+    helpUrl: "",
+  },
+  {
+    type: "world_url",
+    message0: "%1",
+    args0: [
+      {
+        type: "field_label_serializable",
+        name: "MESSAGE",
+        text: "地图的URL",
       },
     ],
     output: null,
@@ -31,7 +46,6 @@ Blockly.defineBlocksWithJsonArray([
   },
 ]);
 Blockly.JavaScript["world_say"] = function (block) {
-  //我看看
   var text_message = block.getFieldValue("MESSAGE");
   var value_name = Blockly.JavaScript.valueToCode(
     block,
@@ -41,6 +55,10 @@ Blockly.JavaScript["world_say"] = function (block) {
   return "world.say(" + value_name + ");\n";
 };
 
-Blockly.JavaScript["world_projectname"] = function (block) {
+Blockly.JavaScript["world_projectname"] = function () {
   return "world.projectName";
+};
+
+Blockly.JavaScript["world_url"] = function () {
+  return "world.url";
 };
