@@ -1,7 +1,7 @@
 Blockly.defineBlocksWithJsonArray([
   {
     type: "world_say",
-    message0: "向全体玩家广播一条消息 %1",
+    message0: "向所有玩家发送一条信息 %1",
     args0: [
       {
         type: "input_value",
@@ -14,7 +14,6 @@ Blockly.defineBlocksWithJsonArray([
     colour: 230,
     tooltip: "",
     helpUrl: "",
-    output: null,
   },
   {
     type: "world_projectname",
@@ -54,7 +53,7 @@ Blockly.JavaScript["world_say"] = function (block) {
     "MESSAGE",
     Blockly.JavaScript.ORDER_ATOMIC
   );
-  return "world.say(" + value_name + ");\n";
+  return "world.say(" + value_name + ")";
 };
 
 Blockly.JavaScript["world_projectname"] = function () {
@@ -64,3 +63,5 @@ Blockly.JavaScript["world_projectname"] = function () {
 Blockly.JavaScript["world_url"] = function () {
   return "world.url";
 };
+
+ 
