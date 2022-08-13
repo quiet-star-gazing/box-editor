@@ -155,9 +155,6 @@
         document.getElementById("bcodeshow").style.height = String(h+"px");
         document.getElementsByClassName("blocklyScrollbarHorizontal")[0].style.transform = `translate(80.5px, calc(${h}px - 15px))`;
       }, 1);
-      await sleep(1000);//blocklySvg
-      document.getElementsByClassName("blocklySvg")[0].$0.removeAttribute("width")
-      document.getElementsByClassName("blocklySvg")[0].$0.removeAttribute("height")
     </script>
   </body>
 </html>
