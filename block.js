@@ -1,7 +1,7 @@
 Blockly.defineBlocksWithJsonArray([
   {
     type: "world_say",
-    message0: "向全体玩家广播一条消息 %1",
+    message0: "向所有玩家发送一条消息 %1",
     args0: [
       {
         type: "input_value",
