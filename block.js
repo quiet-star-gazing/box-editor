@@ -75,6 +75,21 @@ Blockly.defineBlocksWithJsonArray([
     tooltip: "",
     helpUrl: "",
   },
+  {
+    type: "world_worldentitylength",
+    message0: "%1",
+    args0: [
+      {
+        type: "field_label_serializable",
+        name: "MESSAGE",
+        text: "当前世界上存在的实体数量",
+      },
+    ],
+    output: "Number",
+    colour: 230,
+    tooltip: "",
+    helpUrl: "",
+  },
 ]);
 Blockly.JavaScript["world_say"] = function (block) {
   var text_message = block.getFieldValue("MESSAGE");
@@ -100,4 +115,8 @@ Blockly.JavaScript["world_currentTick"] = function () {
 
 Blockly.JavaScript["world_entityQuota"] = function () {
   return "world.entityQuota";
+};
+
+Blockly.JavaScript["world_worldentitylength"] = function () {
+  return `world.querySelectorAll("*").length`;
 };
