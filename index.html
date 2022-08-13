@@ -253,10 +253,10 @@
         });
       }
       document.getElementById("bcodeshow").innerHTML =
-        "//代码由 " + window.location.href + " 生成\n";
+        `<span class="hljs-comment">//代码由 " + window.location.href + " 生成\n</span>`;
       function myUpdateFunction(event) {
         var code = Blockly.JavaScript.workspaceToCode(workspace);
-        document.getElementById("bcodeshow").innerText =
+        document.getElementById("bcodeshow").innerHTML =
         hljs.highlight("//代码由 " + window.location.href + " 生成\n",
          {language:"JavaScript"}
          ).value;
