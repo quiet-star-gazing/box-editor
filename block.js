@@ -126,7 +126,7 @@ Blockly.JavaScript["world_say"] = function (block) {
     "MESSAGE",
     Blockly.JavaScript.ORDER_ATOMIC
   );
-  return "world.say(" + text_message + ");\n";
+  return "world.say(" + value_name + ");\n";
 };
 
 Blockly.JavaScript["world_projectname"] = function () {
@@ -150,11 +150,25 @@ Blockly.JavaScript["world_worldentitylength"] = function () {
 };
 
 Blockly.JavaScript["voxels_set"] = function (block) {
-  var text_message = block.getFieldValue("X");
   var x = Blockly.JavaScript.valueToCode(
     block,
     "X",
     Blockly.JavaScript.ORDER_ATOMIC
   );
-  return "voxels.setVoxelId(" + x + ");\n";
+  var y = Blockly.JavaScript.valueToCode(
+    block,
+    "Y",
+    Blockly.JavaScript.ORDER_ATOMIC
+  );
+  var z = Blockly.JavaScript.valueToCode(
+    block,
+    "Z",
+    Blockly.JavaScript.ORDER_ATOMIC
+  );
+  var id = Blockly.JavaScript.valueToCode(
+    block,
+    "ID",
+    Blockly.JavaScript.ORDER_ATOMIC
+  );
+  return "voxels.setVoxelId(" + x + "," + y + "," + z + "," + id + ");\n";
 };
