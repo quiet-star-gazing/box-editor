@@ -31,7 +31,7 @@
           flex-direction: row;
         }
         #bcodeshow {
-          width: 40%;
+          width: 60%;
           height: 900px;
           padding: 10px;
           background: #fff;
@@ -149,7 +149,7 @@
       }
       function myUpdateFunction(event) {
         var code = Blockly.JavaScript.workspaceToCode(workspace);
-        document.getElementById("bcodeshow").innerText = code;
+        document.getElementById("bcodeshow").innerText = "//代码由 "+window.location.href+" 生成\n"+code;
       }
       workspace.addChangeListener(myUpdateFunction);
       setInterval(() => {
