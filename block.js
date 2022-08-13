@@ -1,15 +1,16 @@
 Blockly.defineBlocksWithJsonArray([
   {
     type: "world_say",
-    message0: "向所有玩家发送一条消息 %1",
+    message0: "向全体玩家广播一条消息 %1",
     args0: [
       {
         type: "input_value",
-        name: "NAME",
+        name: "MESSAGE",
       },
     ],
     inputsInline: true,
-    output: null,
+    previousStatement: null,
+    nextStatement: null,
     colour: 230,
     tooltip: "",
     helpUrl: "",
@@ -21,7 +22,7 @@ Blockly.defineBlocksWithJsonArray([
       {
         type: "field_label_serializable",
         name: "MESSAGE",
-        text: "地图名称",
+        text: "地图名称",//你先搞着吧我有事
       },
     ],
     output: null,
@@ -49,10 +50,10 @@ Blockly.JavaScript["world_say"] = function (block) {
   var text_message = block.getFieldValue("MESSAGE");
   var value_name = Blockly.JavaScript.valueToCode(
     block,
-    "NAME",
+    "MESSAGE",
     Blockly.JavaScript.ORDER_ATOMIC
   );
-  return "world.say(" + value_name + ")";
+  return "world.say(" + value_name + ");\n";
 };
 
 Blockly.JavaScript["world_projectname"] = function () {
