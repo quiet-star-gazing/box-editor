@@ -49,10 +49,10 @@ Blockly.JavaScript["world_say"] = function (block) {
   var text_message = block.getFieldValue("MESSAGE");
   var value_name = Blockly.JavaScript.valueToCode(
     block,
-    "MESSAGE",
+    "NAME",
     Blockly.JavaScript.ORDER_ATOMIC
   );
-  return "world.say(" + value_name + ");\n";
+  return "world.say(" + value_name + ")";
 };
 
 Blockly.JavaScript["world_projectname"] = function () {
