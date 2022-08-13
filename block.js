@@ -14,6 +14,7 @@ Blockly.defineBlocksWithJsonArray([
     colour: 230,
     tooltip: "",
     helpUrl: "",
+    output: null,
   },
   {
     type: "world_projectname",
@@ -22,7 +23,7 @@ Blockly.defineBlocksWithJsonArray([
       {
         type: "field_label_serializable",
         name: "MESSAGE",
-        text: "地图名称",//你先搞着吧我有事
+        text: "地图名称", 
       },
     ],
     output: null,
