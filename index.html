@@ -7,7 +7,7 @@
     <title>Box Blockly - 让岛民没有难写的代码！</title>
   </head>
 
-  <body>
+  <body onload="loadfuncs()">
     <script src="./blockly/blockly_compressed.js"></script>
     <script src="./blockly/blocks_compressed.js"></script>
     <script src="./blockly/zh-hans.js"></script>
@@ -22,8 +22,9 @@
         (async function () {
           const data = [
             "让岛民没有难写的代码！",
-            "屑屑你",
-            "听我说谢谢你,因为有你....",
+            "1086科技工作室致力制作",
+            "感谢您的使用",
+            "感谢您对我们的支持",
           ];
           document.getElementById("lodingtext").innerText =
             data[~~(Math.random() * data.length)];
@@ -44,7 +45,7 @@
           flex-direction: column;
           justify-content: center;
           align-items: center;
-          font-family: zhanKuKuaiLeTi;
+          user-select: none;
           color: #fff;
           z-index: 99999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999;
         }
@@ -218,6 +219,9 @@
       </category>
     </xml>
     <script>
+      function loadfuncs() {
+        document.getElementsByClassName("loding")[0].style.display="none"
+      }
       var workspace = Blockly.inject("blocklyDiv", {
         toolbox: document.getElementById("toolbox"),
         zoom: {
