@@ -45,6 +45,36 @@ Blockly.defineBlocksWithJsonArray([
     tooltip: "",
     helpUrl: "",
   },
+  {
+    type: "world_currentTick",
+    message0: "%1",
+    args0: [
+      {
+        type: "field_label_serializable",
+        name: "MESSAGE",
+        text: "当前Tick计数",
+      },
+    ],
+    output: "String",
+    colour: 230,
+    tooltip: "",
+    helpUrl: "",
+  },
+  {
+    type: "world_entityQuota",
+    message0: "%1",
+    args0: [
+      {
+        type: "field_label_serializable",
+        name: "MESSAGE",
+        text: "当前还可以建造的实体数量",
+      },
+    ],
+    output: "String",
+    colour: 230,
+    tooltip: "",
+    helpUrl: "",
+  },
 ]);
 Blockly.JavaScript["world_say"] = function (block) {
   var text_message = block.getFieldValue("MESSAGE");
@@ -62,4 +92,12 @@ Blockly.JavaScript["world_projectname"] = function () {
 
 Blockly.JavaScript["world_url"] = function () {
   return "world.url";
+};
+
+Blockly.JavaScript["world_currentTick"] = function () {
+  return "world.currentTick";
+};
+
+Blockly.JavaScript["world_entityQuota"] = function () {
+  return "world.entityQuota";
 };
