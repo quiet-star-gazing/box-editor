@@ -2,80 +2,164 @@
 <html lang="zh-CN">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Box blockly</title>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Box blockly</title>
 </head>
 
 <body overflow-y: hidden;>
-    <script src="./blockly/blockly_compressed.js"></script>
-    <script src="./blockly/blocks_compressed.js"></script>
-    <script src="./blockly/zh-hans.js"></script>
-    <script src="./blockly/javascript_compressed.js"></script>
-    <div id="blocklyDiv" style="height: 900px; width: 1080px;"></div>
-    <xml id="toolbox" style="display: none">
-        <category name="事件" expanded="true">
-        </category>
-        <category name="控制" expanded="true">
-            <block type="controls_if"></block>
+  <script src="./blockly/blockly_compressed.js"></script>
+  <script src="./blockly/blocks_compressed.js"></script>
+  <script src="./blockly/zh-hans.js"></script>
+  <script src="./blockly/javascript_compressed.js"></script>
+  <script src="./block.js"></script>
+  <noscript>You need start JavaScript to run this web.</noscript>
+  <div id="app">
+    <div id="blocklyDiv" style="height: 900px; width: 1080px"></div>
+    <div id="bcodeshow"></div>
+    <style>
+      #app {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+      }
 
-            <block type="controls_whileUntil"></block>
+      #bcodeshow {
+        width: 100px;
+        height: 900px;
+        padding: 10px;
+        background: #fff;
+        color: #000;
+        font-family: Menlo, Monaco, "Courier New", monospace;
+      }
+    </style>
+    <!-- 复制代码的按钮 -->
+    <div>
+      <div id="copycodebtn">复制</div>
+      <style>
+        #copycodebtn {
+          padding: 20px;
+          font-size: 25px;
+          background-color: rgb(255, 255, 255);
+          border: solid 1px #000;
+          border-radius: 50%;
+          box-shadow: 0px 10px 20px #555;
+          transition: 0.3s;
+          position: fixed;
+          bottom: 50px;
+          right: 50px;
+        }
+        #copycodebtn:hover {
+          box-shadow: 0px 10px 30px #555;
+        }
+      </style>
+      <script>
+        document.getElementById("copycodebtn").onclick = async () => {
+          await navigator.clipboard.write(
+            Blockly.JavaScript.workspaceToCode(workspace)
+          );
+          window.alert('复制成功')
+        };
+      </script>
+    </div>
+  </div>
+  <xml id="toolbox" style="display: none">
+    <category name="事件" expanded="true"> </category>
+    <category name="控制" expanded="true">
+      <block type="controls_if"></block>
 
-            <block type="controls_for">
-                <value name="FROM">
-                  <block type="math_number">
-                    <field name="NUM">1</field>
-                  </block>
-                </value>
-                <value name="TO">
-                  <block type="math_number">
-                    <field name="NUM">10</field>
-                  </block>
-                </value>
-                <value name="BY">
-                  <block type="math_number">
-                    <field name="NUM">1</field>
-                  </block>
-                </value>
-              </block>
-        </category>
-        <category name="世界" expanded="true">
-        </category>
-        <category name="实体" expanded="true">
-        </category>
-        <category name="方块" expanded="true">
-        </category>
-        <category name="玩家" expanded="true">
-        </category>
-        <category name="字符串" expanded="true">
-        </category>
-        <category name="运算" expanded="true">
-            <block type="math_number"></block>
+      <block type="controls_whileUntil"></block>
 
-            <block type="logic_compare"></block>
+      <block type="controls_for">
+        <value name="FROM">
+          <block type="math_number">
+            <field name="NUM">1</field>
+          </block>
+        </value>
+        <value name="TO">
+          <block type="math_number">
+            <field name="NUM">10</field>
+          </block>
+        </value>
+        <value name="BY">
+          <block type="math_number">
+            <field name="NUM">1</field>
+          </block>
+        </value>
+      </block>
+    </category>
+    <category name="世界" expanded="true">
+      <block type="world_say"></block>
 
-            <block type="logic_operation"></block>
-            
-            <block type="logic_boolean"></block>
-        </category>
-        <category name="声音" expanded="true">
-        </category>
-        <category name="颜色" expanded="true">
-        </category>
-        <category name="变量" expanded="true">
-        </category>
-        <category name="数组" expanded="true">
-        </category>
-        <category name="函数" expanded="true">
-        </category>
-        <category name="SQLite">
-        </category>
-    </xml>
-    <script>
-        var workspace = Blockly.inject('blocklyDiv',
-            { toolbox: document.getElementById('toolbox') });
-        var code = Blockly.JavaScript.workspaceToCode(workspace);
-    </script>
+      <block type="world_projectname"></block>
+    </category>
+    <category name="实体" expanded="true"> </category>
+    <category name="方块" expanded="true"> </category>
+    <category name="玩家" expanded="true"> </category>
+    <category name="字符串" expanded="true"> </category>
+    <category name="运算" expanded="true">
+      <block type="math_number"></block>
+
+      <block type="math_arithmetic"></block>
+
+      <block type="math_trig"></block>
+
+      <block type="math_constant"></block>
+
+      <block type="logic_compare"></block>
+
+      <block type="logic_operation"></block>
+
+      <block type="logic_boolean"></block>
+    </category>
+    <category name="声音" expanded="true"> </category>
+    <category name="颜色" expanded="true"> </category>
+    <category name="变量" expanded="true"> </category>
+    <category name="数组" expanded="true"> </category>
+    <category name="函数" expanded="true"> </category>
+    <category name="SQLite"> </category>
+    <category name="some">
+      <block type="text_indexOf"></block>
+    </category>
+  </xml>
+  <script>
+    var workspace = Blockly.inject("blocklyDiv", {
+      toolbox: document.getElementById("toolbox"),
+      zoom: {
+        controls: true,
+        wheel: true,
+        startScale: 1.0,
+        maxScale: 3,
+        minScale: 0.3,
+        scaleSpeed: 1.2,
+      },
+      trashcan: true,
+    });
+  </script>
+  <script>
+    const $ = (s) => {
+      return document.querySelector(s);
+    };
+    async function sleep(ms) {
+      const tms = ms || 0;
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          resolve();
+        }, tms);
+      });
+    }
+    function myUpdateFunction(event) {
+      var code = Blockly.JavaScript.workspaceToCode(workspace);
+      document.getElementById("bcodeshow").innerText = code;
+    }
+    workspace.addChangeListener(myUpdateFunction);
+      /*setInterval(() => {
+      const h = document.documentElement.clientHeight;
+      $("#app").style.height = h;
+    }, 100);*/
+  </script>
 </body>
+
 </html>
