@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Box blockly</title>
+    <title>Box Blockly - 让岛民没有难写的代码！</title>
   </head>
 
   <body>
@@ -14,6 +14,86 @@
     <script src="./blockly/javascript_compressed.js"></script>
     <script src="./block.js"></script>
     <noscript>You need start JavaScript to run this web.</noscript>
+    <div class="loding">
+      <div></div>
+      <font>Box Blockly</font>
+      <span id="lodingtext"></span>
+      <script>
+        (async function () {
+          const data = [
+            "让岛民没有难写的代码！",
+            "屑屑你",
+            "听我说谢谢你,因为有你....",
+          ];
+          document.getElementById("lodingtext").innerText =
+            data[~~(Math.random() * data.length)];
+        })();
+      </script>
+      <style>
+        :root {
+          --theme-color: #ff6a00;
+          --theme-button-hover: #e66000;
+          --theme-button-active: #cc5500;
+        }
+        .loding {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          background-color: var(--theme-color);
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          font-family: zhanKuKuaiLeTi;
+          color: #fff;
+          z-index: 99999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999;
+        }
+        .loding font {
+          font-size: 50px;
+        }
+        .loding span {
+          font-size: 20px;
+        }
+        .loding div {
+          width: 80px;
+          height: 80px;
+          border: solid 8px var(--theme-color);
+          border-top: solid 8px;
+          border-radius: 50%;
+          -webkit-animation: lodingAnimationWeb 0.5s linear infinite;
+          animation: lodingAnimationWeb 0.5s linear infinite;
+          margin-bottom: 50px;
+        }
+        @-webkit-keyframes lodingAnimationWeb {
+          25% {
+            transform: rotate(90deg);
+          }
+          50% {
+            transform: rotate(180deg);
+          }
+          75% {
+            transform: rotate(270deg);
+          }
+          100% {
+            transform: rotate(360deg);
+          }
+        }
+        @keyframes lodingAnimationWeb {
+          25% {
+            transform: rotate(90deg);
+          }
+          50% {
+            transform: rotate(180deg);
+          }
+          75% {
+            transform: rotate(270deg);
+          }
+          100% {
+            transform: rotate(360deg);
+          }
+        }
+      </style>
+    </div>
     <div id="app">
       <div id="blocklyDiv" style="width: 60%"></div>
       <div id="bcodeshow"></div>
@@ -38,6 +118,23 @@
           color: #000;
           font-family: Menlo, Monaco, "Courier New", monospace;
           border-left: double #aaa;
+          overflow: auto;
+        }
+        #bcodeshow::-webkit-scrollbar {
+          height: 5px;
+          width: 5px;
+        }
+        #bcodeshow::-webkit-scrollbar-thumb {
+          background: #aaa5;
+        }
+        #bcodeshow::-webkit-scrollbar-thumb:hover {
+          background: #aaa;
+        }
+        #bcodeshow::-webkit-scrollbar-thumb:active {
+          background: #aaa3;
+        }
+        #bcodeshow::-webkit-scrollbar-track {
+          background: #0000;
         }
       </style>
       <!-- 复制代码的按钮 -->
@@ -82,7 +179,6 @@
         <block type="controls_if"></block>
 
         <block type="controls_whileUntil"></block>
-
       </category>
       <category name="世界" expanded="true">
         <block type="world_say"></block>
@@ -147,15 +243,20 @@
           }, tms);
         });
       }
+      document.getElementById("bcodeshow").innerText =
+        "//代码由 " + window.location.href + " 生成\n";
       function myUpdateFunction(event) {
         var code = Blockly.JavaScript.workspaceToCode(workspace);
-        document.getElementById("bcodeshow").innerText = "//代码由 "+window.location.href+" 生成\n"+code;
+        document.getElementById("bcodeshow").innerText =
+          "//代码由 " + window.location.href + " 生成\n" + code;
       }
       workspace.addChangeListener(myUpdateFunction);
       setInterval(() => {
         const h = document.documentElement.clientHeight;
-        document.getElementById("bcodeshow").style.height = String(h+"px");
-        document.getElementsByClassName("blocklyScrollbarHorizontal")[0].style.transform = `translate(80.5px, calc(${h}px - 15px))`;
+        document.getElementById("bcodeshow").style.height = String(h + "px");
+        document.getElementsByClassName(
+          "blocklyScrollbarHorizontal"
+        )[0].style.transform = `translate(80.5px, calc(${h}px - 15px))`;
       }, 1);
     </script>
   </body>
