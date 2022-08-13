@@ -53,7 +53,7 @@ Blockly.JavaScript["world_say"] = function (block) {
     "MESSAGE",
     Blockly.JavaScript.ORDER_ATOMIC
   );
-  return "world.say(" + value_name + ")";
+  return "world.say(" + value_name + ");\n";
 };
 
 Blockly.JavaScript["world_projectname"] = function () {
@@ -63,5 +63,3 @@ Blockly.JavaScript["world_projectname"] = function () {
 Blockly.JavaScript["world_url"] = function () {
   return "world.url";
 };
-
- 
