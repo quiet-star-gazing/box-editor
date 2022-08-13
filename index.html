@@ -252,7 +252,7 @@
           }, tms);
         });
       }
-      document.getElementById("bcodeshow").innerText =
+      document.getElementById("bcodeshow").innerHTML =
         "//代码由 " + window.location.href + " 生成\n";
       function myUpdateFunction(event) {
         var code = Blockly.JavaScript.workspaceToCode(workspace);
