@@ -36,7 +36,7 @@ Blockly.defineBlocksWithJsonArray([
       {
         type: "field_label_serializable",
         name: "MESSAGE",
-        text: "地图的URL",
+        text: "地图URL",
       },
     ],
     output: null,
