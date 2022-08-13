@@ -1,276 +1,65 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Box Blockly - 让岛民没有难写的代码！</title>
-    <link rel="shortcut icon" href="https://box3.codemao.cn/favicon.ico" />
-    <!--标签页图标用box3的图标吧-->
-  </head>
-  <body onload="loadfuncs()">
-    <!-- 导入高亮块 -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js"></script>
-    <link href="./codehljscss.css" rel="stylesheet" />
-    <!-- 导入GoogleBlockly -->
-    <script src="./blockly/blockly_compressed.js"></script>
-    <script src="./blockly/blocks_compressed.js"></script>
-    <script src="./blockly/zh-hans.js"></script>
-    <script src="./blockly/javascript_compressed.js"></script>
-    <!-- 导入Blockly定义块 -->
-    <script src="./block.js"></script>
-    <noscript>You need start JavaScript to run this web.</noscript>
-    <div class="loding">
-      <div></div>
-      <font>Box Blockly</font>
-      <span id="lodingtext"></span>
-      <script>
-        (async function () {
-          const data = [
-            "让岛民没有难写的代码！", //搞到github了
-            "1086科技工作室致力制作",
-            "感谢您的使用",
-            "感谢您对我们的支持",
-          ];
-          document.getElementById("lodingtext").innerText =
-            data[~~(Math.random() * data.length)];
-        })();
-      </script>
-      <style>
-        :root {
-          --theme-color: #ff6a00;
-          --theme-button-hover: #e66000;
-          --theme-button-active: #cc5500;
-        }
-        .loding {
-          position: absolute;
-          width: 100%;
-          height: 100%;
-          background-color: var(--theme-color);
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-          user-select: none;
-          color: #fff;
-          z-index: 99999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999;
-        }
-        .loding font {
-          font-size: 50px;
-        }
-        .loding span {
-          font-size: 20px;
-        }
-        .loding div {
-          width: 80px;
-          height: 80px;
-          border: solid 8px var(--theme-color);
-          border-top: solid 8px;
-          border-radius: 50%;
-          -webkit-animation: lodingAnimationWeb 0.5s linear infinite;
-          animation: lodingAnimationWeb 0.5s linear infinite;
-          margin-bottom: 50px;
-        }
-        @-webkit-keyframes lodingAnimationWeb {
-          25% {
-            transform: rotate(90deg);
-          }
-          50% {
-            transform: rotate(180deg);
-          }
-          75% {
-            transform: rotate(270deg);
-          }
-          100% {
-            transform: rotate(360deg);
-          }
-        }
-        @keyframes lodingAnimationWeb {
-          25% {
-            transform: rotate(90deg);
-          }
-          50% {
-            transform: rotate(180deg);
-          }
-          75% {
-            transform: rotate(270deg);
-          }
-          100% {
-            transform: rotate(360deg);
-          }
-        }
-      </style>
-    </div>
-    <div id="app">
-      <div id="blocklyDiv" style="width: 60%"></div>
-      <div id="bcodeshow"></div>
-      <style>
-        body {
-          overflow: hidden;
-        }
-        * {
-          margin: 0;
-        }
-        #app {
-          width: 100%;
-          height: 100%;
-          display: flex;
-          flex-direction: row;
-        }
-        #bcodeshow {
-          width: 40%;
-          height: 900px;
-          padding: 10px;
-          background: #fff;
-          color: #000;
-          font-family: Menlo, Monaco, "Courier New", monospace;
-          border-left: double #aaa;
-          overflow: auto;
-        }
-        #bcodeshow::-webkit-scrollbar {
-          height: 5px;
-          width: 5px;
-        }
-        #bcodeshow::-webkit-scrollbar-thumb {
-          background: #aaa5;
-        }
-        #bcodeshow::-webkit-scrollbar-thumb:hover {
-          background: #aaa;
-        }
-        #bcodeshow::-webkit-scrollbar-thumb:active {
-          background: #aaa3;
-        }
-        #bcodeshow::-webkit-scrollbar-track {
-          background: #0000;
-        }
-      </style>
-      <!-- 复制代码的按钮 -->
-      <div>
-        <div id="copycodebtn">复制</div>
-        <style>
-          #copycodebtn {
-            padding: 20px;
-            font-size: 25px;
-            background-color: rgb(255, 255, 255);
-            border: solid 1px #000;
-            border-radius: 50%;
-            box-shadow: 0px 10px 20px #555;
-            transition: 0.3s;
-            position: fixed;
-            bottom: 50px;
-            right: 50px;
-            user-select: none;
-            cursor: pointer;
-          }
-          #copycodebtn:hover {
-            box-shadow: 0px 10px 25px #555;
-          }
-          #copycodebtn:active {
-            box-shadow: 0px 10px 25px #555;
-            background-color: rgb(200, 200, 200);
-          }
-        </style>
-        <script>
-          document.getElementById("copycodebtn").onclick = async () => {
-            await navigator.clipboard.writeText(
-              Blockly.JavaScript.workspaceToCode(workspace)
-            );
-            window.alert("复制成功");
-          };
-        </script>
-      </div>
-    </div>
-    <xml id="toolbox" style="display: none">
-      <category name="事件" expanded="true"> </category>
-      <category name="控制" expanded="true">
-        <block type="controls_if"></block>
+Blockly.defineBlocksWithJsonArray([
+  {
+    type: "world_say",
+    message0: "向所有玩家发送一条信息 %1",
+    args0: [
+      {
+        type: "input_value",
+        name: "MESSAGE",
+      },
+    ],
+    inputsInline: true,
+    previousStatement: null,
+    nextStatement: null,
+    colour: 230,
+    tooltip: "",
+    helpUrl: "",
+  },
+  {
+    type: "world_projectname",
+    message0: "%1",
+    args0: [
+      {
+        type: "field_label_serializable",
+        name: "MESSAGE",
+        text: "地图名称", 
+      },
+    ],
+    output: null,
+    colour: 230,
+    tooltip: "",
+    helpUrl: "",
+  },
+  {
+    type: "world_url",
+    message0: "%1",
+    args0: [
+      {
+        type: "field_label_serializable",
+        name: "MESSAGE",
+        text: "地图URL",
+      },
+    ],
+    output: null,
+    colour: 230,
+    tooltip: "",
+    helpUrl: "",
+  },
+]);
+Blockly.JavaScript["world_say"] = function (block) {
+  var text_message = block.getFieldValue("MESSAGE");
+  var value_name = Blockly.JavaScript.valueToCode(
+    block,
+    "MESSAGE",
+    Blockly.JavaScript.ORDER_ATOMIC
+  );
+  return "world.say(" + value_name + ");\n";
+};
 
-        <block type="controls_whileUntil"></block>
-      </category>
-      <category name="世界" expanded="true">
-        <block type="world_say"></block>
+Blockly.JavaScript["world_projectname"] = function () {
+  return "world.projectName";
+};
 
-        <block type="world_projectname"></block>
-
-        <block type="world_url"></block>
-      </category>
-      <category name="实体" expanded="true"> </category>
-      <category name="方块" expanded="true"> </category>
-      <category name="玩家" expanded="true"> </category>
-      <category name="字符串" expanded="true"> </category>
-      <category name="运算" expanded="true">
-        <block type="math_number"></block>
-
-        <block type="math_arithmetic"></block>
-
-        <block type="math_trig"></block>
-
-        <block type="math_constant"></block>
-
-        <block type="logic_compare"></block>
-
-        <block type="logic_operation"></block>
-
-        <block type="logic_boolean"></block>
-      </category>
-      <category name="声音" expanded="true"> </category>
-      <category name="颜色" expanded="true"> </category>
-      <category name="变量" expanded="true"> </category>
-      <category name="列表" expanded="true"> </category>
-      <category name="字典" expanded="true"> </category>
-      <category name="函数" expanded="true"> </category>
-      <category name="SQLite"> </category>
-      <category name="some">
-        <block type="text_indexOf"></block>
-      </category>
-    </xml>
-    <script>
-      function loadfuncs() {
-        document.getElementsByClassName("loding")[0].style.display = "none";
-      }
-      var workspace = Blockly.inject("blocklyDiv", {
-        toolbox: document.getElementById("toolbox"),
-        zoom: {
-          controls: true,
-          wheel: true,
-          startScale: 1.0,
-          maxScale: 3,
-          minScale: 0.3,
-          scaleSpeed: 1.2,
-        },
-        trashcan: true,
-      });
-    </script>
-    <script>
-      const $ = (s) => {
-        return document.querySelector(s);
-      };
-      async function sleep(ms) {
-        const tms = ms || 0;
-        return new Promise((resolve) => {
-          setTimeout(() => {
-            resolve();
-          }, tms);
-        });
-      }
-      document.getElementById(
-        "bcodeshow"
-      ).innerHTML = `<span class="hljs-comment">//代码由 ${window.location.href} 生成\n</span>`;
-      function myUpdateFunction(event) {
-        var code = Blockly.JavaScript.workspaceToCode(workspace);
-        document.getElementById("bcodeshow").innerHTML = hljs.highlight(
-          "//代码由 " + window.location.href + " 生成\n" + code,
-          { language: "JavaScript" }
-        ).value;
-      }
-      workspace.addChangeListener(myUpdateFunction);
-      setInterval(() => {
-        const h = document.documentElement.clientHeight;
-        document.getElementById("bcodeshow").style.height = String(h + "px");
-        document.getElementsByClassName(
-          "blocklyScrollbarHorizontal"
-        )[0].style.transform = `translate(80.5px, calc(${h}px - 15px))`;
-      }, 1);
-    </script>
-  </body>
-</html>
+Blockly.JavaScript["world_url"] = function () {
+  return "world.url";
+};
