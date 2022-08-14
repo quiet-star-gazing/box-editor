@@ -274,7 +274,7 @@
         document.getElementById("bcodeshow").innerHTML = hljs.highlight(
           "//代码由 " + window.location.href + " 生成\n" + code,
           { language: "JavaScript" }
-        ).value;
+        ).value.split("\n").join("<br>");
       }
       workspace.addChangeListener(myUpdateFunction);
       setInterval(() => {
