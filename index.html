@@ -179,17 +179,17 @@
           }
         </style>
         <script>
-          const copyButton = document.getElementById("copycodebtn")
+          const copyButton = document.getElementById("copycodebtn");
           copyButton.addEventListener("click", async () => {
-              //async await 它不香吗
-              navigator.clipboard.writeText(
-                "//代码由 " +
-                  window.location.href +
-                  " 生成，感谢您对我们的支持\n" +
-                  Blockly.JavaScript.workspaceToCode(workspace)
-              );
-              navigator.clipboard.then(() => alert("代码复制成功！！！"));
-            });
+            //async await 它不香吗
+            navigator.clipboard.writeText(
+              "//代码由 " +
+                window.location.href +
+                " 生成，感谢您对我们的支持\n" +
+                Blockly.JavaScript.workspaceToCode(workspace)
+            );
+            navigator.clipboard.then(() => alert("代码复制成功！！！"));
+          });
         </script>
       </div>
     </div>
@@ -213,7 +213,10 @@
       <category name="方块" expanded="true">
         <block type="voxels_set"></block>
         <block type="voxels_get"></block>
-        <block type="voxels_Rotation"></block>
+        <block type="voxels_id"></block>
+        <block type="voxels_id"></block>
+
+        <block type="voxels_Rotation"></block>        <block type="voxels_id"></block>
         <block type="voxels_id"></block>
         <block type="voxels_name"></block>
       </category>
@@ -411,7 +414,7 @@
     </script>
     <script>
       (async () => {
-        var a = document.getElementsByClassName("blocklyMainBackground")[0];
+        var a = document.getElementsByClassName("blocklySvg")[0];
         a.oncontextmenu = (e) => {
           addmenu(
             [
