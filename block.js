@@ -506,7 +506,7 @@ Blockly.JavaScript["world_onInteract"] = function (block) {
     "tex",
     Blockly.JavaScript.ORDER_ATOMIC
   );
-  return `world.on${id}(({entity,${t=="Interact"?"targetEntity":"clicker,button,distance,clickerPosition,raycast"}})=>{
+  return `world.on${id}(({entity,${id=="Interact"?"targetEntity":"clicker,button,distance,clickerPosition,raycast"}})=>{
     ${value_name}
   })`;
 };
