@@ -179,20 +179,35 @@
           }
         </style>
         <script>
-          const copyButton = document.getElementById("copycodebtn");
-          copyButton.addEventListener("click", async () => {
-            //async await 它不香吗
-            navigator.clipboard.writeText(
-              "//代码由 " +
+          var copybtn = document.getElementById("copycodebtn");
+          copybtn.onclick= async () => {
+              await navigator.clipboard.writeText(
+               "//代码由 " +
                 window.location.href +
                 " 生成，感谢您对我们的支持\n" +
                 Blockly.JavaScript.workspaceToCode(workspace)
-            );
-            navigator.clipboard.then(() => alert("代码复制成功！！！"));
-          });
+              );
+              window.alert("代码复制成功！！！");
+          };
         </script>
       </div>
-    </div>
+      <!--右键菜单-->
+    <div class="menu">
+          <ul class="menu-list">
+              <li class="menu-item">
+                <span>点赞（）</span>
+              </li>
+              <li class="menu-item">
+                <span>评论（）</span>
+              </li>
+              <li class="menu-item">
+                <span>关注（）</span>
+              </li>
+              <li class="menu-item">
+                <span>三连（）</span>
+              </li>
+          </ul>
+      </div>
     <!-- 积木xml -->
     <xml id="toolbox" style="display: none">
       <category name="事件" expanded="true"> </category>
@@ -213,10 +228,7 @@
       <category name="方块" expanded="true">
         <block type="voxels_set"></block>
         <block type="voxels_get"></block>
-        <block type="voxels_id"></block>
-        <block type="voxels_id"></block>
-
-        <block type="voxels_Rotation"></block>        <block type="voxels_id"></block>
+        <block type="voxels_Rotation"></block>
         <block type="voxels_id"></block>
         <block type="voxels_name"></block>
       </category>
@@ -427,6 +439,4 @@
         };
       })();
     </script>
-  </body>
 </html>
-.
