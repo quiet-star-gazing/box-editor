@@ -333,7 +333,7 @@ Blockly.defineBlocksWithJsonArray([
         "name": "tex"
       }
     ],
-    "colour": 120,
+    "colour": 210,
     "tooltip": "当玩家进入或离开时触发的事件",
     "helpUrl": ""
   }
