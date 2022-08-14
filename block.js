@@ -330,7 +330,7 @@ Blockly.defineBlocksWithJsonArray([
       },
       {
         "type": "input_statement",
-        "name": "y"
+        "name": "tex"
       }
     ],
     "colour": 120,
@@ -452,6 +452,19 @@ Blockly.JavaScript["world_onEntityDestroy"] = function (block) {
     Blockly.JavaScript.ORDER_ATOMIC
   );
   return `world.onEntity${id}(({entity})=>{
+    ${value_name}
+  })`;
+};
+
+
+Blockly.JavaScript["world_onPlayerJoin"] = function (block) {
+  var id = block.getFieldValue("t");
+  var value_name = Blockly.JavaScript.valueToCode(
+    block,
+    "tex",
+    Blockly.JavaScript.ORDER_ATOMIC
+  );
+  return `world.onPlayer${id}(({entity})=>{
     ${value_name}
   })`;
 };
