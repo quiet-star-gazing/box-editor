@@ -285,5 +285,67 @@
         )[0].style.transform = `translate(80.5px, calc(${h}px - 15px))`;
       }, 1);
     </script>
+    <style>
+.xh-menu-background{
+    background: #0000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 0%;
+    margin: 0;
+    padding: 0;
+    z-index:99999999999999999999999;
+}
+.xh-menu-background .xh-menu{
+    background: #fffb;
+    margin: 0;
+    padding: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    backdrop-filter: blur(5px);
+    border-radius: 10px;
+    user-select: none;
+    transition: .25s cubic-bezier(0, 0, 0, 0.9);
+    box-shadow: 0 10px 18px #0004;
+}
+.xh-menu-background .xh-menu.small{
+    transform: translateY(15px);
+    opacity: 0;
+}
+.xh-menu-background .xh-menu div{
+    background: #0000;
+    margin: 0;
+    padding: 10px 40px 10px 18px;
+    cursor: pointer;
+    transition: .25s;
+}
+.xh-menu-background .xh-menu div.top{
+    border-radius: 10px 10px 0px 0px;
+}
+.xh-menu-background .xh-menu div.end{
+    border-radius: 0px 0px 10px 10px;
+}
+.xh-menu-background .xh-menu div.tope{
+    border-radius: 10px;
+}
+.xh-menu-background .xh-menu div[xks=true]{
+    border-bottom: 1px solid #bbb;
+}
+.xh-menu-background .xh-menu div[noc=true]{
+    opacity: .5;
+}
+.xh-menu-background .xh-menu div:hover{
+    background: #fff;
+}
+.xh-menu-background .xh-menu div[noc=true]:hover{
+    background: #0000;
+}
+    </style>
+    <script>
+      const addhtml=((position,localName,data,html)=>{var newHtml=document.createElement(localName);for(var name in data){newHtml.setAttribute(name,data[name])};newHtml.innerHTML=html;var newElement=position.appendChild(newHtml);return(newElement)});
+      const addmenu=((data,x,y)=>{var a=addhtml(document.body,"div",{class:"xh-menu-background",oncontextmenu:"return false;"},"");var b=addhtml(a,"div",{class:"xh-menu small",style:`top:${y};left:${x}`},"");for(var c in data){var d=data[c];addhtml(b,"div",{onclick:d[1],title:d[2],xks:d[3]?true:false,noc:d[4]?true:false,class:(data.length==1?"tope":(c==0?"top":(c==data.length-1?"end":"")))},d[0])};setTimeout(()=>{b.classList.remove("small")},50);addhtml;a.onclick=()=>{b.classList.add("small");setTimeout(()=>{a.remove()},50)}})
+    </script>
   </body>
 </html>
