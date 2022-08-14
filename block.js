@@ -338,7 +338,7 @@ Blockly.defineBlocksWithJsonArray([
     "helpUrl": ""
   },
   {
-    "type": "world_onplayerjoin",
+    "type": "world_onPlayerjoin",
     "message0": "当玩家 %1 地图 %2 %3",
     "args0": [
       {
