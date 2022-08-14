@@ -345,7 +345,7 @@
     </style>
     <script>
       const addhtml=((position,localName,data,html)=>{var newHtml=document.createElement(localName);for(var name in data){newHtml.setAttribute(name,data[name])};newHtml.innerHTML=html;var newElement=position.appendChild(newHtml);return(newElement)});
-      const addmenu=((data,x,y)=>{var a=addhtml(document.body,"div",{class:"xh-menu-background",oncontextmenu:"return false;"},"");var b=addhtml(a,"div",{class:"xh-menu small",style:`top:${y};left:${x}`},"");for(var c in data){var d=data[c];addhtml(b,"div",{onclick:d[1],title:d[2],xks:d[3]?true:false,noc:d[4]?true:false,class:(data.length==1?"tope":(c==0?"top":(c==data.length-1?"end":"")))},d[0])};setTimeout(()=>{b.classList.remove("small")},50);addhtml;a.onclick=()=>{b.classList.add("small");setTimeout(()=>{a.remove()},50)}})
+      const addmenu=((data,x,y)=>{var a=addhtml(document.body,"div",{class:"xh-menu-background",oncontextmenu:"return false;"},"");var b=addhtml(a,"div",{class:"xh-menu small",style:`top:${y}px;left:${x}px`},"");for(var c in data){var d=data[c];addhtml(b,"div",{onclick:d[1],title:d[2],xks:d[3]?true:false,noc:d[4]?true:false,class:(data.length==1?"tope":(c==0?"top":(c==data.length-1?"end":"")))},d[0])};setTimeout(()=>{b.classList.remove("small")},50);addhtml;a.onclick=()=>{b.classList.add("small");setTimeout(()=>{a.remove()},50)}})
     </script>
     <script>
       (async()=>{
