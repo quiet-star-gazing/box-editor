@@ -92,7 +92,7 @@ Blockly.defineBlocksWithJsonArray([
   },
   {
     type: "voxels_set",
-    message0: "设置 x %1 y  z  的方块ID为  ",
+    message0: "设置 x %1 y %1 z %1  的方块ID为 %1",
     args0: [
       {
         type: "input_value",
@@ -108,7 +108,7 @@ Blockly.defineBlocksWithJsonArray([
   },
   {
     type: "voxels_get",
-    message0: "读取 x %1 y  z  的方块，返回方块ID",
+    message0: "读取 x %1 y %1 z %1 的方块，返回方块ID",
     args0: [
       {
         type: "input_value",
