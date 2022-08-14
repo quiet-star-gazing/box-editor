@@ -113,7 +113,7 @@ Blockly.defineBlocksWithJsonArray([
         type: "field_input",
         name: "ID",
         text: "127",
-      },
+      },/*
       {
         type: "field_dropdown",
         name: "rid",
@@ -123,7 +123,7 @@ Blockly.defineBlocksWithJsonArray([
           ["2", "2"],
           ["3", "3"],
         ],
-      },
+      },*/
     ],
     previousStatement: null,
     nextStatement: null,
@@ -133,7 +133,7 @@ Blockly.defineBlocksWithJsonArray([
   },
   {
     type: "voxels_setname",
-    message0: "设置 X %1 Y %2 Z %3 的方块名称为 %4 旋转码为 %5",
+    message0: "设置 X %1 Y %2 Z %3 的方块名称为 %4 ",
     args0: [
       {
         type: "field_input",
@@ -154,7 +154,7 @@ Blockly.defineBlocksWithJsonArray([
         type: "field_input",
         name: "ID",
         text: "grass",
-      },
+      },/*
       {
         type: "field_dropdown",
         name: "rid",
@@ -164,7 +164,7 @@ Blockly.defineBlocksWithJsonArray([
           ["2", "2"],
           ["3", "3"],
         ],
-      },
+      },*/
     ],
     previousStatement: null,
     nextStatement: null,
@@ -318,7 +318,6 @@ Blockly.JavaScript["voxels_setid"] = function (block) {
   var text_y = block.getFieldValue("Y");
   var text_z = block.getFieldValue("Z");
   var text_ID = block.getFieldValue("ID");
-  var text_rID = block.getFieldValue("rid");
   return (
     "voxels.setVoxel(" +
     text_x +
@@ -328,8 +327,6 @@ Blockly.JavaScript["voxels_setid"] = function (block) {
     text_z +
     "," +
     text_ID +
-    "," +
-    text_rID +
     ");\n"
   );
 };
@@ -338,7 +335,6 @@ Blockly.JavaScript["voxels_setname"] = function (block) {
   var text_y = block.getFieldValue("Y");
   var text_z = block.getFieldValue("Z");
   var text_ID = block.getFieldValue("ID");
-  var text_rID = block.getFieldValue("rid");
   return (
     "voxels.setVoxel(" +
     text_x +
@@ -348,8 +344,6 @@ Blockly.JavaScript["voxels_setname"] = function (block) {
     text_z +
     ",'" +
     text_ID +
-    "," +
-    text_rID +
     "');\n"
   );
 };
