@@ -178,6 +178,7 @@ Blockly.defineBlocksWithJsonArray([
       {
         type: "field_input",
         name: "ID",
+        text: "0",
       },
     ],
     output: "String",
@@ -192,6 +193,7 @@ Blockly.defineBlocksWithJsonArray([
       {
         type: "field_input",
         name: "ID",
+        text: "傻逼",
       },
     ],
     output: "Number",
@@ -269,5 +271,5 @@ Blockly.JavaScript["voxels_id"] = function (block) {
 
 Blockly.JavaScript["voxels_name"] = function (block) {
   var id = block.getFieldValue("ID");
-  return "voxels.name(" + id + ");\n";
+  return "voxels.name('" + id + "');\n";
 };
