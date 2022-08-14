@@ -93,7 +93,7 @@ Blockly.defineBlocksWithJsonArray([
   },
   {
     type: "voxels_setid",
-    message0: "设置 X %1 Y %2 Z %3 的方块ID为 %4 旋转码为 %5",
+    message0: "设置 X %1 Y %2 Z %3 的方块ID为 %4 旋转码（0~3）为 %5",
     args0: [
       {
         type: "field_input",
@@ -124,12 +124,12 @@ Blockly.defineBlocksWithJsonArray([
     previousStatement: null,
     nextStatement: null,
     colour: 230,
-    tooltip: "",
+    tooltip: "放一个方块",
     helpUrl: "",
   },
   {
     type: "voxels_setname",
-    message0: "设置 X %1 Y %2 Z %3 的方块名称为 %4 旋转码为 %5",
+    message0: "设置 X %1 Y %2 Z %3 的方块名称为 %4 旋转码（0~3）为 %5",
     args0: [
       {
         type: "field_input",
@@ -160,7 +160,7 @@ Blockly.defineBlocksWithJsonArray([
     previousStatement: null,
     nextStatement: null,
     colour: 230,
-    tooltip: "",
+    tooltip: "放一个方块",
     helpUrl: "",
   },
   {
@@ -190,7 +190,7 @@ Blockly.defineBlocksWithJsonArray([
   },
   {
     type: "voxels_Rotation",
-    message0: "读取 x %1 y %2 z %3 的方块，返回方块旋转码",
+    message0: "读取 x %1 y %2 z %3 的方块，返回方块旋转码（0~3）",
     args0: [
       {
         type: "field_input",
@@ -210,7 +210,7 @@ Blockly.defineBlocksWithJsonArray([
     ],
     output: "Number",
     colour: 230,
-    tooltip: "读取地形上的方块，返回方块旋转码",
+    tooltip: "读取地形上的方块，返回方块旋转码（0~3）",
     helpUrl: "",
   },
   {
