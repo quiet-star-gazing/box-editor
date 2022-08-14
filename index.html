@@ -349,7 +349,7 @@
     </script>
     <script>
       (async()=>{
-          var a = document.getElementsByClassName("blocklyMainBackground");
+          var a = document.getElementsByClassName("blocklyMainBackground")[0];
           a.oncontextmenu = (e)=>{
               addmenu([["测试","console.log(`114514`)","测试"],[["测试","console.log(`114514`)","测试"]], e.clientX, e.clientY)
           }
