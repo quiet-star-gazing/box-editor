@@ -266,10 +266,10 @@ Blockly.JavaScript["voxels_getRotation"] = function (block) {
 
 Blockly.JavaScript["voxels_id"] = function (block) {
   var id = block.getFieldValue("ID");
-  return "voxels.id(" + id + ");\n";
+  return "voxels.id('" + id + "');\n";
 };
 
 Blockly.JavaScript["voxels_name"] = function (block) {
   var id = block.getFieldValue("ID");
-  return "voxels.name('" + id + "');\n";
+  return "voxels.name(" + id + ");\n";
 };
