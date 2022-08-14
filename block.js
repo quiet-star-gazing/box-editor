@@ -1,3 +1,4 @@
+/* —————————————— 自定义积木块设置 —————————————— */
 Blockly.defineBlocksWithJsonArray([
   {
     type: "world_say",
@@ -92,7 +93,7 @@ Blockly.defineBlocksWithJsonArray([
   },
   {
     type: "voxels_setid",
-    message0: "设置 X %1 Y %2 Z %3 的方块ID为 %4",
+    message0: "设置 X %1 Y %2 Z %3 的方块ID为 %4 旋转码为 %5",
     args0: [
       {
         type: "field_input",
@@ -114,6 +115,11 @@ Blockly.defineBlocksWithJsonArray([
         name: "ID",
         text: "127",
       },
+      {
+        type: "field_input",
+        name: "rid",
+        text: "0",
+      },
     ],
     previousStatement: null,
     nextStatement: null,
@@ -123,7 +129,7 @@ Blockly.defineBlocksWithJsonArray([
   },
   {
     type: "voxels_setname",
-    message0: "设置 X %1 Y %2 Z %3 的方块名称为 %4 ",
+    message0: "设置 X %1 Y %2 Z %3 的方块名称为 %4 旋转码为 %5",
     args0: [
       {
         type: "field_input",
@@ -144,6 +150,11 @@ Blockly.defineBlocksWithJsonArray([
         type: "field_input",
         name: "ID",
         text: "grass",
+      },
+      {
+        type: "field_input",
+        name: "rid",
+        text: "0",
       },
     ],
     previousStatement: null,
@@ -263,6 +274,7 @@ Blockly.defineBlocksWithJsonArray([
     helpUrl: "",
   },
 ]);
+
 Blockly.JavaScript["world_say"] = function (block) {
   var text_message = block.getFieldValue("MESSAGE");
   var value_name = Blockly.JavaScript.valueToCode(
@@ -298,6 +310,7 @@ Blockly.JavaScript["voxels_setid"] = function (block) {
   var text_y = block.getFieldValue("Y");
   var text_z = block.getFieldValue("Z");
   var text_ID = block.getFieldValue("ID");
+  var text_rID = block.getFieldValue("rid");
   return (
     "voxels.setVoxel(" +
     text_x +
@@ -307,6 +320,8 @@ Blockly.JavaScript["voxels_setid"] = function (block) {
     text_z +
     "," +
     text_ID +
+    "," +
+    text_rID +
     ");\n"
   );
 };
@@ -315,6 +330,7 @@ Blockly.JavaScript["voxels_setname"] = function (block) {
   var text_y = block.getFieldValue("Y");
   var text_z = block.getFieldValue("Z");
   var text_ID = block.getFieldValue("ID");
+  var text_rID = block.getFieldValue("rid");
   return (
     "voxels.setVoxel(" +
     text_x +
@@ -324,6 +340,8 @@ Blockly.JavaScript["voxels_setname"] = function (block) {
     text_z +
     ",'" +
     text_ID +
+    "," +
+    text_rID +
     "');\n"
   );
 };
