@@ -183,7 +183,7 @@
             await navigator.clipboard.writeText(
               "//代码由 " +
                 window.location.href +
-                " 生成\n" +
+                " 生成，感谢您对我们的支持\n" +
                 Blockly.JavaScript.workspaceToCode(workspace)
             );
             window.alert("复制成功");
@@ -268,11 +268,11 @@
       document.getElementById("bcodeshow").innerHTML =
         `<span class="hljs-comment">//代码由 ` +
         window.location.href +
-        ` 生成\n</span>`;
+        ` 生成，感谢您对我们的支持<br></span>`;
       function myUpdateFunction(event) {
         var code = Blockly.JavaScript.workspaceToCode(workspace);
         document.getElementById("bcodeshow").innerHTML = hljs.highlight(
-          "//代码由 " + window.location.href + " 生成\n" + code,
+          "//代码由 " + window.location.href + " 生成，感谢您对我们的支持\n" + code,
           { language: "JavaScript" }
         ).value.split("\n").join("<br>");
       }
