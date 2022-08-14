@@ -42,7 +42,7 @@ Blockly.defineBlocksWithJsonArray([
     ],
     output: "String",
     colour: 230,
-    tooltip: "地图的URL（也就是链接）",
+    tooltip: "地图的URL（也就是地图链接）",
     helpUrl: "",
   },
   {
@@ -91,7 +91,7 @@ Blockly.defineBlocksWithJsonArray([
     helpUrl: "",
   },
   {
-    type: "voxels_set",
+    type: "voxels_setid",
     message0: "设置 X %1 Y %2 Z %3 的方块ID为 %4",
     args0: [
       {
@@ -113,6 +113,37 @@ Blockly.defineBlocksWithJsonArray([
         type: "field_input",
         name: "ID",
         text: "127",
+      },
+    ],
+    previousStatement: null,
+    nextStatement: null,
+    colour: 230,
+    tooltip: "",
+    helpUrl: "",
+  },
+  {
+    type: "voxels_setname",
+    message0: "设置 X %1 Y %2 Z %3 的方块名称为 %4",
+    args0: [
+      {
+        type: "field_input",
+        name: "X",
+        text: "0",
+      },
+      {
+        type: "field_input",
+        name: "Y",
+        text: "0",
+      },
+      {
+        type: "field_input",
+        name: "Z",
+        text: "0",
+      },
+      {
+        type: "field_input",
+        name: "ID",
+        text: "grass",
       },
     ],
     previousStatement: null,
@@ -201,6 +232,36 @@ Blockly.defineBlocksWithJsonArray([
     tooltip: "将方块ID转换为方块名称",
     helpUrl: "",
   },
+  {
+    type: "voxels_types",
+    message0: "%1",
+    args0: [
+      {
+        type: "field_label_serializable",
+        name: "MESSAGE",
+        text: "所有方块的名称",
+      },
+    ],
+    output: "Number",
+    colour: 230,
+    tooltip: "返回包含所有方块名称的数组",
+    helpUrl: "",
+  },
+  {
+    type: "voxels_typesid",
+    message0: "%1",
+    args0: [
+      {
+        type: "field_label_serializable",
+        name: "MESSAGE",
+        text: "所有方块的ID",
+      },
+    ],
+    output: "Number",
+    colour: 230,
+    tooltip: "返回包含所有方块ID的数组",
+    helpUrl: "",
+  },
 ]);
 Blockly.JavaScript["world_say"] = function (block) {
   var text_message = block.getFieldValue("MESSAGE");
@@ -232,7 +293,7 @@ Blockly.JavaScript["world_worldentitylength"] = function () {
   return `world.querySelectorAll("*").length`;
 };
 
-Blockly.JavaScript["voxels_set"] = function (block) {
+Blockly.JavaScript["voxels_setid"] = function (block) {
   var text_x = block.getFieldValue("X");
   var text_y = block.getFieldValue("Y");
   var text_z = block.getFieldValue("Z");
@@ -247,6 +308,23 @@ Blockly.JavaScript["voxels_set"] = function (block) {
     "," +
     text_ID +
     ");\n"
+  );
+};
+Blockly.JavaScript["voxels_setname"] = function (block) {
+  var text_x = block.getFieldValue("X");
+  var text_y = block.getFieldValue("Y");
+  var text_z = block.getFieldValue("Z");
+  var text_ID = block.getFieldValue("ID");
+  return (
+    "voxels.setVoxel(" +
+    text_x +
+    "," +
+    text_y +
+    "," +
+    text_z +
+    ",'" +
+    text_ID +
+    "');\n"
   );
 };
 
@@ -272,4 +350,12 @@ Blockly.JavaScript["voxels_id"] = function (block) {
 Blockly.JavaScript["voxels_name"] = function (block) {
   var id = block.getFieldValue("ID");
   return "voxels.name(" + id + ");\n";
+};
+
+Blockly.JavaScript["voxels_types"] = function () {
+  return "voxels.VoxelTypes";
+};
+
+Blockly.JavaScript["voxels_typesid"] = function () {
+  return "voxels.VoxelTypes.map((x) => {return voxels.id(x)})";
 };
