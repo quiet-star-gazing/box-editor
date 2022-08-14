@@ -199,7 +199,6 @@
         <block type="controls_if"></block>
         <block type="controls_whileUntil"></block>
         <block type="controls_repeat_ext"></block>
-        <block type="logic_compare"></block>
       </category>
       <category name="世界" expanded="true">
         <block type="world_projectname"></block>
@@ -253,7 +252,7 @@
       var workspace = Blockly.inject("blocklyDiv", {
         toolbox: document.getElementById("toolbox"),
         zoom: {
-          controls: true,
+          controls: false,
           wheel: false,
           startScale: 1,
           maxScale: 3,
@@ -263,7 +262,7 @@
         },
         grid: {
           spacing: 20,
-          length: 3,
+          length: 1,
           colour: '#ccc',
           snap: true,
         },
