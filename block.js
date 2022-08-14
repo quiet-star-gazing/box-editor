@@ -12,7 +12,7 @@ Blockly.defineBlocksWithJsonArray([
     previousStatement: null,
     nextStatement: null,
     colour: 230,
-    tooltip: "",
+    tooltip: "向所有玩家发送一条消息",
     helpUrl: "",
   },
   {
@@ -27,7 +27,7 @@ Blockly.defineBlocksWithJsonArray([
     ],
     output: "String",
     colour: 230,
-    tooltip: "",
+    tooltip: "地图的名称",
     helpUrl: "",
   },
   {
@@ -42,7 +42,7 @@ Blockly.defineBlocksWithJsonArray([
     ],
     output: "String",
     colour: 230,
-    tooltip: "",
+    tooltip: "地图的URL（也就是链接）",
     helpUrl: "",
   },
   {
@@ -57,7 +57,7 @@ Blockly.defineBlocksWithJsonArray([
     ],
     output: "Number",
     colour: 230,
-    tooltip: "",
+    tooltip: "世界当前的Tick计数",
     helpUrl: "",
   },
   {
@@ -72,7 +72,7 @@ Blockly.defineBlocksWithJsonArray([
     ],
     output: "Number",
     colour: 230,
-    tooltip: "",
+    tooltip: "世界上还可以建造的实体数量",
     helpUrl: "",
   },
   {
@@ -82,12 +82,12 @@ Blockly.defineBlocksWithJsonArray([
       {
         type: "field_label_serializable",
         name: "MESSAGE",
-        text: "当前世界上存在的实体数量",
+        text: "当前存在的实体数量",
       },
     ],
     output: "Number",
     colour: 230,
-    tooltip: "",
+    tooltip: "世界上当前存在的实体数量",
     helpUrl: "",
   },
   {
