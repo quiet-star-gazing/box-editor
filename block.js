@@ -22,7 +22,7 @@ Blockly.defineBlocksWithJsonArray([
       {
         type: "field_label_serializable",
         name: "MESSAGE",
-        text: "地图名称", 
+        text: "地图名称",
       },
     ],
     output: "String",
@@ -92,32 +92,83 @@ Blockly.defineBlocksWithJsonArray([
   },
   {
     type: "voxels_set",
-    message0: "设置 x %1 y %1 z %1  的方块ID为 %1",
+    message0: "设置 X %1 Y %2 Z %3 的方块ID为 %4",
     args0: [
       {
-        type: "input_value",
+        type: "field_input",
         name: "X",
+        text: "0",
+      },
+      {
+        type: "field_input",
+        name: "Y",
+        text: "0",
+      },
+      {
+        type: "field_input",
+        name: "Z",
+        text: "0",
+      },
+      {
+        type: "field_input",
+        name: "ID",
+        text: "127",
       },
     ],
-    inputsInline: true,
     previousStatement: null,
     nextStatement: null,
     colour: 230,
-    tooltip: "设置地形上的方块",
+    tooltip: "",
     helpUrl: "",
   },
   {
     type: "voxels_get",
-    message0: "读取 x %1 y %1 z %1 的方块，返回方块ID",
+    message0: "读取 x %1 y %2 z %3 的方块，返回方块ID",
     args0: [
       {
         type: "input_value",
         name: "X",
+        text: "0",
+      },
+      {
+        type: "input_value",
+        name: "Y",
+        text: "0",
+      },
+      {
+        type: "input_value",
+        name: "Z",
+        text: "0",
       },
     ],
     output: "Number",
     colour: 230,
-    tooltip: "读取地形上的方块",
+    tooltip: "读取地形上的方块，返回方块ID",
+    helpUrl: "",
+  },
+  {
+    type: "voxels_getRotation",
+    message0: "读取 x %1 y %2 z %3 的方块，返回方块旋转码",
+    args0: [
+      {
+        type: "input_value",
+        name: "X",
+        text: "0",
+      },
+      {
+        type: "input_value",
+        name: "Y",
+        text: "0",
+      },
+      {
+        type: "input_value",
+        name: "Z",
+        text: "0",
+      },
+    ],
+    output: "Number",
+    colour: 230,
+    tooltip: "读取地形上的方块，返回方块旋转码",
     helpUrl: "",
   },
   {
@@ -180,46 +231,35 @@ Blockly.JavaScript["world_worldentitylength"] = function () {
 };
 
 Blockly.JavaScript["voxels_set"] = function (block) {
-  var x = Blockly.JavaScript.valueToCode(
-    block,
-    "X",
-    Blockly.JavaScript.ORDER_ATOMIC
+  var text_x = block.getFieldValue("X");
+  var text_y = block.getFieldValue("Y");
+  var text_z = block.getFieldValue("Z");
+  var text_ID = block.getFieldValue("ID");
+  return (
+    "voxels.setVoxelId(" +
+    text_x +
+    "," +
+    text_y +
+    "," +
+    text_z +
+    "," +
+    text_ID +
+    ");\n"
   );
-  var y = Blockly.JavaScript.valueToCode(
-    block,
-    "Y",
-    Blockly.JavaScript.ORDER_ATOMIC
-  );
-  var z = Blockly.JavaScript.valueToCode(
-    block,
-    "Z",
-    Blockly.JavaScript.ORDER_ATOMIC
-  );
-  var id = Blockly.JavaScript.valueToCode(
-    block,
-    "ID",
-    Blockly.JavaScript.ORDER_ATOMIC
-  );
-  return "voxels.setVoxelId(" + x + "," + y + "," + z + "," + id + ");\n";
 };
 
 Blockly.JavaScript["voxels_get"] = function (block) {
-  var x = Blockly.JavaScript.valueToCode(
-    block,
-    "X",
-    Blockly.JavaScript.ORDER_ATOMIC
-  );
-  var y = Blockly.JavaScript.valueToCode(
-    block,
-    "Y",
-    Blockly.JavaScript.ORDER_ATOMIC
-  );
-  var z = Blockly.JavaScript.valueToCode(
-    block,
-    "Z",
-    Blockly.JavaScript.ORDER_ATOMIC
-  );
-  return "voxels.getVoxelId(" + x + "," + y + "," + z + ");\n";
+  var text_x = block.getFieldValue("X");
+  var text_y = block.getFieldValue("Y");
+  var text_z = block.getFieldValue("Z");
+  return "voxels.getVoxelId(" + text_x + "," + text_y + "," + text_z + ");\n";
+};
+
+Blockly.JavaScript["voxels_getRotation"] = function (block) {
+  var text_x = block.getFieldValue("X");
+  var text_y = block.getFieldValue("Y");
+  var text_z = block.getFieldValue("Z");
+  return "voxels.getVoxelRotation(" + text_x + "," + text_y + "," + text_z + ");\n";
 };
 
 Blockly.JavaScript["voxels_id"] = function (block) {
