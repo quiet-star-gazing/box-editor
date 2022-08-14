@@ -193,7 +193,7 @@ Blockly.defineBlocksWithJsonArray([
       {
         type: "field_input",
         name: "ID",
-        text: "傻逼",
+        text: "grass",
       },
     ],
     output: "Number",
