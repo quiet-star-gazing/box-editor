@@ -118,31 +118,6 @@ Blockly.defineBlocksWithJsonArray([
     helpUrl: "",
   },
   {
-    type: "world_onEntityDestroy",
-    message0: "当实体被 %1 时 %2 %3",
-    args0: [
-      {
-        type: "field_dropdown",
-        name: "NAME",
-        options: [
-          ["创建", "create"],
-          ["销毁", "destroy"],
-        ],
-      },
-      {
-        type: "input_dummy",
-      },
-      {
-        type: "input_statement",
-        name: "NAME",
-        check: ["entity", "tick"],
-      },
-    ],
-    colour: 255,
-    tooltip: "当创建或销毁实体时触发的事件",
-    helpUrl: "",
-  },
-  {
     type: "voxels_setid",
     message0: "设置 X %1 Y %2 Z %3 的方块ID为 %4 旋转码为 %5",
     args0: [
@@ -334,6 +309,30 @@ Blockly.defineBlocksWithJsonArray([
     tooltip: "返回包含所有方块ID的数组",
     helpUrl: "",
   },
+  {
+    type: "world_onEntityDestroy",
+    message0: "当实体被 %1 时 %2 %3",
+    args0: [
+      {
+        type: "field_dropdown",
+        name: "t",
+        options: [
+          ["创建", "Create"],
+          ["销毁", "Destroy"],
+        ],
+      },
+      {
+        type: "input_dummy",
+      },
+      {
+        type: "input_statement",
+        name: "tex",
+      },
+    ],
+    colour: 255,
+    tooltip: "当创建或销毁实体时触发的事件",
+    helpUrl: "",
+  },
 ]);
 
 Blockly.JavaScript["world_say"] = function (block) {
@@ -414,7 +413,7 @@ Blockly.JavaScript["voxels_get"] = function (block) {
   return "voxels.getVoxelId(" + text_x + "," + text_y + "," + text_z + ");\n";
 };
 
-Blockly.JavaScript["voxels_getRotation"] = function (block) {
+Blockly.JavaScript["voxels_Rotation"] = function (block) {
   var text_x = block.getFieldValue("X");
   var text_y = block.getFieldValue("Y");
   var text_z = block.getFieldValue("Z");
@@ -439,4 +438,16 @@ Blockly.JavaScript["voxels_types"] = function () {
 
 Blockly.JavaScript["voxels_typesid"] = function () {
   return "voxels.VoxelTypes.map((x) => {return voxels.id(x)})";
+};
+
+Blockly.JavaScript["world_onEntityDestroy"] = function (block) {
+  var id = block.getFieldValue("t");
+  var value_name = Blockly.JavaScript.valueToCode(
+    block,
+    "tex",
+    Blockly.JavaScript.ORDER_ATOMIC
+  );
+  return `world.onEntity${id}(({entity})=>{
+    ${value_name}
+  })`;
 };
