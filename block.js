@@ -113,17 +113,7 @@ Blockly.defineBlocksWithJsonArray([
         type: "field_input",
         name: "ID",
         text: "127",
-      },/*
-      {
-        type: "field_dropdown",
-        name: "rid",
-        options: [
-          ["0", "0"],
-          ["1", "1"],
-          ["2", "2"],
-          ["3", "3"],
-        ],
-      },*/
+      },
     ],
     previousStatement: null,
     nextStatement: null,
@@ -154,17 +144,7 @@ Blockly.defineBlocksWithJsonArray([
         type: "field_input",
         name: "ID",
         text: "grass",
-      },/*
-      {
-        type: "field_dropdown",
-        name: "rid",
-        options: [
-          ["0", "0"],
-          ["1", "1"],
-          ["2", "2"],
-          ["3", "3"],
-        ],
-      },*/
+      },
     ],
     previousStatement: null,
     nextStatement: null,
