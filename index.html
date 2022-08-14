@@ -183,15 +183,13 @@
               await navigator.clipboard.writeText(
                "//代码由 " +
                 window.location.href +
-                " 生成，感谢您对我们的支持\n" +
+                " 生成，感谢您对我们的支持。\n" +
                 Blockly.JavaScript.workspaceToCode(workspace)
               );
-              window.alert("代码复制成功！！！");
+              window.alert("代码复制成功");
           };
         </script>
       </div>
-      <!--右键菜单-->
-      
     <!-- 积木xml -->
     <xml id="toolbox" style="display: none">
       <category name="事件" expanded="true"> </category>
@@ -249,32 +247,32 @@
       }
       var workspace = Blockly.inject("blocklyDiv", {
         toolbox: document.getElementById("toolbox"),
-        zoom: {
-          controls: false,
-          wheel: false,
-          startScale: 1,
-          maxScale: 3,
-          minScale: 0.3,
-          scaleSpeed: 1,
-          Pinch: true,
+        zoom: {//缩放设置
+          controls: false,//显示缩放按钮控件
+          wheel: false,//允许使用鼠标滚轮缩放
+          startScale: 1,//初始积木大小
+          maxScale: 3,//最大大小
+          minScale: 0.3,//最小大小
+          scaleSpeed: 1,//缩放速度
+          Pinch: true,//在移动端允许两根手指捏合缩放
         },
-        grid: {
-          spacing: 20,
-          length: 2,
-          colour: '#ccc',
-          snap: true,
+        grid: {//网格设置
+          spacing: 20,//间隔
+          length: 2,//大小
+          colour: '#ccc',//颜色
+          snap: true,//当积木碰到一起时是否自动撞开
         },
-        move:{
-          scrollbars: true,
-          drag: true,
-          wheel: true,
+        move:{//移动设置
+          scrollbars: true,//显示滑动条
+          drag: true,//允许拖拽移动
+          wheel: true,//允许鼠标滚轮滑动
         },
-        collapse: true,
-        comments: true,
-        sounds: true,
-        trashcan: true,
-        maxTrashcanContents: 100,
-        media: "https://static.codemao.cn/blockly/media/",
+        collapse: true,//允许折叠块
+        comments: true,//允许注释块
+        sounds: true,//有音效
+        trashcan: true,//显示垃圾桶
+        maxTrashcanContents: 100,//垃圾桶最大含量
+        media: "https://static.codemao.cn/blockly/media/",//资源文件链接（这里用kitten4的）
       });
     </script>
     <script>
@@ -292,14 +290,14 @@
       document.getElementById("bcodeshow").innerHTML =
         `<span class="hljs-comment">//代码由 ` +
         window.location.href +
-        ` 生成，感谢您对我们的支持<br></span>`;
+        ` 生成，感谢您对我们的支持。<br></span>`;
       function myUpdateFunction(event) {
         var code = Blockly.JavaScript.workspaceToCode(workspace);
         document.getElementById("bcodeshow").innerHTML = hljs
           .highlight(
             "//代码由 " +
               window.location.href +
-              " 生成，感谢您对我们的支持\n" +
+              " 生成，感谢您对我们的支持。\n" +
               code,
             { language: "JavaScript" }
           )
@@ -313,8 +311,12 @@
         document.getElementsByClassName(
           "blocklyScrollbarHorizontal"
         )[0].style.transform = `translate(80.5px, calc(${h}px - 15px))`;
+        document.getElementsByClassName(
+          "blocklySvg"
+        )[0].attributes.height.value=`${h}px`
       }, 1);
     </script>
+    <!--右键菜单-->
     <style>
       .xh-menu-background {
         background: #0000;
