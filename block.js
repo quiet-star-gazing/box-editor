@@ -263,7 +263,7 @@ Blockly.defineBlocksWithJsonArray([
         text: "所有方块的名称",
       },
     ],
-    output: "Number",
+    output: "Array",
     colour: 120,
     tooltip: "返回包含所有方块名称的数组",
     helpUrl: "",
@@ -278,7 +278,7 @@ Blockly.defineBlocksWithJsonArray([
         text: "所有方块的ID",
       },
     ],
-    output: "Number",
+    output: "Array",
     colour: 120,
     tooltip: "返回包含所有方块ID的数组",
     helpUrl: "",
@@ -309,7 +309,7 @@ Blockly.defineBlocksWithJsonArray([
   },
   {
     "type": "world_onInteract",
-    "message0": "当实体/玩家被 %1 %2 %3",
+    "message0": "当实体/玩家被 %1 时 %2 %3",
     "args0": [
       {
         "type": "field_dropdown",
@@ -339,7 +339,7 @@ Blockly.defineBlocksWithJsonArray([
   },
   {
     "type": "world_onPlayerJoin",
-    "message0": "当玩家 %1 地图 %2 %3",
+    "message0": "当玩家 %1 地图时 %2 %3",
     "args0": [
       {
         "type": "field_dropdown",
