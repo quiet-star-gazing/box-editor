@@ -308,8 +308,38 @@ Blockly.defineBlocksWithJsonArray([
     helpUrl: "",
   },
   {
-    "type": "world_onPlayerJoin",
-    "message0": "当玩家 %1 进入地图时 %2 %3",
+    "type": "world_onInteract",
+    "message0": "当实体/玩家被 %1 %2 %3",
+    "args0": [
+      {
+        "type": "field_dropdown",
+        "name": "t",
+        "options": [
+          [
+            "进入",
+            "Interact"
+          ],
+          [
+            "点击",
+            "Leave"
+          ]
+        ]
+      },
+      {
+        "type": "input_dummy"
+      },
+      {
+        "type": "input_statement",
+        "name": "tex"
+      }
+    ],
+    "colour": 120,
+    "tooltip": "当实体/玩家被互动或点击时触发的事件",
+    "helpUrl": ""
+  },
+  {
+    "type": "world_onplayerjoin",
+    "message0": "当玩家 %1 地图 %2 %3",
     "args0": [
       {
         "type": "field_dropdown",
@@ -333,7 +363,7 @@ Blockly.defineBlocksWithJsonArray([
         "name": "tex"
       }
     ],
-    "colour": 210,
+    "colour": 120,
     "tooltip": "当玩家进入或离开时触发的事件",
     "helpUrl": ""
   }
@@ -404,9 +434,9 @@ Blockly.JavaScript["voxels_setname"] = function (block) {
     text_z +
     ",'" +
     text_ID +
-    "," +
+    "'," +
     text_rID +
-    "');\n"
+    ");\n"
   );
 };
 
@@ -465,6 +495,18 @@ Blockly.JavaScript["world_onPlayerJoin"] = function (block) {
     Blockly.JavaScript.ORDER_ATOMIC
   );
   return `world.onPlayer${id}(({entity})=>{
+    ${value_name}
+  })`;
+};
+
+Blockly.JavaScript["world_onInteract"] = function (block) {
+  var id = block.getFieldValue("t");
+  var value_name = Blockly.JavaScript.valueToCode(
+    block,
+    "tex",
+    Blockly.JavaScript.ORDER_ATOMIC
+  );
+  return `world.on${id}(({entity,${t=="Interact"?"targetEntity":"clicker,button,distance,clickerPosition,raycast"}})=>{
     ${value_name}
   })`;
 };
