@@ -321,7 +321,7 @@ Blockly.defineBlocksWithJsonArray([
           ],
           [
             "点击",
-            "Leave"
+            "Click"
           ]
         ]
       },
@@ -367,66 +367,6 @@ Blockly.defineBlocksWithJsonArray([
     "tooltip": "当玩家进入或离开时触发的事件",
     "helpUrl": ""
   },
-  {
-    "type": "world_onInteract",
-    "message0": "当实体/玩家被 %1 %2 %3",
-    "args0": [
-      {
-        "type": "field_dropdown",
-        "name": "t",
-        "options": [
-          [
-            "进入",
-            "Interact"
-          ],
-          [
-            "点击",
-            "Leave"
-          ]
-        ]
-      },
-      {
-        "type": "input_dummy"
-      },
-      {
-        "type": "input_statement",
-        "name": "tex"
-      }
-    ],
-    "colour": 210,
-    "tooltip": "当实体/玩家被互动或点击时触发的事件",
-    "helpUrl": ""
-  },
-  {
-    "type": "world_onPlayerJoin",
-    "message0": "当玩家 %1 地图 %2 %3",
-    "args0": [
-      {
-        "type": "field_dropdown",
-        "name": "t",
-        "options": [
-          [
-            "进入",
-            "Join"
-          ],
-          [
-            "离开",
-            "Leave"
-          ]
-        ]
-      },
-      {
-        "type": "input_dummy"
-      },
-      {
-        "type": "input_statement",
-        "name": "tex"
-      }
-    ],
-    "colour": 210,
-    "tooltip": "当玩家进入或离开时触发的事件",
-    "helpUrl": ""
-  }
 ]);
 
 Blockly.JavaScript["world_say"] = function (block) {
