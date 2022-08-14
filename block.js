@@ -98,14 +98,20 @@ Blockly.defineBlocksWithJsonArray([
         type: "input_value",
         name: "X",
       },
+    ],
+    args1: [
       {
         type: "input_value",
         name: "Y",
       },
+    ],
+    args2: [
       {
         type: "input_value",
         name: "Z",
       },
+    ],
+    args3: [
       {
         type: "input_value",
         name: "ID",
