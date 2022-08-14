@@ -316,7 +316,7 @@ Blockly.defineBlocksWithJsonArray([
         "name": "t",
         "options": [
           [
-            "进入",
+            "互动",
             "Interact"
           ],
           [
