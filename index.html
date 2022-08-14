@@ -192,28 +192,15 @@
         </script>
       </div>
       <!--右键菜单-->
-    <!--div class="menu">
-          <ul class="menu-list">
-              <li class="menu-item">
-                <span>点赞（）</span>
-              </li>
-              <li class="menu-item">
-                <span>评论（）</span>
-              </li>
-              <li class="menu-item">
-                <span>关注（）</span>
-              </li>
-              <li class="menu-item">
-                <span>三连（）</span>
-              </li>
-          </ul>
-      </div-->
+      
     <!-- 积木xml -->
     <xml id="toolbox" style="display: none">
       <category name="事件" expanded="true"> </category>
       <category name="控制" expanded="true">
         <block type="controls_if"></block>
         <block type="controls_whileUntil"></block>
+        <block type="controls_repeat_ext"></block>
+        <block type="logic_compare"></block>
       </category>
       <category name="世界" expanded="true">
         <block type="world_projectname"></block>
@@ -236,7 +223,10 @@
         <block type="world_worldentitylength"></block>
       </category>
       <category name="玩家" expanded="true"> </category>
-      <category name="字符串" expanded="true"> </category>
+      <category name="字符串" expanded="true">
+        <block type="text"></block>
+        <block type="text_print"></block>
+      </category>
       <category name="运算" expanded="true">
         <block type="math_number"></block>
         <block type="math_arithmetic"></block>
@@ -265,11 +255,23 @@
         toolbox: document.getElementById("toolbox"),
         zoom: {
           controls: true,
-          wheel: true,
-          startScale: 1.0,
+          wheel: false,
+          startScale: 1,
           maxScale: 3,
           minScale: 0.3,
-          scaleSpeed: 1.2,
+          scaleSpeed: 1,
+          Pinch: true,
+        },
+        grid: {
+          spacing: 20,
+          length: 3,
+          colour: '#ccc',
+          snap: true,
+        },
+        move:{
+          scrollbars: true,
+          drag: true,
+          wheel: true,
         },
         trashcan: true,
       });
@@ -431,6 +433,7 @@
       (async () => {
         var a = document.getElementsByClassName("blocklySvg")[0];
         a.oncontextmenu = (e) => {
+          //[菜单名，点击后运行的代码，注释]
           addmenu(
             [
               ["点赞", "window.open(`https://space.bilibili.com/1305803109`,``,`width=999999999999999,height=99999999999`)", ""],
@@ -443,6 +446,6 @@
             e.clientY
           );
         };
-      })();
+      });
     </script>
 </html>
