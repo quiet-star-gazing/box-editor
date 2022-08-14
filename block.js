@@ -309,7 +309,7 @@ Blockly.defineBlocksWithJsonArray([
   },
   {
     "type": "world_onPlayerJoin",
-    "message0": "当玩家 %1 进入地图 %2 %3",
+    "message0": "当玩家 %1 进入地图 %2 时 %3",
     "args0": [
       {
         "type": "field_dropdown",
