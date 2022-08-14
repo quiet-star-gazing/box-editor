@@ -313,7 +313,8 @@
         )[0].style.transform = `translate(80.5px, calc(${h}px - 15px))`;
         document.getElementsByClassName(
           "blocklySvg"
-        )[0].attributes.height.value=`${h}px`
+        )[0].attributes.height.value=`${h}px`;
+        document.getElementById("bcodeshow")[0].style.height = String(h + "px");
       }, 1);
     </script>
     <!--右键菜单-->
