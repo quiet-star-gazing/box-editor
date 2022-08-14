@@ -1,32 +1,6 @@
 /* —————————————— 自定义积木块设置 —————————————— */
 Blockly.defineBlocksWithJsonArray([
   {
-    type: "world_onplayerjoin",
-    message0: "当有玩家加入时 参数1(选填) %1 参数2(选填) %2",
-    args0: [
-      {
-        type: "field_input",
-        name: "parameter1",
-        text: "entity",
-      },
-      {
-        type: "field_input",
-        name: "parameter2",
-        text: "",
-      },
-      {
-        type: "input_dummy",
-      },
-      {
-        type: "input_statement",
-        name: "NAME",
-      },
-    ],
-    colour: 210,
-    tooltip: "",
-    helpUrl: "",
-  },
-  {
     type: "world_say",
     message0: "向所有玩家发送一条信息 %1",
     args0: [
@@ -154,7 +128,7 @@ Blockly.defineBlocksWithJsonArray([
     ],
     previousStatement: null,
     nextStatement: null,
-    colour: 30,
+    colour: 120,
     tooltip: "放一个方块",
     helpUrl: "",
   },
@@ -195,7 +169,7 @@ Blockly.defineBlocksWithJsonArray([
     ],
     previousStatement: null,
     nextStatement: null,
-    colour: 30,
+    colour: 120,
     tooltip: "放一个方块",
     helpUrl: "",
   },
@@ -220,7 +194,7 @@ Blockly.defineBlocksWithJsonArray([
       },
     ],
     output: "Number",
-    colour: 30,
+    colour: 120,
     tooltip: "读取地形上的方块，返回方块ID",
     helpUrl: "",
   },
@@ -245,7 +219,7 @@ Blockly.defineBlocksWithJsonArray([
       },
     ],
     output: "Number",
-    colour: 30,
+    colour: 120,
     tooltip: "读取地形上的方块，返回方块旋转码（0~3）",
     helpUrl: "",
   },
@@ -260,7 +234,7 @@ Blockly.defineBlocksWithJsonArray([
       },
     ],
     output: "String",
-    colour: 30,
+    colour: 120,
     tooltip: "将方块ID转换为方块名称",
     helpUrl: "",
   },
@@ -275,7 +249,7 @@ Blockly.defineBlocksWithJsonArray([
       },
     ],
     output: "Number",
-    colour: 30,
+    colour: 120,
     tooltip: "将方块ID转换为方块名称",
     helpUrl: "",
   },
@@ -290,7 +264,7 @@ Blockly.defineBlocksWithJsonArray([
       },
     ],
     output: "Number",
-    colour: 30,
+    colour: 120,
     tooltip: "返回包含所有方块名称的数组",
     helpUrl: "",
   },
@@ -305,7 +279,7 @@ Blockly.defineBlocksWithJsonArray([
       },
     ],
     output: "Number",
-    colour: 30,
+    colour: 120,
     tooltip: "返回包含所有方块ID的数组",
     helpUrl: "",
   },
@@ -329,10 +303,40 @@ Blockly.defineBlocksWithJsonArray([
         name: "tex",
       },
     ],
-    colour: 255,
+    colour: 210,
     tooltip: "当创建或销毁实体时触发的事件",
     helpUrl: "",
   },
+  {
+    "type": "world_onplayerjoin",
+    "message0": "当玩家 %1 进入地图 %2 %3",
+    "args0": [
+      {
+        "type": "field_dropdown",
+        "name": "t",
+        "options": [
+          [
+            "进入",
+            "Join"
+          ],
+          [
+            "离开",
+            "Leave"
+          ]
+        ]
+      },
+      {
+        "type": "input_dummy"
+      },
+      {
+        "type": "input_statement",
+        "name": "y"
+      }
+    ],
+    "colour": 120,
+    "tooltip": "当玩家进入或离开时触发的事件",
+    "helpUrl": ""
+  }
 ]);
 
 Blockly.JavaScript["world_say"] = function (block) {
