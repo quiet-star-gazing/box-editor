@@ -123,21 +123,26 @@ Blockly.defineBlocksWithJsonArray([
   },
   {
     type: "voxels_get",
-    message0: "读取 x %1 y %2 z %3 的方块，返回方块ID",
+    message0: "读取 x %1 y %2 z %3 的方块，返回方块ID %4",
     args0: [
       {
-        type: "input_value",
+        type: "field_input",
         name: "X",
         text: "0",
       },
       {
-        type: "input_value",
+        type: "field_input",
         name: "Y",
         text: "0",
       },
       {
-        type: "input_value",
+        type: "field_input",
         name: "Z",
+        text: "0",
+      },
+      {
+        type: "field_input",
+        name: "ID",
         text: "0",
       },
     ],
@@ -147,21 +152,21 @@ Blockly.defineBlocksWithJsonArray([
     helpUrl: "",
   },
   {
-    type: "voxels_getRotation",
+    type: "voxels_Rotation",
     message0: "读取 x %1 y %2 z %3 的方块，返回方块旋转码",
     args0: [
       {
-        type: "input_value",
+        type: "field_input",
         name: "X",
         text: "0",
       },
       {
-        type: "input_value",
+        type: "field_input",
         name: "Y",
         text: "0",
       },
       {
-        type: "input_value",
+        type: "field_input",
         name: "Z",
         text: "0",
       },
@@ -176,7 +181,7 @@ Blockly.defineBlocksWithJsonArray([
     message0: "将方块ID %1 转换为名称",
     args0: [
       {
-        type: "input_value",
+        type: "field_input",
         name: "ID",
       },
     ],
@@ -263,19 +268,11 @@ Blockly.JavaScript["voxels_getRotation"] = function (block) {
 };
 
 Blockly.JavaScript["voxels_id"] = function (block) {
-  var id = Blockly.JavaScript.valueToCode(
-    block,
-    "ID",
-    Blockly.JavaScript.ORDER_ATOMIC
-  );
+  var id = block.getFieldValue("ID");
   return "voxels.id(" + id + ");\n";
 };
 
 Blockly.JavaScript["voxels_name"] = function (block) {
-  var id = Blockly.JavaScript.valueToCode(
-    block,
-    "ID",
-    Blockly.JavaScript.ORDER_ATOMIC
-  );
+  var id = block.getFieldValue("ID");
   return "voxels.name(" + id + ");\n";
 };
