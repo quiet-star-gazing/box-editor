@@ -144,7 +144,7 @@ Blockly.defineBlocksWithJsonArray([
   },
   {
     type: "voxels_setid",
-    message0: "设置 X %1 Y %2 Z %3 的方块ID为 %4 旋转码（0~3）为 %5",
+    message0: "设置 X %1 Y %2 Z %3 的方块ID为 %4 旋转码为 %5",
     args0: [
       {
         type: "field_input",
@@ -167,9 +167,14 @@ Blockly.defineBlocksWithJsonArray([
         text: "127",
       },
       {
-        type: "field_input",
+        type: "field_dropdown",
         name: "rid",
-        text: "0",
+        options: [
+          ["0", "0"],
+          ["1", "1"],
+          ["2", "2"],
+          ["3", "3"],
+        ],
       },
     ],
     previousStatement: null,
@@ -180,7 +185,7 @@ Blockly.defineBlocksWithJsonArray([
   },
   {
     type: "voxels_setname",
-    message0: "设置 X %1 Y %2 Z %3 的方块名称为 %4 旋转码（0~3）为 %5",
+    message0: "设置 X %1 Y %2 Z %3 的方块名称为 %4 旋转码为 %5",
     args0: [
       {
         type: "field_input",
