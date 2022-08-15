@@ -601,7 +601,7 @@ Blockly.defineBlocksWithJsonArray([
 Blockly.JavaScript['object_freeze'] = function(block) {
   var value_object = Blockly.JavaScript.valueToCode(block, 'object', Blockly.JavaScript.ORDER_ATOMIC);
   // TODO: Assemble JavaScript into code variable.
-  var code = 'Object.freeze(${value_object || "{}"});\n';
+  var code = `Object.freeze(${value_object || "{}"});\n`;
   return code;
 };
 Blockly.JavaScript['box3_sleep'] = function(block) {
@@ -617,7 +617,7 @@ Blockly.JavaScript['object_null'] = function(block) {
 Blockly.JavaScript['object_isfreeze'] = function(block) {
   var value_object = Blockly.JavaScript.valueToCode(block, 'object', Blockly.JavaScript.ORDER_ATOMIC);
   // TODO: Assemble JavaScript into code variable.
-  var code = 'Object.isFrozen(${value_object || "{}"})';
+  var code = `Object.isFrozen(${value_object || "{}"})`;
   // TODO: Change ORDER_NONE to the correct strength.
   return [code, Blockly.JavaScript.ORDER_NONE];
 };
