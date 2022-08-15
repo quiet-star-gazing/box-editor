@@ -18,7 +18,6 @@
  * Unused constant for the common HSV hue for all blocks in this category.
  * @deprecated Use Blockly.Msg['TEXTS_HUE']. (2018 April 5)
  */
-Blockly.Constants.Text.HUE = 160;
 
 Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   // Block for text value
@@ -933,7 +932,6 @@ Blockly.Extensions.registerMutator('text_charAt_mutator',
  * Unused constant for the common HSV hue for all blocks in this category.
  * @deprecated Use Blockly.Msg['VARIABLES_HUE']. (2018 April 5)
  */
-Blockly.Constants.Variables.HUE = 330;
 
 Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   // Block for variable getter.
@@ -1088,7 +1086,6 @@ Blockly.Extensions.registerMixin('contextMenu_variableSetterGetter',
  * Unused constant for the common HSV hue for all blocks in this category.
  * @deprecated Use Blockly.Msg['VARIABLES_DYNAMIC_HUE']. (2018 April 5)
  */
-Blockly.Constants.VariablesDynamic.HUE = 310;
 
 Blockly.defineBlocksWithJsonArray([ // BEGIN JSON EXTRACT
   // Block for variable getter.
@@ -2328,7 +2325,6 @@ Blockly.Blocks['procedures_ifreturn'] = {
  * Unused constant for the common HSV hue for all blocks in this category.
  * @deprecated Use Blockly.Msg['MATH_HUE']. (2018 April 5)
  */
-Blockly.Constants.Math.HUE = 230;
 
 Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   // Block for numeric value.
@@ -2882,7 +2878,6 @@ Blockly.Extensions.registerMutator('math_modes_of_list_mutator',
  * Unused constant for the common HSV hue for all blocks in this category.
  * @deprecated Use Blockly.Msg['LOOPS_HUE']. (2018 April 5)
  */
-Blockly.Constants.Loops.HUE = 120;
 
 Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   // Block for repeat n times (external number).
@@ -3226,7 +3221,6 @@ Blockly.Extensions.registerMixin('controls_flow_in_loop_check',
  * Unused constant for the common HSV hue for all blocks in this category.
  * @deprecated Use Blockly.Msg['LOGIC_HUE']. (2018 April 5)
  */
-Blockly.Constants.Logic.HUE = 210;
 
 Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   // Block for boolean data type: true and false.
@@ -3852,7 +3846,6 @@ Blockly.Extensions.registerMixin('logic_ternary',
  * Unused constant for the common HSV hue for all blocks in this category.
  * @deprecated Use Blockly.Msg['LISTS_HUE']. (2018 April 5)
  */
-Blockly.Constants.Lists.HUE = 260;
 
 Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   // Block for creating an empty list
