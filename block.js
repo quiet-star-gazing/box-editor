@@ -608,7 +608,7 @@ Blockly.JavaScript['box3_sleep'] = function(block) {
   var value_object = Blockly.JavaScript.valueToCode(block, 'object', Blockly.JavaScript.ORDER_ATOMIC);
   var dropdown_type = block.getFieldValue('type');
   // TODO: Assemble JavaScript into code variable.
-  var code = `await sleep(${dropdown_type=="ms"?value_object:`${value_object}/1000`});\n`;
+  var code = `await sleep(${dropdown_type=="ms"?value_object:`${value_object}*1000`});\n`;
   return code;
 };
 Blockly.JavaScript['object_null'] = function(block) {
