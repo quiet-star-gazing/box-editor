@@ -22,8 +22,7 @@ Blockly.defineBlocksWithJsonArray([
     "output": "String",
     "colour": 230,
     "tooltip": "地图的名称",
-    "helpUrl": ""
-  }
+    "helpUrl": "",
   },
   {
     type: "world_url",
