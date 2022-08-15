@@ -543,20 +543,20 @@ Blockly.JavaScript['object_null'] = function(block) {
 Blockly.JavaScript['object_copy'] = function(block) {
   var value_target = Blockly.JavaScript.valueToCode(block, 'target', Blockly.JavaScript.ORDER_ATOMIC);
   var value_object = Blockly.JavaScript.valueToCode(block, 'object', Blockly.JavaScript.ORDER_ATOMIC);
-  var code = `Object.assign(${value_object || "{}"},${value_target || "{}"})`;
+  var code = `Object.assign(${value_object || "{}"},${value_target || "{}"});\n`;
   return code;
 };
 Blockly.JavaScript['object_delete'] = function(block) {
   var value_object = Blockly.JavaScript.valueToCode(block, 'object', Blockly.JavaScript.ORDER_ATOMIC);
   var text_key = block.getFieldValue('key');
-  var code = `delete ${value_object || "{}"}['${text_key}']`;
+  var code = `delete ${value_object || "{}"}['${text_key}'];\n`;
   return code;
 };
 Blockly.JavaScript['object_set'] = function(block) {
   var value_object = Blockly.JavaScript.valueToCode(block, 'object', Blockly.JavaScript.ORDER_ATOMIC);
   var text_key = block.getFieldValue('key');
   var value_value = Blockly.JavaScript.valueToCode(block, 'value', Blockly.JavaScript.ORDER_ATOMIC);
-  var code = `${value_object || "{}"}['${text_key}'] = ${value_value}`;
+  var code = `${value_object || "{}"}['${text_key}'] = ${value_value};\n`;
   return code;
 };
 Blockly.JavaScript['object_inc'] = function(block) {
