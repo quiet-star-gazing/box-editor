@@ -301,6 +301,14 @@ Blockly.defineBlocksWithJsonArray([
     helpUrl: "",
   },
   {
+    "type": "world_onEntityDestroy_entity",
+    "message0": "被建造/销毁的实体",
+    "output": "Object",
+    "colour": 210,
+    "tooltip": "被建造/销毁的实体",
+    "helpUrl": "",
+  },
+  {
     "type": "world_onInteract",
     "message0": "当实体/玩家被 %1 时 %2 %3",
     "args0": [
@@ -331,6 +339,54 @@ Blockly.defineBlocksWithJsonArray([
     "helpUrl": ""
   },
   {
+    "type": "world_onInteract_entity",
+    "message0": "发起互动的玩家",
+    "output": "Object",
+    "colour": 210,
+    "tooltip": "发起互动的玩家",
+    "helpUrl": "",
+  },
+  {
+    "type": "world_onInteract_targetEntity",
+    "message0": "被互动的实体/玩家",
+    "output": "Object",
+    "colour": 210,
+    "tooltip": "被互动的实体/玩家",
+    "helpUrl": "",
+  },
+  {
+    "type": "world_onClick_entity",
+    "message0": "被点击的实体/玩家",
+    "output": "Object",
+    "colour": 210,
+    "tooltip": "被点击的实体/玩家",
+    "helpUrl": "",
+  },
+  {
+    "type": "world_onInteract_clicker",
+    "message0": "发起点击事件的玩家",
+    "output": "Object",
+    "colour": 210,
+    "tooltip": "发起点击事件的玩家",
+    "helpUrl": "",
+  },
+  {
+    "type": "world_onInteract_button",
+    "message0": "点击的按钮",
+    "output": "String",
+    "colour": 210,
+    "tooltip": "点击的按钮",
+    "helpUrl": "",
+  },
+  {
+    "type": "world_onInteract_distance",
+    "message0": "玩家到被点击实体的距离",
+    "output": "Number",
+    "colour": 210,
+    "tooltip": "玩家到被点击实体的距离",
+    "helpUrl": "",
+  },
+  {
     "type": "world_onPlayerJoin",
     "message0": "当玩家 %1 地图时 %2 %3",
     "args0": [
@@ -359,6 +415,14 @@ Blockly.defineBlocksWithJsonArray([
     "colour": 210,
     "tooltip": "当玩家进入或离开时触发的事件",
     "helpUrl": ""
+  },
+  {
+    "type": "world_onPlayerJoin_entity",
+    "message0": "进入的玩家",
+    "output": "String",
+    "colour": 210,
+    "tooltip": "玩家到被点击实体的距离",
+    "helpUrl": "",
   },{
     "type": "object_null",
     "message0": "建造一个空字典",
@@ -595,8 +659,184 @@ Blockly.defineBlocksWithJsonArray([
   "colour": 210,
   "tooltip": "等待语句",
   "helpUrl": ""
+},{
+  "type": "world_onFluidEnter",
+  "message0": "当实体/玩家 %1 液体时 %2 %3",
+  "args0": [
+    {
+      "type": "field_dropdown",
+      "name": "type",
+      "options": [
+        [
+          "进入",
+          "Enter"
+        ],
+        [
+          "离开",
+          "Leave"
+        ]
+      ]
+    }，
+    {
+      "type": "input_dummy"
+    },
+    {
+      "type": "input_statement",
+      "name": "tex"
+    }
+  ],
+  "colour": 210,
+  "tooltip": "当实体进入或离开液体时触发的事件",
+  "helpUrl": ""
 },
+  {
+    "type": "world_onFluidEnter_entity",
+    "message0": "进入液体的实体/玩家",
+    "output": "Object",
+    "colour": 210,
+    "tooltip": "进入液体的实体/玩家",
+    "helpUrl": "",
+  },
+  {
+    "type": "world_onFluidEnter_voxel",
+    "message0": "进入的液体方块ID",
+    "output": "Object",
+    "colour": 210,
+    "tooltip": "进入的液体方块ID",
+    "helpUrl": "",
+  },{
+  "type": "world_onVoxelContact",
+  "message0": "当实体/玩家 %1 触碰方块时 %2 %3",
+  "args0": [
+    {
+      "type": "field_dropdown",
+      "name": "type",
+      "options": [
+        [
+          "开始",
+          "Contact"
+        ],
+        [
+          "结束",
+          "Separate"
+        ]
+      ]
+    },
+    {
+      "type": "input_dummy"
+    },
+    {
+      "type": "input_statement",
+      "name": "tex"
+    }
+  ],
+  "colour": 210,
+  "tooltip": "当实体触碰方块时触发的事件",
+  "helpUrl": ""
+},{
+  "type": "world_onPress",
+  "message0": "当玩家 %1 按钮时 %2 %3",
+  "args0": [
+    {
+      "type": "field_dropdown",
+      "name": "type",
+      "options": [
+        [
+          "按下",
+          "Press"
+        ],
+        [
+          "松开",
+          "Release"
+        ]
+      ]
+    },
+    {
+      "type": "input_dummy"
+    },
+    {
+      "type": "input_statement",
+      "name": "tex"
+    }
+  ],
+  "colour": 210,
+  "tooltip": "输入事件，在玩家按下或松开按钮时触发",
+  "helpUrl": ""
+},
+
+  {
+    "type": "world_onPress_entity",
+    "message0": "按下按钮的玩家",
+    "output": "Object",
+    "colour": 210,
+    "tooltip": "按下按钮的玩家",
+    "helpUrl": "",
+  },
+  {
+    "type": "world_onPress_button",
+    "message0": "按下的按钮",
+    "output": "String",
+    "colour": 210,
+    "tooltip": "按下按钮的玩家",
+    "helpUrl": "",
+  },
+
 ]);
+
+Blockly.JavaScript['world_onPress'] = function(block) {
+  var statements_name = Blockly.JavaScript.statementToCode(block, 'tex');
+  var dropdown_name = block.getFieldValue('type');
+  // TODO: Assemble JavaScript into code variable.
+  var code = `world.on${dropdown_name}(async({entity,button})=>{\n${statements_name}})`;
+  return code;
+};
+
+Blockly.JavaScript['world_onVoxelContact'] = function(block) {
+  var statements_name = Blockly.JavaScript.statementToCode(block, 'tex');
+  var dropdown_name = block.getFieldValue('type');
+  // TODO: Assemble JavaScript into code variable.
+  var code = `world.onVoxel${dropdown_name}(async({entity,voxel})=>{\n${statements_name}})`;
+  return code;
+};
+Blockly.JavaScript["world_onFluidEnter_entity"] = function () {
+  return ["entitu", Blockly.JavaScript.ORDER_NONE];
+};Blockly.JavaScript["world_onFluidEnter_voxel"] = function () {
+  return ["voxel", Blockly.JavaScript.ORDER_NONE];
+};Blockly.JavaScript["world_onInteract_entity"] = function () {
+  return ["entity", Blockly.JavaScript.ORDER_NONE];
+};Blockly.JavaScript["world_onInteract_targetEntity"] = function () {
+  return ["targetEntity", Blockly.JavaScript.ORDER_NONE];
+};Blockly.JavaScript["world_onClick_entity"] = function () {
+  return ["entity", Blockly.JavaScript.ORDER_NONE];
+};Blockly.JavaScript["world_onInteract_clicker"] = function () {
+  return ["clicker", Blockly.JavaScript.ORDER_NONE];
+};Blockly.JavaScript["world_onInteract_button"] = function () {
+  return ["button", Blockly.JavaScript.ORDER_NONE];
+};Blockly.JavaScript["world_onPlayerJoin_entity"] = function () {
+  return ["entity", Blockly.JavaScript.ORDER_NONE];
+};Blockly.JavaScript["world_onEntityDestroy_entity"] = function () {
+  return ["entity", Blockly.JavaScript.ORDER_NONE];
+};Blockly.JavaScript["world_onPress_entity"] = function () {
+  return ["entity", Blockly.JavaScript.ORDER_NONE];
+};Blockly.JavaScript["world_onPress_button"] = function () {
+  return ["button", Blockly.JavaScript.ORDER_NONE];
+};
+
+Blockly.JavaScript['world_onPress'] = function(block) {
+  var statements_name = Blockly.JavaScript.statementToCode(block, 'tex');
+  var dropdown_name = block.getFieldValue('type');
+  // TODO: Assemble JavaScript into code variable.
+  var code = `world.on${dropdown_name}(async({entity,button})=>{\n${statements_name}})`;
+  return code;
+};
+
+Blockly.JavaScript['world_onFluidEnter'] = function(block) {
+  var statements_name = Blockly.JavaScript.statementToCode(block, 'tex');
+  var dropdown_name = block.getFieldValue('type');
+  // TODO: Assemble JavaScript into code variable.
+  var code = `world.onFluid${dropdown_name}(async({entity,voxel})=>{\n${statements_name}})`;
+  return code;
+};
 
 Blockly.JavaScript['object_freeze'] = function(block) {
   var value_object = Blockly.JavaScript.valueToCode(block, 'object', Blockly.JavaScript.ORDER_ATOMIC);
@@ -769,7 +1009,7 @@ Blockly.JavaScript["world_onEntityDestroy"] = function (block) {
     block,
     "tex",
   );
-  return `world.onEntity${id}(async({entity})=>{\n    ${value_name}});`;
+  return `world.onEntity${id}(async({entity})=>{\n${value_name}});`;
 };
 
 
@@ -779,7 +1019,7 @@ Blockly.JavaScript["world_onPlayerJoin"] = function (block) {
     block,
     "tex",
   );
-  return `world.onPlayer${id}(async({entity})=>{\n    ${value_name}});`;
+  return `world.onPlayer${id}(async({entity})=>{\n${value_name}});`;
 };
 
 Blockly.JavaScript["world_onInteract"] = function (block) {
@@ -788,5 +1028,5 @@ Blockly.JavaScript["world_onInteract"] = function (block) {
     block,
     "tex",
   ); 
-  return `world.on${id}(async({entity,${id=="Interact"?"targetEntity":"clicker,button,distance,raycast"}})=>{\n    ${value_name}});`;
+  return `world.on${id}(async({entity,${id=="Interact"?"targetEntity":"clicker,button,distance"}})=>{\n${value_name}});`;
 };
