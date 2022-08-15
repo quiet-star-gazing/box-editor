@@ -436,24 +436,24 @@ Blockly.JavaScript["voxels_get"] = function (block) {
   var text_x = block.getFieldValue("X");
   var text_y = block.getFieldValue("Y");
   var text_z = block.getFieldValue("Z");
-  return ["voxels.getVoxelId(" + text_x + "," + text_y + "," + text_z + ");", Blockly.JavaScript.ORDER_NONE];
+  return ["voxels.getVoxelId(" + text_x + "," + text_y + "," + text_z + ")", Blockly.JavaScript.ORDER_NONE];
 };
 
 Blockly.JavaScript["voxels_Rotation"] = function (block) {
   var text_x = block.getFieldValue("X");
   var text_y = block.getFieldValue("Y");
   var text_z = block.getFieldValue("Z");
-  return ["voxels.getVoxelRotation(" + text_x + "," + text_y + "," + text_z + ");", Blockly.JavaScript.ORDER_NONE];
+  return ["voxels.getVoxelRotation(" + text_x + "," + text_y + "," + text_z + ")", Blockly.JavaScript.ORDER_NONE];
 };
 
 Blockly.JavaScript["voxels_id"] = function (block) {
   var id = block.getFieldValue("ID");
-  return ["voxels.id(" + id + ");", Blockly.JavaScript.ORDER_NONE];
+  return ["voxels.id(" + id + ")", Blockly.JavaScript.ORDER_NONE];
 };
 
 Blockly.JavaScript["voxels_name"] = function (block) {
   var id = block.getFieldValue("ID");
-  return ["voxels.name(" + id + ");", Blockly.JavaScript.ORDER_NONE];
+  return ["voxels.name(" + id + ")", Blockly.JavaScript.ORDER_NONE];
 };
 
 Blockly.JavaScript["voxels_types"] = function () {
@@ -470,7 +470,7 @@ Blockly.JavaScript["world_onEntityDestroy"] = function (block) {
     block,
     "tex",
   );
-  return `world.onEntity${id}(({entity})=>{\n    ${value_name}\n});`;
+  return `world.onEntity${id}(({entity})=>{\n    ${value_name}});`;
 };
 
 
@@ -480,7 +480,7 @@ Blockly.JavaScript["world_onPlayerJoin"] = function (block) {
     block,
     "tex",
   );
-  return `world.onPlayer${id}(({entity})=>{\n    ${value_name}\n})`;
+  return `world.onPlayer${id}(({entity})=>{\n    ${value_name}});`;
 };
 
 Blockly.JavaScript["world_onInteract"] = function (block) {
@@ -489,5 +489,5 @@ Blockly.JavaScript["world_onInteract"] = function (block) {
     block,
     "tex",
   ); 
-  return `world.on${id}(({entity,${id=="Interact"?"targetEntity":"clicker,button,distance,raycast"}})=>{\n    ${value_name}\n})`;
+  return `world.on${id}(({entity,${id=="Interact"?"targetEntity":"clicker,button,distance,raycast"}})=>{\n    ${value_name}});`;
 };
