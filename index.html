@@ -278,6 +278,7 @@
       <category name="列表" expanded="true" colour="#745ba5">
         <block type="lists_create_with">
         </block>
+        <!--by小宏-->
         <block type="list_repeat">
         </block>
         <block type="list_length">
@@ -361,7 +362,7 @@
         ` 生成，感谢您对我们的支持。<br></span>`;
       function myUpdateFunction(event) {
         var code = Blockly.JavaScript.workspaceToCode(workspace);
-        document.getElementById("bcodeshow").innerHTML = hljs
+        var html = hljs
           .highlight(
             "//代码由 " +
               window.location.href +
@@ -370,7 +371,10 @@
             { language: "JavaScript" }
           )
           .value.split("\n")
-          .join("<br>");
+          .join("<br>")
+          .split("  ")
+          .join("&nbsp;&nbsp;")
+         document.getElementById("bcodeshow").innerHTML = html
       }
       workspace.addChangeListener(myUpdateFunction);
       setInterval(() => {
