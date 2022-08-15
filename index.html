@@ -202,9 +202,12 @@
          </category>
       <category name="控制" expanded="true" colour="#8ca6c0">
         <block type="controls_if"></block>
-        <block type="logic_ternary">
         <block type="controls_whileUntil"></block>
-        <block type="logic_null"/>
+        <block type="controls_repeat_ext"></block>
+        <block type="controls_whileUntil"></block>
+        <block type="controls_for"></block>
+        <block type="controls_forEach"></block>
+        <block type="controls_flow_statements"></block>
       </category>
       <category name="世界" expanded="true" colour="#5b67a5">
         <block type="world_projectname"></block>
@@ -231,36 +234,37 @@
       </category>
       <category name="字符串" expanded="true" colour="#5ba58c">
         <block type="text"></block>
-        </block>
-        <block type="text_join">
-        </block>
-        <block type="text_append">
-        </block>
-        <block type="text_length">
-        </block>
-        <block type="text_isEmpty">
-        </block>
-        <block type="text_indexOf">
-        </block>
-        <block type="text_charAt">
-        </block>
-        <block type="text_getSubstring">
-        </block>
-        <block type="text_changeCase">
-        </block>
-        <block type="text_trim">
-        </block>
-        <block type="text_prompt_ext">
-        </block>
+        <block type="text_join"><mutation items="3"></block>
+        <block type="text_append"></block>
+        <block type="text_length"></block>
+        <block type="text_isEmpty"></block>
+        <block type="text_indexOf"></block>
+        <block type="text_charAt"> </block>
+        <block type="text_getSubstring"> </block>
+        <block type="text_changeCase"> </block>
+        <block type="text_trim"></block>
+        <block type="text_prompt_ext"></block>
       </category>
       <category name="运算" expanded="true" colour="#5b67a5">
         <block type="math_number"></block>
         <block type="math_arithmetic"></block>
+        <block type="math_single"></block>
         <block type="math_trig"></block>
         <block type="math_constant"></block>
+        <block type="math_number_property"></block>
+        <block type="math_round"></block>
+        <block type="math_on_list"></block>
+        <block type="math_modulo"></block>
+        <block type="math_constrain"></block>
+        <block type="math_random_int"></block>
+        <block type="math_random_float"/></block>
+      </category>
+      <category name="罗辑" expanded="true" colour="#5b80a5">
         <block type="logic_compare"></block>
         <block type="logic_operation"></block>
         <block type="logic_boolean"></block>
+        <block type="logic_null"/>
+        <block type="logic_ternary">
       </category>
       <category name="声音" expanded="true" colour="#6d5ba5">
         
@@ -273,24 +277,17 @@
       </category>
       <category name="变量" expanded="true" colour="#a55b80" custom="VARIABLE"></category>
       <category name="列表" expanded="true" colour="#745ba5">
-        <block type="lists_create_with">
-        </block>
-        <block type="lists_repeat">
-        </block>
+        <block type="lists_create_with"></block>
+        <block type="lists_create_with"><mutation items="3"></block>
+        <block type="lists_repeat"></block>
         <block type="lists_length">
         <block type="lists_isEmpty">
-        <block type="lists_indexOf">
-        </block>
-        <block type="lists_getIndex">
-        </block>
-        <block type="lists_setIndex">
-        </block>
-        <block type="lists_getSublist">
-        </block>
-        <block type="lists_split">
-        </block>
-        <block type="lists_sort">
-        </block>
+        <block type="lists_indexOf"></block>
+        <block type="lists_getIndex"></block>
+        <block type="lists_setIndex"></block>
+        <block type="lists_getSublist"></block>
+        <block type="lists_split"></block>
+        <block type="lists_sort"></block>
       </category>
       <category name="字典" expanded="true" colour="#745ba5">
         <!--by小宏-->
@@ -301,6 +298,8 @@
         <block type="object_inc"></block>
         <block type="object_geto"></block>
         <block type="object_delete"></block>
+        <block type="object_freeze"></block>
+        <block type="object_isfreeze"></block>
       </category>
       <category name="函数" expanded="true" colour="#995ba5" custom="PROCEDURE"></category>
     </xml>
