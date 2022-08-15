@@ -572,7 +572,7 @@ Blockly.defineBlocksWithJsonArray([
     {
       "type": "input_value",
       "name": "object",
-      "check": "Object"
+      "check": "Number"
     },
     {
       "type": "field_dropdown",
