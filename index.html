@@ -193,50 +193,25 @@
       </div>
     <!-- 积木xml -->
     <xml id="toolbox" style="display: none">
-      <category name="事件" expanded="true" color="#5b80a5">
+      <category name="事件" expanded="true" colour="#5b80a5">
         <block type="world_onPlayerJoin"></block>
         <block type="world_onEntityDestroy"></block>
         <block type="world_onInteract"></block>
          </category>
-      <category name="控制" expanded="true" color="#8ca6c0">
+      <category name="控制" expanded="true" colour="#8ca6c0">
         <block type="controls_if"></block>
         <block type="logic_ternary"/>
-        <block type="controls_repeat_ext">
-          <value name="TIMES">
-          <shadow type="math_number">
-          <field name="NUM">10</field>
-          </shadow>
-          </value>
-        </block>
-        <block type="controls_whileUntil">
-          <field name="MODE">WHILE</field>
-        </block>
-        <block type="controls_for">
-          <field name="VAR" id="57g(4![Bc(~B67SRUvvd">i</field>
-          <value name="FROM">
-          <shadow type="math_number">
-          <field name="NUM">1</field>
-          </shadow>
-          </value>
-          <value name="TO">
-          <shadow type="math_number">
-          <field name="NUM">10</field>
-          </shadow>
-          </value>
-          <value name="BY">
-          <shadow type="math_number">
-          <field name="NUM">1</field>
-          </shadow>
-          </value>
-        </block>
+        <block type="controls_repeat_ext"></block>
+        <block type="controls_whileUntil"></block>
+        <block type="controls_for"></block>
       </category>
-      <category name="世界" expanded="true" color="#5b67a5">
+      <category name="世界" expanded="true" colour="#5b67a5">
         <block type="world_projectname"></block>
         <block type="world_url"></block>
         <block type="world_say"></block>
         <block type="world_currentTick"></block>
       </category>
-      <category name="地形" expanded="true" color="#8cc08c">
+      <category name="地形" expanded="true" colour="#8cc08c">
         <block type="voxels_types"></block>
         <block type="voxels_typesid"></block>
         <block type="voxels_setid"></block>
@@ -246,15 +221,40 @@
         <block type="voxels_id"></block>
         <block type="voxels_name"></block>
       </category>
-      <category name="实体" expanded="true" color="#6d5ba5">
+      <category name="实体" expanded="true" colour="#6d5ba5">
         <block type="world_entityQuota"></block>
         <block type="world_worldentitylength"></block>
       </category>
-      <category name="玩家" expanded="true"> </category>
-      <category name="字符串" expanded="true" color="#5ba58c">
-        <block type="text"></block>
+      <category name="玩家" expanded="true" colour="#6d5ba5">
+        /
       </category>
-      <category name="运算" expanded="true" color="#5b67a5">
+      <category name="字符串" expanded="true" colour="#5ba58c">
+        <block type="text"></block>
+        </block>
+        <block type="text_join">
+        </block>
+        <block type="text_append">
+        </block>
+        <block type="text_length">
+        </block>
+        <block type="text_isEmpty">
+        </block>
+        <block type="text_indexOf">
+        </block>
+        <block type="text_charAt">
+        </block>
+        <block type="text_getSubstring">
+        </block>
+        <block type="text_changeCase">
+        </block>
+        <block type="text_trim">
+        </block>
+        <block type="text_print">
+        </block>
+        <block type="text_prompt_ext">
+        </block>
+      </category>
+      <category name="运算" expanded="true" colour="#5b67a5">
         <block type="math_number"></block>
         <block type="math_arithmetic"></block>
         <block type="math_trig"></block>
@@ -263,27 +263,26 @@
         <block type="logic_operation"></block>
         <block type="logic_boolean"></block>
       </category>
-      <category name="声音" expanded="true" color="#6d5ba5">
+      <category name="声音" expanded="true" colour="#6d5ba5">
         
       </category>
-      <category name="颜色" expanded="true" color="#a5745b">
+      <category name="颜色" expanded="true" colour="#a5745b">
         
       </category>
-      <category name="变量" expanded="true" color="#a55b80" custom="VARIABLE"/>
+      <category name="SQL数据库" colour="#995ba5">
         
       </category>
-      <category name="列表" expanded="true" color="#745ba5">
+      <category name="变量" expanded="true" colour="#a55b80" custom="VARIABLE"/>
         
       </category>
-      <category name="对象" expanded="true" color="#745ba5">
+      <category name="列表" expanded="true" colour="#745ba5">
         
       </category>
-      <category name="函数" expanded="true" color="#995ba5" custom="PROCEDURE"/>
+      <category name="对象" expanded="true" colour="#745ba5">
         
       </category>
-      <category name="SQLite"> </category>
-      <category name="some">
-        <block type="text_indexOf"></block>
+      <category name="函数" expanded="true" colour="#995ba5" custom="PROCEDURE"/>
+        
       </category>
     </xml>
     <script>
