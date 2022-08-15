@@ -13,18 +13,6 @@
  */
 'use strict';
 
-goog.provide('Blockly.Blocks.texts');  // Deprecated
-goog.provide('Blockly.Constants.Text');
-
-goog.require('Blockly');
-goog.require('Blockly.Blocks');
-goog.require('Blockly.FieldDropdown');
-goog.require('Blockly.FieldImage');
-goog.require('Blockly.FieldMultilineInput');
-goog.require('Blockly.FieldTextInput');
-goog.require('Blockly.FieldVariable');
-goog.require('Blockly.Mutator');
-
 
 /**
  * Unused constant for the common HSV hue for all blocks in this category.
@@ -941,15 +929,6 @@ Blockly.Extensions.registerMutator('text_charAt_mutator',
  */
 'use strict';
 
-goog.provide('Blockly.Blocks.variables');  // Deprecated.
-goog.provide('Blockly.Constants.Variables');
-
-goog.require('Blockly');
-goog.require('Blockly.Blocks');
-goog.require('Blockly.FieldLabel');
-goog.require('Blockly.FieldVariable');
-
-
 /**
  * Unused constant for the common HSV hue for all blocks in this category.
  * @deprecated Use Blockly.Msg['VARIABLES_HUE']. (2018 April 5)
@@ -1103,13 +1082,6 @@ Blockly.Extensions.registerMixin('contextMenu_variableSetterGetter',
  * @author duzc2dtw@gmail.com (Du Tian Wei)
  */
 'use strict';
-
-goog.provide('Blockly.Constants.VariablesDynamic');
-
-goog.require('Blockly');
-goog.require('Blockly.Blocks');
-goog.require('Blockly.FieldLabel');
-goog.require('Blockly.FieldVariable');
 
 
 /**
@@ -1278,18 +1250,6 @@ Blockly.Extensions.registerMixin('contextMenu_variableDynamicSetterGetter',
  * @author fraser@google.com (Neil Fraser)
  */
 'use strict';
-
-goog.provide('Blockly.Blocks.procedures');
-
-goog.require('Blockly');
-goog.require('Blockly.Blocks');
-goog.require('Blockly.Comment');
-goog.require('Blockly.FieldCheckbox');
-goog.require('Blockly.FieldLabel');
-goog.require('Blockly.FieldTextInput');
-goog.require('Blockly.Mutator');
-goog.require('Blockly.Warning');
-
 
 Blockly.Blocks['procedures_defnoreturn'] = {
   /**
@@ -2364,17 +2324,6 @@ Blockly.Blocks['procedures_ifreturn'] = {
  */
 'use strict';
 
-goog.provide('Blockly.Blocks.math');  // Deprecated
-goog.provide('Blockly.Constants.Math');
-
-goog.require('Blockly');
-goog.require('Blockly.Blocks');
-goog.require('Blockly.FieldDropdown');
-goog.require('Blockly.FieldLabel');
-goog.require('Blockly.FieldNumber');
-goog.require('Blockly.FieldVariable');
-
-
 /**
  * Unused constant for the common HSV hue for all blocks in this category.
  * @deprecated Use Blockly.Msg['MATH_HUE']. (2018 April 5)
@@ -2929,19 +2878,6 @@ Blockly.Extensions.registerMutator('math_modes_of_list_mutator',
  * @author fraser@google.com (Neil Fraser)
  */
 'use strict';
-
-goog.provide('Blockly.Blocks.loops');  // Deprecated
-goog.provide('Blockly.Constants.Loops');
-
-goog.require('Blockly');
-goog.require('Blockly.Blocks');
-goog.require('Blockly.FieldDropdown');
-goog.require('Blockly.FieldLabel');
-goog.require('Blockly.FieldNumber');
-goog.require('Blockly.FieldVariable');
-goog.require('Blockly.Warning');
-
-
 /**
  * Unused constant for the common HSV hue for all blocks in this category.
  * @deprecated Use Blockly.Msg['LOOPS_HUE']. (2018 April 5)
@@ -3285,16 +3221,6 @@ Blockly.Extensions.registerMixin('controls_flow_in_loop_check',
  * @author q.neutron@gmail.com (Quynh Neutron)
  */
 'use strict';
-
-goog.provide('Blockly.Blocks.logic');  // Deprecated
-goog.provide('Blockly.Constants.Logic');
-
-goog.require('Blockly');
-goog.require('Blockly.Blocks');
-goog.require('Blockly.FieldDropdown');
-goog.require('Blockly.FieldLabel');
-goog.require('Blockly.Mutator');
-
 
 /**
  * Unused constant for the common HSV hue for all blocks in this category.
@@ -3920,15 +3846,6 @@ Blockly.Extensions.registerMixin('logic_ternary',
  * @author fraser@google.com (Neil Fraser)
  */
 'use strict';
-
-goog.provide('Blockly.Blocks.lists');  // Deprecated
-goog.provide('Blockly.Constants.Lists');
-
-goog.require('Blockly');
-goog.require('Blockly.Blocks');
-goog.require('Blockly.FieldDropdown');
-goog.require('Blockly.FieldLabel');
-goog.require('Blockly.Mutator');
 
 
 /**
@@ -4779,11 +4696,6 @@ Blockly.Blocks['lists_split'] = {
  * @author fraser@google.com (Neil Fraser)
  */
 
-goog.provide('Blockly.JavaScript.lists');
-
-goog.require('Blockly.JavaScript');
-
-
 Blockly.JavaScript['lists_create_empty'] = function(block) {
   // Create an empty list.
   return ['[]', Blockly.JavaScript.ORDER_ATOMIC];
@@ -5167,11 +5079,6 @@ Blockly.JavaScript['lists_reverse'] = function(block) {
  */
 'use strict';
 
-goog.provide('Blockly.JavaScript.logic');
-
-goog.require('Blockly.JavaScript');
-
-
 Blockly.JavaScript['controls_if'] = function(block) {
   // If/elseif/else condition.
   var n = 0;
@@ -5295,10 +5202,6 @@ Blockly.JavaScript['logic_ternary'] = function(block) {
  * @author fraser@google.com (Neil Fraser)
  */
 'use strict';
-
-goog.provide('Blockly.JavaScript.loops');
-
-goog.require('Blockly.JavaScript');
 
 
 Blockly.JavaScript['controls_repeat_ext'] = function(block) {
@@ -5478,11 +5381,6 @@ Blockly.JavaScript['controls_flow_statements'] = function(block) {
  * @fileoverview Generating JavaScript for math blocks.
  * @author q.neutron@gmail.com (Quynh Neutron)
  */
-
-goog.provide('Blockly.JavaScript.math');
-
-goog.require('Blockly.JavaScript');
-
 
 Blockly.JavaScript['math_number'] = function(block) {
   // Numeric value.
@@ -5886,10 +5784,6 @@ Blockly.JavaScript['math_atan2'] = function(block) {
  * @fileoverview Generating JavaScript for procedure blocks.
  * @author fraser@google.com (Neil Fraser)
  */
-
-goog.provide('Blockly.JavaScript.procedures');
-
-goog.require('Blockly.JavaScript');
 
 
 Blockly.JavaScript['procedures_defreturn'] = function(block) {
@@ -6370,11 +6264,6 @@ Blockly.JavaScript['text_reverse'] = function(block) {
  * @author fraser@google.com (Neil Fraser)
  */
 
-goog.provide('Blockly.JavaScript.variables');
-
-goog.require('Blockly.JavaScript');
-
-
 Blockly.JavaScript['variables_get'] = function(block) {
   // Variable getter.
   var code = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('VAR'),
@@ -6401,10 +6290,6 @@ Blockly.JavaScript['variables_set'] = function(block) {
  * @author fenichel@google.com (Rachel Fenichel)
  */
 
-goog.provide('Blockly.JavaScript.variablesDynamic');
-
-goog.require('Blockly.JavaScript');
-goog.require('Blockly.JavaScript.variables');
 
 
 // JavaScript is dynamically typed.
