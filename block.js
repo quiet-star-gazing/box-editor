@@ -565,6 +565,36 @@ Blockly.defineBlocksWithJsonArray([
   "colour": 260,
   "tooltip": "查看某个字典是否被冻结",
   "helpUrl": ""
+},{
+  "type": "box3_sleep",
+  "message0": "等待 %1 %2",
+  "args0": [
+    {
+      "type": "input_value",
+      "name": "object",
+      "check": "Object"
+    },
+    {
+      "type": "field_dropdown",
+      "name": "type",
+      "options": [
+        [
+          "秒",
+          "s"
+        ],
+        [
+          "毫秒",
+          "ms"
+        ]
+      ]
+    }
+  ],
+  "inputsInline": true,
+  "previousStatement": null,
+  "nextStatement": null,
+  "colour": 210,
+  "tooltip": "等待语句",
+  "helpUrl": ""
 },
 ]);
 
@@ -572,6 +602,13 @@ Blockly.JavaScript['object_freeze'] = function(block) {
   var value_object = Blockly.JavaScript.valueToCode(block, 'object', Blockly.JavaScript.ORDER_ATOMIC);
   // TODO: Assemble JavaScript into code variable.
   var code = 'Object.freeze(${value_object || "{}"});\n';
+  return code;
+};
+Blockly.JavaScript['box3_sleep'] = function(block) {
+  var value_object = Blockly.JavaScript.valueToCode(block, 'object', Blockly.JavaScript.ORDER_ATOMIC);
+  var dropdown_type = block.getFieldValue('type');
+  // TODO: Assemble JavaScript into code variable.
+  var code = 'await sleep(${dropdown_type=="ms"?value_object:`${value_object}/1000`});\n';
   return code;
 };
 Blockly.JavaScript['object_null'] = function(block) {
