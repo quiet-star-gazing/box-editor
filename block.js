@@ -471,6 +471,69 @@ Blockly.defineBlocksWithJsonArray([
   "colour": 260,
   "tooltip": "判断某个字典是否存在某个项",
   "helpUrl": ""
+},{
+  "type": "object_geto",
+  "message0": "获取字典 %1 %2 的 %3",
+  "args0": [
+    {
+      "type": "input_dummy"
+    },
+    {
+      "type": "input_value",
+      "name": "object",
+      "check": "Object"
+    },
+    {
+      "type": "field_dropdown",
+      "name": "option",
+      "options": [
+        [
+          "项数（数字）",
+          "length"
+        ],
+        [
+          "所有键（列表）",
+          "keys"
+        ],
+        [
+          "所有值（列表）",
+          "values"
+        ]
+      ]
+    }
+  ],
+  "inputsInline": true,
+  "output": [
+    "Number",
+    "Array"
+  ],
+  "colour": 260,
+  "tooltip": "获取字典的项数等数据",
+  "helpUrl": ""
+},{
+  "type": "object_delete",
+  "message0": "删除字典 %1 %2 中的 %3 键",
+  "args0": [
+    {
+      "type": "input_dummy"
+    },
+    {
+      "type": "input_value",
+      "name": "object",
+      "check": "Object"
+    },
+    {
+      "type": "field_input",
+      "name": "key",
+      "text": "key"
+    }
+  ],
+  "inputsInline": true,
+  "previousStatement": null,
+  "nextStatement": null,
+  "colour": 260,
+  "tooltip": "删除字典的某个键值",
+  "helpUrl": ""
 }
 ]);
 
@@ -480,7 +543,13 @@ Blockly.JavaScript['object_null'] = function(block) {
 Blockly.JavaScript['object_copy'] = function(block) {
   var value_target = Blockly.JavaScript.valueToCode(block, 'target', Blockly.JavaScript.ORDER_ATOMIC);
   var value_object = Blockly.JavaScript.valueToCode(block, 'object', Blockly.JavaScript.ORDER_ATOMIC);
-  var code = `Object.assign(${value_object || {}},${value_target || {}})`;
+  var code = `Object.assign(${value_object || "{}"},${value_target || "{}"})`;
+  return code;
+};
+Blockly.JavaScript['object_delete'] = function(block) {
+  var value_object = Blockly.JavaScript.valueToCode(block, 'object', Blockly.JavaScript.ORDER_ATOMIC);
+  var text_key = block.getFieldValue('key');
+  var code = `detele ${value_object || "{}"}['${text_key}']`;
   return code;
 };
 Blockly.JavaScript['object_set'] = function(block) {
@@ -494,7 +563,7 @@ Blockly.JavaScript['object_inc'] = function(block) {
   var value_object = Blockly.JavaScript.valueToCode(block, 'object', Blockly.JavaScript.ORDER_ATOMIC);
   var text_key = block.getFieldValue('key');
   // TODO: Assemble JavaScript into code variable.
-  var code = `('${text_key}' in ${value_object || {}})`;
+  var code = `('${text_key}' in ${value_object || "{}"})`;
   // TODO: Change ORDER_NONE to the correct strength.
   return [code, Blockly.JavaScript.ORDER_NONE];
 };
@@ -502,6 +571,12 @@ Blockly.JavaScript['object_get'] = function(block) {
   var value_object = Blockly.JavaScript.valueToCode(block, 'object', Blockly.JavaScript.ORDER_ATOMIC);
   var text_key = block.getFieldValue('key');
   var code = `${value_object || "{}"}['${text_key}']`;
+  return [code, Blockly.JavaScript.ORDER_NONE];
+};
+Blockly.JavaScript['object_geto'] = function(block) {
+  var value_object = Blockly.JavaScript.valueToCode(block, 'object', Blockly.JavaScript.ORDER_ATOMIC);
+  var dropdown_option = block.getFieldValue('option');
+  if(dropdown_option=="length"){var code = `Object.keys(${value_object || "{}"}).length`;}else{var code = `Object.${dropdown_option}(${value_object || "{}"})`;}
   return [code, Blockly.JavaScript.ORDER_NONE];
 };
 
