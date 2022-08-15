@@ -836,6 +836,10 @@ Blockly.JavaScript["world_onFluidEnter_entity"] = function () {
   return ["entity", Blockly.JavaScript.ORDER_NONE];
 };Blockly.JavaScript["world_onPress_button"] = function () {
   return ["button", Blockly.JavaScript.ORDER_NONE];
+};Blockly.JavaScript["world_onVoxelContact_entity"] = function () {
+  return ["entity", Blockly.JavaScript.ORDER_NONE];
+};Blockly.JavaScript["world_onVoxelContact_voxel"] = function () {
+  return ["voxel", Blockly.JavaScript.ORDER_NONE];
 };
 
 Blockly.JavaScript['world_onPress'] = function(block) {
