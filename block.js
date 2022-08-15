@@ -835,7 +835,8 @@ Blockly.defineBlocksWithJsonArray([
       "text": "code"
     }
   ],
-  "output": null,
+  "previousStatement": null,
+  "nextStatement": null,
   "colour": 230,
   "tooltip": "",
   "helpUrl": ""
@@ -845,7 +846,7 @@ Blockly.defineBlocksWithJsonArray([
 Blockly.JavaScript['box3_require'] = function(block) {
   var text_code = block.getFieldValue('code');
   // TODO: Assemble JavaScript into code variable.
-  var code = `require("./${text_code};"\n`;
+  var code = `require("./${text_code}");\n`;
   return code;
 };
 Blockly.JavaScript['box3_runcode2'] = function(block) {
