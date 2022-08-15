@@ -193,22 +193,50 @@
       </div>
     <!-- 积木xml -->
     <xml id="toolbox" style="display: none">
-      <category name="事件" expanded="true">
+      <category name="事件" expanded="true" color="#5b80a5">
         <block type="world_onPlayerJoin"></block>
         <block type="world_onEntityDestroy"></block>
         <block type="world_onInteract"></block>
          </category>
-      <category name="控制" expanded="true">
-        <block type="controls_if" id="iqgOeRqD+ELB}0UEu^[O" x="88" y="63"></block>
-        <block type="controls_whileUntil"></block>
+      <category name="控制" expanded="true" color="#8ca6c0">
+        <block type="controls_if"></block>
+        <block type="logic_ternary"/>
+        <block type="controls_repeat_ext">
+          <value name="TIMES">
+          <shadow type="math_number">
+          <field name="NUM">10</field>
+          </shadow>
+          </value>
+        </block>
+        <block type="controls_whileUntil">
+          <field name="MODE">WHILE</field>
+        </block>
+        <block type="controls_for">
+          <field name="VAR" id="57g(4![Bc(~B67SRUvvd">i</field>
+          <value name="FROM">
+          <shadow type="math_number">
+          <field name="NUM">1</field>
+          </shadow>
+          </value>
+          <value name="TO">
+          <shadow type="math_number">
+          <field name="NUM">10</field>
+          </shadow>
+          </value>
+          <value name="BY">
+          <shadow type="math_number">
+          <field name="NUM">1</field>
+          </shadow>
+          </value>
+        </block>
       </category>
-      <category name="世界" expanded="true">
+      <category name="世界" expanded="true" color="#5b67a5">
         <block type="world_projectname"></block>
         <block type="world_url"></block>
         <block type="world_say"></block>
         <block type="world_currentTick"></block>
       </category>
-      <category name="地形" expanded="true">
+      <category name="地形" expanded="true" color="#8cc08c">
         <block type="voxels_types"></block>
         <block type="voxels_typesid"></block>
         <block type="voxels_setid"></block>
@@ -218,15 +246,15 @@
         <block type="voxels_id"></block>
         <block type="voxels_name"></block>
       </category>
-      <category name="实体" expanded="true">
+      <category name="实体" expanded="true" color="#6d5ba5">
         <block type="world_entityQuota"></block>
         <block type="world_worldentitylength"></block>
       </category>
       <category name="玩家" expanded="true"> </category>
-      <category name="字符串" expanded="true">
+      <category name="字符串" expanded="true" color="#5ba58c">
         <block type="text"></block>
       </category>
-      <category name="运算" expanded="true">
+      <category name="运算" expanded="true" color="#5b67a5">
         <block type="math_number"></block>
         <block type="math_arithmetic"></block>
         <block type="math_trig"></block>
@@ -235,12 +263,24 @@
         <block type="logic_operation"></block>
         <block type="logic_boolean"></block>
       </category>
-      <category name="声音" expanded="true"> </category>
-      <category name="颜色" expanded="true"> </category>
-      <category name="变量" expanded="true"> </category>
-      <category name="列表" expanded="true"> </category>
-      <category name="对象" expanded="true"> </category>
-      <category name="函数" expanded="true"> </category>
+      <category name="声音" expanded="true" color="#6d5ba5">
+        
+      </category>
+      <category name="颜色" expanded="true" color="#a5745b">
+        
+      </category>
+      <category name="变量" expanded="true" color="#a55b80" custom="VARIABLE"/>
+        
+      </category>
+      <category name="列表" expanded="true" color="#745ba5">
+        
+      </category>
+      <category name="对象" expanded="true" color="#745ba5">
+        
+      </category>
+      <category name="函数" expanded="true" color="#995ba5" custom="PROCEDURE"/>
+        
+      </category>
       <category name="SQLite"> </category>
       <category name="some">
         <block type="text_indexOf"></block>
