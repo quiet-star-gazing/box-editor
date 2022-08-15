@@ -732,7 +732,7 @@ Blockly.JavaScript["world_onEntityDestroy"] = function (block) {
     block,
     "tex",
   );
-  return `world.onEntity${id}(({entity})=>{\n    ${value_name}});`;
+  return `world.onEntity${id}(async({entity})=>{\n    ${value_name}});`;
 };
 
 
@@ -742,7 +742,7 @@ Blockly.JavaScript["world_onPlayerJoin"] = function (block) {
     block,
     "tex",
   );
-  return `world.onPlayer${id}(({entity})=>{\n    ${value_name}});`;
+  return `world.onPlayer${id}(async({entity})=>{\n    ${value_name}});`;
 };
 
 Blockly.JavaScript["world_onInteract"] = function (block) {
@@ -751,5 +751,5 @@ Blockly.JavaScript["world_onInteract"] = function (block) {
     block,
     "tex",
   ); 
-  return `world.on${id}(({entity,${id=="Interact"?"targetEntity":"clicker,button,distance,raycast"}})=>{\n    ${value_name}});`;
+  return `world.on${id}(async({entity,${id=="Interact"?"targetEntity":"clicker,button,distance,raycast"}})=>{\n    ${value_name}});`;
 };
