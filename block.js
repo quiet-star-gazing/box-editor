@@ -676,7 +676,7 @@ Blockly.defineBlocksWithJsonArray([
           "Leave"
         ]
       ]
-    }，
+    },
     {
       "type": "input_dummy"
     },
