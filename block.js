@@ -813,6 +813,20 @@ Blockly.defineBlocksWithJsonArray([
   "helpUrl": ""
 },{
   "type": "box3_runcode2",
+  "message0": "运行代码 %1",
+  "args0": [
+    {
+      "type": "field_input",
+      "name": "code",
+      "text": "code"
+    }
+  ],
+  "output": null,
+  "colour": 230,
+  "tooltip": "",
+  "helpUrl": ""
+},{
+  "type": "box3_require",
   "message0": "运行代码文件 %1",
   "args0": [
     {
@@ -828,17 +842,23 @@ Blockly.defineBlocksWithJsonArray([
 }
 ]);
 
+Blockly.JavaScript['box3_require'] = function(block) {
+  var text_code = block.getFieldValue('code');
+  // TODO: Assemble JavaScript into code variable.
+  var code = `require("./${text_code};"\n`;
+  return code;
+};
 Blockly.JavaScript['box3_runcode2'] = function(block) {
   var text_code = block.getFieldValue('code');
   // TODO: Assemble JavaScript into code variable.
-  var code = '${text_code}';
+  var code = `${text_code}`;
   // TODO: Change ORDER_NONE to the correct strength.
   return [code, Blockly.JavaScript.ORDER_NONE];
 };
 Blockly.JavaScript['box3_runcode1'] = function(block) {
   var text_code = block.getFieldValue('code');
   // TODO: Assemble JavaScript into code variable.
-  var code = '${text_code}\n';
+  var code = `${text_code}\n`;
   return code;
 };
 Blockly.JavaScript['world_onPress'] = function(block) {
