@@ -470,7 +470,7 @@ Blockly.JavaScript["world_onEntityDestroy"] = function (block) {
     block,
     "tex",
   );
-  return `world.onEntity${id}(({entity})=>{\n    ${value_name}\n})`;
+  return `world.onEntity${id}(({entity})=>{\n    ${value_name}\n});`;
 };
 
 
