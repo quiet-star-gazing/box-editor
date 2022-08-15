@@ -231,6 +231,35 @@
       </category>
       <category name="玩家" expanded="true" colour="#6d5ba5">
         
+      </category>>
+      <category name="声音" expanded="true" colour="#6d5ba5">
+        
+      </category>
+      <category name="变量" expanded="true" colour="#a55b80" custom="VARIABLE"></category>
+      <category name="列表" expanded="true" colour="#745ba5">
+        <block type="lists_create_with"><mutation items="1"></block>
+        <block type="lists_create_with"><mutation items="3"></block>
+        <block type="lists_repeat"></block>
+        <block type="lists_length">
+        <block type="lists_isEmpty">
+        <block type="lists_indexOf"></block>
+        <block type="lists_getIndex"></block>
+        <block type="lists_setIndex"></block>
+        <block type="lists_getSublist"></block>
+        <block type="lists_split"></block>
+        <block type="lists_sort"></block>
+      </category>
+      <category name="字典" expanded="true" colour="#745ba5">
+        <!--by小宏-->
+        <block type="object_null"></block>
+        <block type="object_set"></block>
+        <block type="object_get"></block>
+        <block type="object_copy"></block>
+        <block type="object_inc"></block>
+        <block type="object_geto"></block>
+        <block type="object_delete"></block>
+        <block type="object_freeze"></block>
+        <block type="object_isfreeze"></block>
       </category>
       <category name="字符串" expanded="true" colour="#5ba58c">
         <block type="text"></block>
@@ -263,45 +292,38 @@
         <block type="logic_compare"></block>
         <block type="logic_operation"></block>
         <block type="logic_boolean"></block>
-        <block type="logic_null"/>
+        <block type="logic_null">
         <block type="logic_ternary">
+      </category
+      <category name="Box3" expanded="true" colour="#a56d5b">
+        <label text="向量"></label>
+        <block type="box3_vector">
+        <label text="区域"></label>
+        <block type="box3_bounds">
+        <label text="四元数"></label>
+        <block type="box3_quaternion">
+        <label text="色彩"></label>
+        <block type="box3_rgbcolor">
+        <block type="box3_rgbacolor">
+        <label text="音效"></label>
+        <block type="box3_sound">
+        <label text="代码"></label>
+        <block type="box3_runcode1">
+        <block type="box3_runcode2">
+        <block type="box3_require">
+        <label text="控制台"></label>
+        <block type="console_clear">
+        <block type="console_log">
+        <block type="console_error">
+        <block type="console_warn">
       </category>
-      <category name="声音" expanded="true" colour="#6d5ba5">
+      <category name="其他" expanded="true" colour="#5ba55b">
         
       </category>
-      <category name="颜色" expanded="true" colour="#a5745b">
-        
-      </category>
+      <category name="函数" expanded="true" colour="#995ba5" custom="PROCEDURE"></category>
       <category name="数据库" colour="#995ba5">
         
       </category>
-      <category name="变量" expanded="true" colour="#a55b80" custom="VARIABLE"></category>
-      <category name="列表" expanded="true" colour="#745ba5">
-        <block type="lists_create_with"><mutation items="1"></block>
-        <block type="lists_create_with"><mutation items="3"></block>
-        <block type="lists_repeat"></block>
-        <block type="lists_length">
-        <block type="lists_isEmpty">
-        <block type="lists_indexOf"></block>
-        <block type="lists_getIndex"></block>
-        <block type="lists_setIndex"></block>
-        <block type="lists_getSublist"></block>
-        <block type="lists_split"></block>
-        <block type="lists_sort"></block>
-      </category>
-      <category name="字典" expanded="true" colour="#745ba5">
-        <!--by小宏-->
-        <block type="object_null"></block>
-        <block type="object_set"></block>
-        <block type="object_get"></block>
-        <block type="object_copy"></block>
-        <block type="object_inc"></block>
-        <block type="object_geto"></block>
-        <block type="object_delete"></block>
-        <block type="object_freeze"></block>
-        <block type="object_isfreeze"></block>
-      </category>
-      <category name="函数" expanded="true" colour="#995ba5" custom="PROCEDURE"></category>
     </xml>
     <script>
       function loadfuncs() {
