@@ -832,7 +832,7 @@ Blockly.defineBlocksWithJsonArray([
     {
       "type": "field_input",
       "name": "code",
-      "text": "code"
+      "text": "code.js"
     }
   ],
   "previousStatement": null,
