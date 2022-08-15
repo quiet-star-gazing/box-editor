@@ -815,7 +815,7 @@ Blockly.JavaScript['world_onVoxelContact'] = function(block) {
   return code;
 };
 Blockly.JavaScript["world_onFluidEnter_entity"] = function () {
-  return ["entitu", Blockly.JavaScript.ORDER_NONE];
+  return ["entity", Blockly.JavaScript.ORDER_NONE];
 };Blockly.JavaScript["world_onFluidEnter_voxel"] = function () {
   return ["voxel", Blockly.JavaScript.ORDER_NONE];
 };Blockly.JavaScript["world_onInteract_entity"] = function () {
