@@ -17,19 +17,13 @@ Blockly.defineBlocksWithJsonArray([
     helpUrl: "",
   },
   {
-    type: "world_projectname",
-    message0: "%1",
-    args0: [
-      {
-        type: "field_label_serializable",
-        name: "MESSAGE",
-        text: "地图名称",
-      },
-    ],
-    output: "String",
-    colour: 230,
-    tooltip: "地图的名称",
-    helpUrl: "",
+    "type": "world_projectname",
+    "message0": "地图URL",
+    "output": "String",
+    "colour": 230,
+    "tooltip": "地图的名称",
+    "helpUrl": ""
+  }
   },
   {
     type: "world_url",
@@ -370,7 +364,6 @@ Blockly.defineBlocksWithJsonArray([
 ]);
 
 Blockly.JavaScript["world_say"] = function (block) {
-  var text_message = block.getFieldValue("MESSAGE");
   var value_name = Blockly.JavaScript.valueToCode(
     block,
     "MESSAGE",
@@ -380,23 +373,23 @@ Blockly.JavaScript["world_say"] = function (block) {
 };
 
 Blockly.JavaScript["world_projectname"] = function () {
-  return "world.projectName";
+  return ["world.projectName", Blockly.JavaScript.ORDER_NONE];
 };
 
 Blockly.JavaScript["world_url"] = function () {
-  return "world.url";
+  return ["world.url", Blockly.JavaScript.ORDER_NONE];
 };
 
 Blockly.JavaScript["world_currentTick"] = function () {
-  return "world.currentTick";
+  return ["world.currentTick", Blockly.JavaScript.ORDER_NONE];
 };
 
 Blockly.JavaScript["world_entityQuota"] = function () {
-  return "world.entityQuota";
+  return ["world.entityQuota", Blockly.JavaScript.ORDER_NONE];
 };
 
 Blockly.JavaScript["world_worldentitylength"] = function () {
-  return `world.querySelectorAll("*").length`;
+  return [`world.querySelectorAll("*").length`, Blockly.JavaScript.ORDER_NONE];
 };
 
 Blockly.JavaScript["voxels_setid"] = function (block) {
@@ -458,28 +451,27 @@ Blockly.JavaScript["voxels_Rotation"] = function (block) {
 
 Blockly.JavaScript["voxels_id"] = function (block) {
   var id = block.getFieldValue("ID");
-  return "voxels.id('" + id + "');\n";
+  return ["voxels.id(" + id + ");\n", Blockly.JavaScript.ORDER_NONE];
 };
 
 Blockly.JavaScript["voxels_name"] = function (block) {
   var id = block.getFieldValue("ID");
-  return "voxels.name(" + id + ");\n";
+  return ["voxels.name(" + id + ");\n", Blockly.JavaScript.ORDER_NONE];
 };
 
 Blockly.JavaScript["voxels_types"] = function () {
-  return "voxels.VoxelTypes";
+  return ["voxels.VoxelTypes", Blockly.JavaScript.ORDER_NONE];
 };
 
 Blockly.JavaScript["voxels_typesid"] = function () {
-  return "voxels.VoxelTypes.map((x) => {return voxels.id(x)})";
+  return ["voxels.VoxelTypes.map((x) => {return voxels.id(x)})", Blockly.JavaScript.ORDER_NONE];
 };
 
 Blockly.JavaScript["world_onEntityDestroy"] = function (block) {
   var id = block.getFieldValue("t");
-  var value_name = Blockly.JavaScript.valueToCode(
+  var value_name =  Blockly.JavaScript.statementToCode(
     block,
     "tex",
-    Blockly.JavaScript.ORDER_ATOMIC
   );
   return `world.onEntity${id}(({entity})=>{
     ${value_name}
@@ -489,10 +481,9 @@ Blockly.JavaScript["world_onEntityDestroy"] = function (block) {
 
 Blockly.JavaScript["world_onPlayerJoin"] = function (block) {
   var id = block.getFieldValue("t");
-  var value_name = Blockly.JavaScript.valueToCode(
+  var value_name =  Blockly.JavaScript.statementToCode(
     block,
     "tex",
-    Blockly.JavaScript.ORDER_ATOMIC
   );
   return `world.onPlayer${id}(({entity})=>{
     ${value_name}
@@ -501,11 +492,10 @@ Blockly.JavaScript["world_onPlayerJoin"] = function (block) {
 
 Blockly.JavaScript["world_onInteract"] = function (block) {
   var id = block.getFieldValue("t");
-  var value_name = Blockly.JavaScript.valueToCode(
+  var value_name = Blockly.JavaScript.statementToCode(
     block,
     "tex",
-    Blockly.JavaScript.ORDER_ATOMIC
-  );
+  ); 
   return `world.on${id}(({entity,${id=="Interact"?"targetEntity":"clicker,button,distance,clickerPosition,raycast"}})=>{
     ${value_name}
   })`;
