@@ -202,10 +202,9 @@
          </category>
       <category name="控制" expanded="true" colour="#8ca6c0">
         <block type="controls_if"></block>
-        <block type="logic_ternary"/>
-        <block type="controls_repeat_ext"></block>
+        <block type="logic_ternary">
         <block type="controls_whileUntil"></block>
-        <block type="controls_for"></block>
+        <block type="controls_for">
       </category>
       <category name="世界" expanded="true" colour="#5b67a5">
         <block type="world_projectname"></block>
@@ -235,7 +234,7 @@
         </block>
         <block type="text_join">
         </block>
-        <!--block type="text_append">
+        <block type="text_append">
         </block>
         <block type="text_length">
         </block>
@@ -254,7 +253,7 @@
         <block type="text_print">
         </block>
         <block type="text_prompt_ext">
-        </block-->
+        </block>
       </category>
       <category name="运算" expanded="true" colour="#5b67a5">
         <block type="math_number"></block>
@@ -280,22 +279,21 @@
       <category name="列表" expanded="true" colour="#745ba5">
         <block type="lists_create_with">
         </block>
-        <!--by小宏-->
-        <block type="list_repeat">
+        <block type="lisst_repeat">
         </block>
-        <block type="list_length">
-        <block type="list_isEmpty">
-        <block type="list_indexOf">
+        <block type="lists_length">
+        <block type="lists_isEmpty">
+        <block type="lists_indexOf">
         </block>
-        <block type="list_getIndex">
+        <block type="lists_getIndex">
         </block>
-        <block type="list_setIndex">
+        <block type="lists_setIndex">
         </block>
-        <block type="list_getSublist">
+        <block type="lists_getSublist">
         </block>
-        <block type="list_split">
+        <block type="lists_split">
         </block>
-        <block type="list_sort">
+        <block type="lists_sort">
         </block>
       </category>
       <category name="字典" expanded="true" colour="#745ba5">
@@ -308,9 +306,7 @@
         <block type="object_geto"></block>
         <block type="object_delete"></block>
       </category>
-      <category name="函数" expanded="true" colour="#995ba5" custom="PROCEDURE"/>
-        
-      </category>
+      <category name="函数" expanded="true" colour="#995ba5" custom="PROCEDURE"/></category>
     </xml>
     <script>
       function loadfuncs() {
