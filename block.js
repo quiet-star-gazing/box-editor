@@ -549,7 +549,7 @@ Blockly.JavaScript['object_copy'] = function(block) {
 Blockly.JavaScript['object_delete'] = function(block) {
   var value_object = Blockly.JavaScript.valueToCode(block, 'object', Blockly.JavaScript.ORDER_ATOMIC);
   var text_key = block.getFieldValue('key');
-  var code = `detele ${value_object || "{}"}['${text_key}']`;
+  var code = `delete ${value_object || "{}"}['${text_key}']`;
   return code;
 };
 Blockly.JavaScript['object_set'] = function(block) {
