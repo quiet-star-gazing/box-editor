@@ -796,9 +796,51 @@ Blockly.defineBlocksWithJsonArray([
     "tooltip": "按下按钮的玩家",
     "helpUrl": "",
   },
-
+{
+  "type": "box3_runcode1",
+  "message0": "运行代码 %1",
+  "args0": [
+    {
+      "type": "field_input",
+      "name": "code",
+      "text": "code"
+    }
+  ],
+  "previousStatement": null,
+  "nextStatement": null,
+  "colour": 230,
+  "tooltip": "运行一些代码",
+  "helpUrl": ""
+},{
+  "type": "box3_runcode2",
+  "message0": "运行代码文件 %1",
+  "args0": [
+    {
+      "type": "field_input",
+      "name": "code",
+      "text": "code"
+    }
+  ],
+  "output": null,
+  "colour": 230,
+  "tooltip": "",
+  "helpUrl": ""
+}
 ]);
 
+Blockly.JavaScript['box3_runcode2'] = function(block) {
+  var text_code = block.getFieldValue('code');
+  // TODO: Assemble JavaScript into code variable.
+  var code = '${text_code}';
+  // TODO: Change ORDER_NONE to the correct strength.
+  return [code, Blockly.JavaScript.ORDER_NONE];
+};
+Blockly.JavaScript['box3_runcode1'] = function(block) {
+  var text_code = block.getFieldValue('code');
+  // TODO: Assemble JavaScript into code variable.
+  var code = '${text_code}\n';
+  return code;
+};
 Blockly.JavaScript['world_onPress'] = function(block) {
   var statements_name = Blockly.JavaScript.statementToCode(block, 'tex');
   var dropdown_name = block.getFieldValue('type');
