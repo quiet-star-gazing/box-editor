@@ -736,7 +736,7 @@ Blockly.defineBlocksWithJsonArray([
 },
   {
     "type": "world_onVoxelContact_entity",
-    "message0": "进入液体的实体/玩家",
+    "message0": "碰到方块的实体/玩家",
     "output": "Object",
     "colour": 210,
     "tooltip": "进入液体的实体/玩家",
@@ -744,7 +744,7 @@ Blockly.defineBlocksWithJsonArray([
   },
   {
     "type": "world_onVoxelContact_voxel",
-    "message0": "进入的液体方块ID",
+    "message0": "碰到的方块ID",
     "output": "Object",
     "colour": 210,
     "tooltip": "进入的液体方块ID",
