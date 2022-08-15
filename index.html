@@ -306,7 +306,9 @@
             { language: "JavaScript" }
           )
           .value.split("\n")
-          .join("<br>");
+          .join("<br>")
+          .split(" ")
+          .join("&nbsp;");
       }
       workspace.addChangeListener(myUpdateFunction);
       setInterval(() => {
