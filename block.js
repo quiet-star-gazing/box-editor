@@ -359,8 +359,151 @@ Blockly.defineBlocksWithJsonArray([
     "colour": 210,
     "tooltip": "当玩家进入或离开时触发的事件",
     "helpUrl": ""
-  },
+  },{
+    "type": "object_null",
+    "message0": "建造一个空字典",
+    "inputsInline": true,
+    "output": "Object",
+    "colour": 260,
+    "tooltip": "建造一个空的字典，具体内容可以自己设置",
+    "helpUrl": ""
+  },{
+    "type": "object_set",
+    "message0": "设置对象 %1 %2 里的 %3 值为 %4 %5",
+    "args0": [
+      {
+        "type": "input_dummy"
+      },
+      {
+        "type": "input_value",
+        "name": "object",
+        "check": "Object"
+      },
+      {
+        "type": "field_input",
+        "name": "key",
+        "text": "key"
+      },
+      {
+        "type": "input_dummy"
+      },
+      {
+        "type": "input_value",
+        "name": "value"
+      }
+    ],
+    "inputsInline": true,
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": 260,
+    "tooltip": "设置项",
+    "helpUrl": ""
+  },{
+    "type": "object_get",
+    "message0": "获取字典 %1 %2 里的 %3 值",
+    "args0": [
+      {
+        "type": "input_dummy"
+      },
+      {
+        "type": "input_value",
+        "name": "object",
+        "check": "Object"
+      },
+      {
+        "type": "field_input",
+        "name": "key",
+        "text": "key"
+      }
+    ],
+    "inputsInline": true,
+    "output": null,
+    "colour": 260,
+    "tooltip": "获取项",
+    "helpUrl": ""
+  },{
+  "type": "object_copy",
+  "message0": "将字典 %1 %2 里的所有项复制到 %3 %4 字典里",
+  "args0": [
+    {
+      "type": "input_dummy"
+    },
+    {
+      "type": "input_value",
+      "name": "target",
+      "check": "Object"
+    },
+    {
+      "type": "input_dummy"
+    },
+    {
+      "type": "input_value",
+      "name": "object",
+      "check": "Object"
+    }
+  ],
+  "inputsInline": true,
+  "previousStatement": null,
+  "nextStatement": null,
+  "colour": 260,
+  "tooltip": "复制字典里的所有项到另外一个字典里",
+  "helpUrl": ""
+},{
+  "type": "object_inc",
+  "message0": "字典 %1 %2 里是否存在 %3 值",
+  "args0": [
+    {
+      "type": "input_dummy"
+    },
+    {
+      "type": "input_value",
+      "name": "object",
+      "check": "Object"
+    },
+    {
+      "type": "field_input",
+      "name": "key",
+      "text": "key"
+    }
+  ],
+  "inputsInline": true,
+  "output": "Boolean",
+  "colour": 260,
+  "tooltip": "判断某个字典是否存在某个项",
+  "helpUrl": ""
+}
 ]);
+
+Blockly.JavaScript['object_null'] = function(block) {
+  return ["{}", Blockly.JavaScript.ORDER_NONE];;
+};
+Blockly.JavaScript['object_copy'] = function(block) {
+  var value_target = Blockly.JavaScript.valueToCode(block, 'target', Blockly.JavaScript.ORDER_ATOMIC);
+  var value_object = Blockly.JavaScript.valueToCode(block, 'object', Blockly.JavaScript.ORDER_ATOMIC);
+  var code = `Object.assign(${value_object || {}},${value_target || {}})`;
+  return code;
+};
+Blockly.JavaScript['object_set'] = function(block) {
+  var value_object = Blockly.JavaScript.valueToCode(block, 'object', Blockly.JavaScript.ORDER_ATOMIC);
+  var text_key = block.getFieldValue('key');
+  var value_value = Blockly.JavaScript.valueToCode(block, 'value', Blockly.JavaScript.ORDER_ATOMIC);
+  var code = `${value_object || "{}"}['${text_key}'] = ${value_value}`;
+  return code;
+};
+Blockly.JavaScript['object_inc'] = function(block) {
+  var value_object = Blockly.JavaScript.valueToCode(block, 'object', Blockly.JavaScript.ORDER_ATOMIC);
+  var text_key = block.getFieldValue('key');
+  // TODO: Assemble JavaScript into code variable.
+  var code = `('${text_key}' in ${value_object || {}})`;
+  // TODO: Change ORDER_NONE to the correct strength.
+  return [code, Blockly.JavaScript.ORDER_NONE];
+};
+Blockly.JavaScript['object_get'] = function(block) {
+  var value_object = Blockly.JavaScript.valueToCode(block, 'object', Blockly.JavaScript.ORDER_ATOMIC);
+  var text_key = block.getFieldValue('key');
+  var code = `${value_object || "{}"}['${text_key}']`;
+  return [code, Blockly.JavaScript.ORDER_NONE];
+};
 
 Blockly.JavaScript["world_say"] = function (block) {
   var value_name = Blockly.JavaScript.valueToCode(
