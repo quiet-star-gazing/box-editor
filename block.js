@@ -733,7 +733,23 @@ Blockly.defineBlocksWithJsonArray([
   "colour": 210,
   "tooltip": "当实体触碰方块时触发的事件",
   "helpUrl": ""
-},{
+},
+  {
+    "type": "world_onVoxelContact_entity",
+    "message0": "进入液体的实体/玩家",
+    "output": "Object",
+    "colour": 210,
+    "tooltip": "进入液体的实体/玩家",
+    "helpUrl": "",
+  },
+  {
+    "type": "world_onVoxelContact_voxel",
+    "message0": "进入的液体方块ID",
+    "output": "Object",
+    "colour": 210,
+    "tooltip": "进入的液体方块ID",
+    "helpUrl": "",
+  },{
   "type": "world_onPress",
   "message0": "当玩家 %1 按钮时 %2 %3",
   "args0": [
