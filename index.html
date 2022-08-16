@@ -612,7 +612,7 @@
         </style>
         <script>
           function addAboutDiv(data){
-            var html = `<div class="card"><div class="times">Box Blockl已上线${~~((new Date().valueOf() - new Date("2022-07-29").valueOf()) / 864e5)}天</div><div class="times">最后更新时间：${data[0][0]}</div><div class="times">更多更新说明请访问语雀：<a target="_blank" href="https://www.yuque.com/bcm1086/blt5de/yihmka">https://www.yuque.com/bcm1086/blt5de/yihmka</a></div></div>` + data.map((a)=>{
+            var html = `<div class="card"><div class="times">Box Blockly 已上线${~~((new Date().valueOf() - new Date("2022-07-29").valueOf()) / 864e5)}天</div><div class="times">最后更新时间：${data[0][0]}</div><div class="times">更多更新说明请访问语雀：<a target="_blank" href="https://www.yuque.com/bcm1086/blt5de/yihmka">https://www.yuque.com/bcm1086/blt5de/yihmka</a></div></div>` + data.map((a)=>{
               var b = ~~((new Date().valueOf() - new Date(a[0]).valueOf()) / 864e5)
               return `<div class="card"><div class="times"><span>${a[0]}</span><text>v${a[1]}</text><font>${!b?"今天":`${b}天前`}</font></span></div><div class="content">${a[2].map((c)=>{
                 var d = ["a4ba80","a1c6c9","dbc693","a4ba80","83acff"];
