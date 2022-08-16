@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Box Blockly - 让岛民没有难写的代码！</title>
+    <meta name="description" content="让岛民没有难写的代码！">
+    <meta name="keywords" content="神岛图形化,神奇代码岛,BoxBlockly,Box Blockly,boxblockly,box blockly,神奇代码岛图形化,box3图形化,Box3图形化,Box3出图形化,box3出图形化,神岛出图形化,神奇代码岛出图形化,1086爱编程,1086科技工作室,1086工作室,1086科技工作室致力制作">
     <link rel="shortcut icon" href="https://box3.codemao.cn/favicon.ico" />
   </head>
   <body onload="loadfuncs()">
@@ -102,6 +104,86 @@
         }
       </style>
     </div>
+    <div class="bodyHead"></div>
+    <script>
+      const addhtml = (position, localName, data, html) => {
+        var newHtml = document.createElement(localName);
+        for (var name in data) {
+          newHtml.setAttribute(name, data[name]);
+        }
+        newHtml.innerHTML = html;
+        var newElement = position.appendChild(newHtml);
+        return newElement;
+      };
+      var htmlHead = document.getElementsByClassName("htmlHead")[0]
+      var op = addhtml(htmlHead,"div",{style:"padding:13px;display: flex;cursor:pointer;","key-Z689Q1Yak9":"",onclick:"",title:document.getElementsByName("description")[0].content},"")
+      addhtml(op,"img",{style:"width:40px;margin-right:10px;",src:"https://box3.codemao.cn/favicon.ico"},"")
+      addhtml(op,"h1",{style:"font-size:27px"},"Box Blockly")
+      var op = addhtml(htmlHead,"div",{style:"display: flex;"},"")
+      var ops = [
+        {name:"文件",op:[
+          ["新建作品","新建一个作品","",1],
+          ["打开作品(.json)","打开本地作品","openfile()"],
+          ["保存作品(.json)","将作品保存到本地",`saveFile("BoxBlockly1086"+new Date().valueOf()+".json",JSON.stringify(jsondata))`,1],
+        ]},
+        {name:"设置",op:[
+          ["切换主题色","更换一个主题色","",1],
+          ["更多设置","更多设置","",1],
+        ]},
+        {name:"帮助",op:[
+          ["神岛首页","打开神岛首页","window.open('https://box3.codemao.cn')"],
+          ["开发API","打开神岛开发API","window.open('https://docs.box3.codemao.cn')",1],
+          ["关于","关于网站",""],
+        ]}
+      ]
+      ops.forEach((v)=>{
+        var div = addhtml(op,"div",{class:"headops",lab:v.name},"");
+        addhtml(div,"div",{class:"option"},v.name);
+        var div2 = addhtml(div,"div",{class:"options"},"")
+        v.op.forEach((v1,n)=>{
+          addhtml(div2,"div",{title:v1[1],onclick:v1[2],style:(v1[3]?"border-bottom: 1px solid #ddd;":"")+(n==(v.op.length-1)?"border-radius: 0px 0px 5px 5px;":"")},v1[0])
+        })
+      });
+      addhtml(htmlHead,"style",{},`
+#app .htmlHead{
+    background: var(--theme-color);
+    display: flex;
+    color: #fff;
+    width:100%;
+    user-select:none;
+}
+#app .htmlHead .option{
+    background: #0000;
+    padding: 23.4px;
+    margin-right: 2px;
+}
+#app .htmlHead .options{
+    background: #fff;
+    color: #000;
+    position: absolute;
+    box-shadow: 0 5px 10px 0 #ddd;
+    top: 67.5px;
+    border-radius: 0px 0px 5px 5px;
+    display:none;
+    text-align: center;
+}
+#app .htmlHead .options div:hover{background:#ddd}
+#app .htmlHead .options div:active{background:#aaa}
+#app .htmlHead .options div {
+    padding: 8px 20px;
+    cursor: pointer;
+}
+#app .htmlHead .headops{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#app .htmlHead .headops:hover .options{display:block}
+#app .htmlHead .headops:hover .option{background:var(--theme-button-hover)}
+*[key-Z689Q1Yak9]:hover{background:var(--theme-button-hover)}
+*[key-Z689Q1Yak9]:active{background:var(--theme-button-active)}
+*[key-1ce2E2KYpb]{margin-bottom: 10px;user-select:none}`)
+    </script>
     <div id="app">
       <div id="blocklyDiv" style="width: 60%"></div>
       <div id="bcodeshow"></div>
@@ -434,140 +516,5 @@
         )[0].attributes.height.value=`${h}px`;
         document.getElementById("blocklyDiv").style.height = String(h + "px");
       }, 1);
-    </script>
-    <!--右键菜单-->
-    <style>
-      .xh-menu-background {
-        background: #0000;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        margin: 0;
-        padding: 0;
-        z-index: 99999999999999999999999;
-      }
-      .xh-menu-background .xh-menu {
-        background: #fffb;
-        margin: 0;
-        padding: 0;
-        position: fixed;
-        top: 0;
-        left: 0;
-        backdrop-filter: blur(5px);
-        border-radius: 10px;
-        user-select: none;
-        transition: 0.25s cubic-bezier(0, 0, 0, 0.9);
-        box-shadow: 0 10px 18px #0004;
-      }
-      .xh-menu-background .xh-menu.small {
-        transform: translateY(15px);
-        opacity: 0;
-      }
-      .xh-menu-background .xh-menu div {
-        background: #0000;
-        margin: 0;
-        padding: 10px 40px 10px 18px;
-        cursor: pointer;
-        transition: 0.25s;
-      }
-      .xh-menu-background .xh-menu div.top {
-        border-radius: 10px 10px 0px 0px;
-      }
-      .xh-menu-background .xh-menu div.end {
-        border-radius: 0px 0px 10px 10px;
-      }
-      .xh-menu-background .xh-menu div.tope {
-        border-radius: 10px;
-      }
-      .xh-menu-background .xh-menu div[xks="true"] {
-        border-bottom: 1px solid #bbb;
-      }
-      .xh-menu-background .xh-menu div[noc="true"] {
-        opacity: 0.5;
-      }
-      .xh-menu-background .xh-menu div:hover {
-        background: #fff;
-      }
-      .xh-menu-background .xh-menu div[noc="true"]:hover {
-        background: #0000;
-      }
-    </style>
-    <script>
-      const addhtml = (position, localName, data, html) => {
-        var newHtml = document.createElement(localName);
-        for (var name in data) {
-          newHtml.setAttribute(name, data[name]);
-        }
-        newHtml.innerHTML = html;
-        var newElement = position.appendChild(newHtml);
-        return newElement;
-      };
-      const addmenu = (data, x, y) => {
-        var a = addhtml(
-          document.body,
-          "div",
-          { class: "xh-menu-background", oncontextmenu: "return false;" },
-          ""
-        );
-        var b = addhtml(
-          a,
-          "div",
-          { class: "xh-menu small", style: `top:${y}px;left:${x}px` },
-          ""
-        );
-        for (var c in data) {
-          var d = data[c];
-          addhtml(
-            b,
-            "div",
-            {
-              onclick: d[1],
-              title: d[2],
-              xks: d[3] ? true : false,
-              noc: d[4] ? true : false,
-              class:
-                data.length == 1
-                  ? "tope"
-                  : c == 0
-                  ? "top"
-                  : c == data.length - 1
-                  ? "end"
-                  : "",
-            },
-            d[0]
-          );
-        }
-        setTimeout(() => {
-          b.classList.remove("small");
-        }, 50);
-        addhtml;
-        a.onclick = () => {
-          b.classList.add("small");
-          setTimeout(() => {
-            a.remove();
-          }, 50);
-        };
-      };
-    </script>
-    <script>
-      (async () => {
-        var a = document.getElementsByClassName("blocklySvg")[0];
-        a.oncontextmenu = (e) => {
-          //[菜单名，点击后运行的代码，注释]
-          addmenu(
-            [
-              ["点赞", "window.open(`https://space.bilibili.com/1305803109`,``,`width=999999999999999,height=99999999999`)", ""],
-              ["投币", "window.open(`https://space.bilibili.com/1305803109`,``,`width=999999999999999,height=99999999999`)", ""],
-              ["收藏", "window.open(`https://space.bilibili.com/1305803109`,``,`width=999999999999999,height=99999999999`)", ""],
-              ["关注", "window.open(`https://space.bilibili.com/1305803109`,``,`width=999999999999999,height=99999999999`)", ""],
-              ["一键三连", "window.open(`https://space.bilibili.com/1305803109`,``,`width=999999999999999,height=99999999999`)", ""],
-            ],
-            e.clientX,
-            e.clientY
-          );
-        };
-      });
-    </script>
+        </script>
 </html>
