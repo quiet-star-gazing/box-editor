@@ -449,8 +449,8 @@
       var workspace = Blockly.inject("blocklyDiv", {
         toolbox: document.getElementById("toolbox"),
         zoom: {//缩放设置
-          controls: false,//显示缩放按钮控件
-          wheel: false,//允许使用鼠标滚轮缩放
+          controls: true,//显示缩放按钮控件
+          wheel: true,//允许使用鼠标滚轮缩放
           startScale: 1,//初始积木大小
           maxScale: 3,//最大大小
           minScale: 0.3,//最小大小
@@ -526,7 +526,7 @@
         if(document.getElementById("OpenFileSetting")){
          document.getElementById("OpenFileSetting").remove()
         }
-        var input = addhtml(document.body,"input",{type:"file",id:"OpenFileSetting",style:"display:none",accept:".json"},"");
+        var input = addhtml(document.body,"input",{type:"file",id:"OpenFileSetting",style:"display:none",accept:".xml"},"");
         input.click();
         var data = "";
         input.onchange=(()=>{
@@ -535,7 +535,7 @@
           var fileread = new FileReader();
           fileread.onload = () => {
             var v = fileread.result;
-            try{if(v){Blockly.Xml.domToWorkspace(Blockly.Xml.textToDom(!v?morenxml:v),workspace)}else{alert("打开作品失败！")}}catch(e){alert("打开作品失败！")}
+            try{if(v){Blockly.Xml.domToWorkspace(Blockly.Xml.textToDom(!v?morenxml:v),workspace)}else{alert("打开作品失败！\n注意只能打开类型为xml的作品")}}catch(e){alert("打开作品失败！\n注意只能打开类型为xml的作品")}
           };
           fileread.readAsText(file, "UTF-8");
         });
@@ -547,7 +547,7 @@
       }
       function saveWorks(t){
         localStorage.setItem("UserBlocklyWorksXML",Blockly.Xml.domToText(Blockly.Xml.workspaceToDom(workspace)))//保存作品
-        if(t) alert("作品已成功保存到云端！")
+        if(t) alert("保存成功！")
       }
       function saveData(obj) {
        var ev = document.createEvent("MouseEvents");
