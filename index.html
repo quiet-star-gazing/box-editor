@@ -129,13 +129,12 @@
           ["保存作品(.xml)","将作品保存到本地",`saveFile("BoxBlockly1086"+new Date().valueOf()+".xml",Blockly.Xml.domToText(Blockly.Xml.workspaceToDom(workspace)))`,1],
         ]},
         {name:"设置",op:[
-          ["切换主题色","更换一个主题色","",1],
-          ["更多设置","更多设置","",1],
+          ["暂无设置","无设置",""]
         ]},
         {name:"帮助",op:[
           ["神岛首页","打开神岛首页","window.open('https://box3.codemao.cn')"],
           ["开发API","打开神岛开发API","window.open('https://docs.box3.codemao.cn')",1],
-          ["关于","关于网站",""],
+          ["关于","关于box blockly","dialogOpen()"],
         ]}
       ]
       ops.forEach((v)=>{
@@ -202,6 +201,7 @@
           height: 100%;
           display: flex;
           flex-direction: row;
+          overflow: hidden;
         }
         #bcodeshow {
           width: 40%;
@@ -233,9 +233,6 @@
           margin: 0;
           padding: 5px;
           cursor: pointer;
-        }
-        .blocklyTreeRow.blocklyTreeSelected {
-          background-color: var(--theme-color);
         }
       </style>
       <!-- 复制代码的按钮 -->
@@ -449,8 +446,8 @@
       var workspace = Blockly.inject("blocklyDiv", {
         toolbox: document.getElementById("toolbox"),
         zoom: {//缩放设置
-          controls: true,//显示缩放按钮控件
-          wheel: true,//允许使用鼠标滚轮缩放
+          controls: false,//显示缩放按钮控件
+          wheel: false,//允许使用鼠标滚轮缩放
           startScale: 1,//初始积木大小
           maxScale: 3,//最大大小
           minScale: 0.3,//最小大小
@@ -471,8 +468,7 @@
         collapse: true,//允许折叠块
         comments: true,//允许注释块
         sounds: true,//有音效
-        trashcan: true,//显示垃圾桶
-        maxTrashcanContents: 100,//垃圾桶最大含量
+        trashcan: false,//显示垃圾桶
         media: "https://static.codemao.cn/blockly/media/",//资源文件链接（这里用kitten4的）
       });
     </script>
@@ -535,7 +531,7 @@
           var fileread = new FileReader();
           fileread.onload = () => {
             var v = fileread.result;
-            try{if(v){Blockly.Xml.domToWorkspace(Blockly.Xml.textToDom(!v?morenxml:v),workspace)}else{alert("打开作品失败！\n注意只能打开类型为xml的作品")}}catch(e){alert("打开作品失败！\n注意只能打开类型为xml的作品")}
+            try{if(v){Blockly.Xml.domToWorkspace(Blockly.Xml.textToDom(!v?morenxml:v),workspace)}else{alert("打开作品失败！\n注意只能打开类型为xml的作品哦")}}catch(e){alert("打开作品失败！\n注意只能打开类型为xml的作品哦")}
           };
           fileread.readAsText(file, "UTF-8");
         });
@@ -566,4 +562,128 @@
        saveData(save_link);
       };
         </script>
+<div style='z-index:9999999999999999'>
+   <!-- 弹窗开始 -->
+    <div class='dialogBackground' style="display: none;" name='dialog'>
+     <!-- 关于弹窗开始 -->
+      <div class="dialog" name='dialog1'>
+       <div class="dialogHead">
+         <span class='dialogHeadText'>关于Box Blockly</span>
+         <a class="dialogCloseBtn" href="javascript:dialogClose();" title='关闭窗口'>×</a>
+         <a class="dialogCloseBtn" title='全屏/还原窗口' href="javascript:dialogBig();" style="border-radius: 0;padding: 17.5px 19px;"><svg><use xlink:href="#icon-big-dialog"></use></svg></a>
+       </div>
+      <div class="dialogBody">
+       
+       </div>
+       <script>
+
+document.getElementById("dqwzsxtssj").innerHTML = Math.floor(((new Date).getTime() - new Date("2022-06-01"))/864e5)
+function dialogOpen(){
+  var dialog = document.getElementsByName("dialog")[0]
+  var dialogn = document.getElementsByName("dialog1")[0]
+  dialog.style.display = 'block'
+  dialogn.style.display = 'block'
+  setTimeout(()=>{
+    dialogn.style.transform = 'scale(1)'
+    dialog.style.backgroundColor = '#000a'
+    dialog.style.backdropFilter ='blur(3px)'
+    dialogn.style.opacity=1;
+  },20)
+}
+function dialogClose(){
+  var dialog = document.getElementsByName("dialog")[0]
+  var dialogn = document.getElementsByName("dialog1")[0]
+  dialogn.style.transform = 'scale(0.5)'
+  dialog.style.backgroundColor = '#0000'
+  dialog.style.backdropFilter ='blur(0px)'
+  dialogn.style.opacity = 0;
+  setTimeout(()=>{
+    document.getElementsByName("dialog")[0].style.display = 'none'
+    dialogn.style.display = 'none'
+  },300)
+  if(dialogn.className == 'dialog dialogBig')dialogBig();
+}
+function dialogBig(){
+  var dialogn = document.getElementsByName("dialog1")[0]
+  if(dialogn.className == 'dialog dialogBig'){
+ dialogn.className = 'dialog'
+  }else{dialogn.className = 'dialog dialogBig'}
+}
+
+        </script>  <style>
+
+.dialogBig{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    border-radius: 0;
+}
+.dialogBig .dialogHead{border-radius: 0;}
+.dialogBig .dialogHead .dialogCloseBtn{border-radius: 0;}
+.dialogBackground{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #0000;
+  backdrop-filter: blur(0px);
+  transition-duration: 0.2s;
+  color:#000;
+  z-index: 999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999;
+}
+.dialog{
+  transform: scale(0.5);
+  align-items: center;
+  justify-content: center;
+  margin: 5% auto;
+  background-color: #fefefe;
+  border-radius: 10px;
+  box-shadow: 0 0 130px 20px #333;
+  transition-duration: 0.2s;
+  display:none;
+  opacity:0.1;
+  width: 80%;
+  height: 80%;
+}
+.dialogHead{
+  border-radius: 10px 10px 0px 0px;
+  background-color:var(--theme-color);
+  text-align: left;
+  cursor: default;
+  user-select: none
+}
+.dialogHeadText{
+  line-height: 60px;
+  font-size: 30px;
+  padding: 0px 25px;
+  color: #fff
+}
+.dialogBody{
+  font-size: 20px;
+  overflow: auto;
+  width: calc(100% - 60px);
+  height: calc(100% - 70px);
+  padding : 10px 30px 0px 30px
+}
+.dialogCloseBtn{
+  color: #fff;
+  float: right;
+  font-size: 40px;
+  padding: 0px 16px 7px 16px;
+  border-radius: 0px 10px 0px 0px;
+  font-weight: 100;
+  text-decoration: none;
+  transition-property: all;
+  transition-duration: 0.25s;
+  transition-timing-function: ease;
+  transition-delay: 0s
+}
+.dialogCloseBtn:hover {
+  background-color: var(--theme-color-hover)
+}
+.dialogCloseBtn:active{
+  background-color: var(--theme-color-active)
+}
+       </div></div>
 </html>
