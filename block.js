@@ -425,11 +425,11 @@ Blockly.defineBlocksWithJsonArray([
     "helpUrl": "",
   },{
     "type": "object_null",
-    "message0": "建造一个空字典",
+    "message0": "建造一个空对象",
     "inputsInline": true,
     "output": "Object",
     "colour": 260,
-    "tooltip": "建造一个空的字典，具体内容可以自己设置",
+    "tooltip": "建造一个空的对象，具体内容可以自己设置",
     "helpUrl": ""
   },{
     "type": "object_set",
@@ -464,7 +464,7 @@ Blockly.defineBlocksWithJsonArray([
     "helpUrl": ""
   },{
     "type": "object_get",
-    "message0": "获取字典 %1 %2 里的 %3 值",
+    "message0": "获取对象 %1 %2 里的 %3 值",
     "args0": [
       {
         "type": "input_dummy"
@@ -487,7 +487,7 @@ Blockly.defineBlocksWithJsonArray([
     "helpUrl": ""
   },{
   "type": "object_copy",
-  "message0": "将字典 %1 %2 里的所有项复制到 %3 %4 字典里",
+  "message0": "将对象 %1 %2 里的所有项复制到 %3 %4 对象里",
   "args0": [
     {
       "type": "input_dummy"
@@ -510,11 +510,11 @@ Blockly.defineBlocksWithJsonArray([
   "previousStatement": null,
   "nextStatement": null,
   "colour": 260,
-  "tooltip": "复制字典里的所有项到另外一个字典里",
+  "tooltip": "复制对象里的所有项到另外一个对象里",
   "helpUrl": ""
 },{
   "type": "object_inc",
-  "message0": "字典 %1 %2 里是否存在 %3 值",
+  "message0": "对象 %1 %2 里是否存在 %3 值",
   "args0": [
     {
       "type": "input_dummy"
@@ -533,11 +533,11 @@ Blockly.defineBlocksWithJsonArray([
   "inputsInline": true,
   "output": "Boolean",
   "colour": 260,
-  "tooltip": "判断某个字典是否存在某个项",
+  "tooltip": "判断某个对象是否存在某个项",
   "helpUrl": ""
 },{
   "type": "object_geto",
-  "message0": "获取字典 %1 %2 的 %3",
+  "message0": "获取对象 %1 %2 的 %3",
   "args0": [
     {
       "type": "input_dummy"
@@ -572,11 +572,11 @@ Blockly.defineBlocksWithJsonArray([
     "Array"
   ],
   "colour": 260,
-  "tooltip": "获取字典的项数等数据",
+  "tooltip": "获取对象的项数等数据",
   "helpUrl": ""
 },{
   "type": "object_delete",
-  "message0": "删除字典 %1 %2 中的 %3 键",
+  "message0": "删除对象 %1 %2 中的 %3 键",
   "args0": [
     {
       "type": "input_dummy"
@@ -596,11 +596,11 @@ Blockly.defineBlocksWithJsonArray([
   "previousStatement": null,
   "nextStatement": null,
   "colour": 260,
-  "tooltip": "删除字典的某个键值",
+  "tooltip": "删除对象的某个键值",
   "helpUrl": ""
 },{
   "type": "object_freeze",
-  "message0": "冻结字典 %1",
+  "message0": "冻结对象 %1",
   "args0": [
     {
       "type": "input_value",
@@ -612,11 +612,11 @@ Blockly.defineBlocksWithJsonArray([
   "previousStatement": null,
   "nextStatement": null,
   "colour": 260,
-  "tooltip": "冻结某个字典，冻结后不可以用代码修改，建造，删除它的键值，只能读取",
+  "tooltip": "冻结某个对象，冻结后不可以用代码修改，建造，删除它的键值，只能读取",
   "helpUrl": ""
 },{
   "type": "object_isfreeze",
-  "message0": "字典 %1 是否已冻结",
+  "message0": "对象 %1 是否已冻结",
   "args0": [
     {
       "type": "input_value",
@@ -627,7 +627,7 @@ Blockly.defineBlocksWithJsonArray([
   "inputsInline": true,
   "output": "Boolean",
   "colour": 260,
-  "tooltip": "查看某个字典是否被冻结",
+  "tooltip": "查看某个对象是否被冻结",
   "helpUrl": ""
 },{
   "type": "box3_sleep",
@@ -840,8 +840,64 @@ Blockly.defineBlocksWithJsonArray([
   "colour": 230,
   "tooltip": "",
   "helpUrl": ""
+},{
+  "type": "console_clear",
+  "message0": "清除控制台",
+  "previousStatement": null,
+  "nextStatement": null,
+  "colour": 230,
+  "tooltip": "清掉控制台",
+  "helpUrl": ""
+},{
+  "type": "console_log",
+  "message0": "在控制台里 %1 %2 %3",
+  "args0": [
+    {
+      "type": "field_dropdown",
+      "name": "type",
+      "options": [
+        [
+          "输出",
+          "log"
+        ],
+        [
+          "警告",
+          "warn"
+        ],
+        [
+          "报错",
+          "error"
+        ]
+      ]
+    },
+    {
+      "type": "input_dummy"
+    },
+    {
+      "type": "input_value",
+      "name": "text"
+    }
+  ],
+  "inputsInline": true,
+  "previousStatement": null,
+  "nextStatement": null,
+  "colour": 230,
+  "tooltip": "在控制台里输出一些值",
+  "helpUrl": ""
 }
 ]);
+
+Blockly.JavaScript['console_clear'] = function(block) {
+  // TODO: Assemble JavaScript into code variable.
+  var code = 'console.clear();\n';
+  return code;
+};Blockly.JavaScript['console_log'] = function(block) {
+  var dropdown_type = block.getFieldValue('type');
+  var value_text = Blockly.JavaScript.valueToCode(block, 'text', Blockly.JavaScript.ORDER_ATOMIC);
+  // TODO: Assemble JavaScript into code variable.
+  var code = `console.${dropdown_type}(${value_text});\n`;
+  return code;
+};
 
 Blockly.JavaScript['box3_require'] = function(block) {
   var text_code = block.getFieldValue('code');
