@@ -581,16 +581,16 @@
         <div id="aboutDiv"></div>
         <div id="updatalog"></div>
         <style>
-          #updatalog {font-size: 12px;}
+          #updatalog {font-size: 12px;margin-top: 20px;}
           #updatalog .card {display:flex;justify-content: flex-start;flex-direction: column;margin-bottom: 20px;}
           #updatalog .card div{display:flex;flex-direction: row;}
           #updatalog .card .times {margin-bottom:5px}
           #updatalog .card .times span{margin-right: 10px;}
-          #updatalog .card .times text{margin-right: 10px;padding:0px 3px;color:#000;background-color:#aaa;border-radius: 3px;}
-          #updatalog .card .times font{color:#aaa;}
+          #updatalog .card .times text{margin-right: 10px;padding:1px 4px;color:#000;background-color:#aaa;border-radius: 3px;}
+          #updatalog .card .times font{color:#eee;}
           #updatalog .card .content{display: flex;flex-direction: column;}
-          #updatalog .card .content .ccard {display:flex;flex-direction: row;}
-          #updatalog .card .content .ccard .ck{padding:0px 3px;color:#fff;margin-right:5px;border-radius: 3px;}
+          #updatalog .card .content .ccard {display:flex;flex-direction: row;margin-bottom: 5px;}
+          #updatalog .card .content .ccard .ck{padding:1px 4px;color:#fff;margin-right:5px;border-radius: 3px;}
           #updatalog .card .content .ccard .ctext{color:#000}
         </style>
         <script>
@@ -608,11 +608,11 @@
          var div = document.getElementById("aboutDiv");
          var log = document.getElementById("updatalog");
           log.innerHTML=addAboutDiv([
-            ["2022-07-29","1.0",[[3,"项目上线"]]],
-            ["2022-08-13","1.1",[[0,"转换代码上线"],[1,"界面"]]],
-            ["2022-08-15","1.2",[[2,"修复了一些blockly默认积木的文字显示问题"],[0,"右键菜单（复制等功能）上线"]]],
-            ["2022-08-15","1.3",[[0,"添加了一些积木 "]]],
             ["2022-08-15","1.3.5",[[2,"修复bug"]]],
+            ["2022-08-15","1.3",[[0,"添加了一些积木 "]]],
+            ["2022-08-15","1.2",[[2,"修复了一些blockly默认积木的文字显示问题"],[0,"右键菜单（复制等功能）上线"]]],
+            ["2022-08-13","1.1",[[0,"转换代码上线"],[1,"界面"]]],
+            ["2022-07-29","1.0",[[3,"项目上线"]]],
           ])
          div.innerHTML = `<div class="upcontent"><div style="display: flex;cursor:pointer;" title="让岛民没有难写的代码！"><img style="width:40px;margin-right:10px;" src="https://box3.codemao.cn/favicon.ico"><h1 style="font-size:27px">Box Blockly</h1></div></div>`
         </script>
