@@ -126,7 +126,7 @@
           ["新建作品","新建一个空白作品","",1],
           ["保存作品到云端","保存作品到云端","saveWorks(true)",1],
           ["打开作品(.xml)","打开本地作品","openfile()"],
-          ["保存作品(.xml)","将作品保存到本地",`saveFile("BoxBlockly1086"+new Date().valueOf()+".xml",Blockly.Xml.workspaceToDom(workspace))`,1],
+          ["保存作品(.xml)","将作品保存到本地",`saveFile("BoxBlockly1086"+new Date().valueOf()+".xml",Blockly.Xml.domToText(Blockly.Xml.workspaceToDom(workspace)))`,1],
         ]},
         {name:"设置",op:[
           ["切换主题色","更换一个主题色","",1],
