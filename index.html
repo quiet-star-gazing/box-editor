@@ -612,13 +612,20 @@
         </style>
         <script>
           function addAboutDiv(data){
-            var html = `<div class="card"><div class="times">Box Blockly 已上线${~~((new Date().valueOf() - new Date("2022-07-29").valueOf()) / 864e5)}天</div><div class="times">最后更新时间：${data[0][0]}</div><div class="times">更多更新说明请访问语雀：<a target="_blank" href="https://www.yuque.com/bcm1086/blt5de/yihmka">https://www.yuque.com/bcm1086/blt5de/yihmka</a></div></div>` + data.map((a)=>{
+            var html = `<div class="card">
+            <div class="times">Box Blockly 已上线${~~((new Date().valueOf() - new Date("2022-07-29").valueOf()) / 864e5)}天</div>
+            <div class="times">最后更新时间：${data[0][0]}</div>
+            <div class="times">更多更新说明请访问语雀：<a target="_blank" href="https://www.yuque.com/bcm1086/blt5de/yihmka">https://www.yuque.com/bcm1086/blt5de/yihmka</a></div>
+          </div>` + data.map((a)=>{
               var b = ~~((new Date().valueOf() - new Date(a[0]).valueOf()) / 864e5)
-              return `<div class="card"><div class="times"><span>${a[0]}</span><text>v${a[1]}</text><font>${!b?"今天":`${b}天前`}</font></span></div><div class="content">${a[2].map((c)=>{
+              return `<div class="card">
+              <div class="times"><span>${a[0]}</span><text>v${a[1]}</text><font>${!b?"今天":`${b}天前`}</font></div>
+              <div class="content">${a[2].map((c)=>{
                 var d = ["a4ba80","a1c6c9","dbc693","a4ba80","83acff"];
                 var e = ["新增","优化","修复","上线","PS","重大更新","内侧内容"];
                 var f = ["新添加的功能","优化程序出现的问题或加强用户体验","修复出现的bug","上线","补充说明","更新内容超多","预览版内容"];
-                return `${c[0].map((o)=>{return `<div class="ccard"><div class="ck" style="background-color:#${d[o]}" title="${f[o]}">${e[o]}</div>`})}<div class="ctext">${c[1]}</div>`
+                return `${c[0].map((o)=>{return `<div class="ccard">
+                <div class="ck" style="background-color:#${d[o]}" title="${f[o]}">${e[o]}</div>`})}<div class="ctext">${c[1]}</div></div>`
               }).join("")}</div></div>`;
             }).join("");
             return html
