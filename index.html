@@ -577,7 +577,7 @@
          <a class="dialogCloseBtn" href="javascript:dialogClose();" title='关闭窗口'>×</a>
          <a class="dialogCloseBtn" title='全屏/还原窗口' href="javascript:dialogBig();" style="border-radius: 0;padding: 4px 19px;"><svg><use xlink:href="#icon-big-dialog"></use></svg></a>
        </div>
-      <div class="dialogBody" style="display: flex;justify-content: center;">
+      <div class="dialogBody" style="display: flex;flex-direction: column;align-items: center;">
         <div id="aboutDiv"></div>
         <div id="updatalog"></div>
         <style>
@@ -598,7 +598,7 @@
                 var d = ["a4ba80","a1c6c9","dbc693","a4ba80"];
                 var e = ["新增","优化","修复","上线"];
                 return `<div class="ck" style="background-color:#${d[c[0]]}">${e[c[0]]}</div><div class="ctext">${c[1]}</div>`
-              }).join("")}</div>`;
+              }).join("")}</div></div>`;
             }).join("");
             return html
           };
