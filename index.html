@@ -508,7 +508,8 @@
       }
       workspace.addChangeListener(myUpdateFunction);
       setInterval(() => {
-        const h = document.documentElement.clientHeight;
+        var h = document.documentElement.clientHeight;
+        h -= 67.78;
         document.getElementById("bcodeshow").style.height = String(h + "px");
         document.getElementsByClassName(
           "blocklyScrollbarHorizontal"
