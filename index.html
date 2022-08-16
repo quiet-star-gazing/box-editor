@@ -562,6 +562,11 @@
        saveData(save_link);
       };
         </script>
+        <svg style="position:absolute;top:0;left:0" overflow="hidden" aria-hidden="true">
+   <defs>
+    <symbol id="icon-big-dialog" viewBox="0 0 1024 1024"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path fill="currentColor" d="m160 96.064 192 .192a32 32 0 0 1 0 64l-192-.192V352a32 32 0 0 1-64 0V96h64v.064zm0 831.872V928H96V672a32 32 0 1 1 64 0v191.936l192-.192a32 32 0 1 1 0 64l-192 .192zM864 96.064V96h64v256a32 32 0 1 1-64 0V160.064l-192 .192a32 32 0 1 1 0-64l192-.192zm0 831.872-192-.192a32 32 0 0 1 0-64l192 .192V672a32 32 0 1 1 64 0v256h-64v-.064z"></path></g></symbol>
+   </defs>
+  </svg>
 <div style='z-index:9999999999999999'>
    <!-- 弹窗开始 -->
     <div class='dialogBackground' style="display: none;" name='dialog'>
@@ -612,14 +617,7 @@ function dialogBig(){
 
         </script>  <style>
 
-.dialogBig{
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    border-radius: 0;
-}
-.dialogBig .dialogHead{border-radius: 0;}
-.dialogBig .dialogHead .dialogCloseBtn{border-radius: 0;}
+
 .dialogBackground{
   position: fixed;
   top: 0;
@@ -685,5 +683,13 @@ function dialogBig(){
 .dialogCloseBtn:active{
   background-color: var(--theme-color-active)
 }
+.dialogBig{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    border-radius: 0;
+}
+.dialogBig .dialogHead{border-radius: 0;}
+.dialogBig .dialogHead .dialogCloseBtn{border-radius: 0;}
        </div></div>
 </html>
