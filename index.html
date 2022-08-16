@@ -618,7 +618,7 @@
                 var d = ["a4ba80","a1c6c9","dbc693","a4ba80","83acff"];
                 var e = ["新增","优化","修复","上线","PS","重大更新","内侧内容"];
                 var f = ["新添加的功能","优化程序出现的问题或加强用户体验","修复出现的bug","上线","补充说明","更新内容超多","预览版内容"];
-                return `<div class="ccard"><div class="ck" style="background-color:#${d[c[0]]}" title="${f[c[0]]}">${e[c[0]]}</div><div class="ctext">${c[1]}</div></div>`
+                return `${c[0].map((o)=>{return `<div class="ccard"><div class="ck" style="background-color:#${d[o]}" title="${f[o]}">${e[o]}</div>`})}<div class="ctext">${c[1]}</div></div>`
               }).join("")}</div></div>`;
             }).join("");
             return html
