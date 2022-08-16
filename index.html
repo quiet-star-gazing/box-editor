@@ -26,7 +26,7 @@
     <div class="loding">
       <div></div>
       <font>Box Blockly</font>
-      <span id="lodingtext"></span>
+      <span id="lodingtext"><noscript>请问你JavaScript启用了吗？</noscript></span>
       <script>
         (async function () {
           const data = [
@@ -327,7 +327,7 @@
       <category name="世界" expanded="true" colour="#5b67a5">
         <block type="world_projectname"></block>
         <block type="world_url"></block>
-        <block type="world_say"><value name="MESSAGE"><block type="text"></block></value></block>
+        <block type="world_say"><value name="MESSAGE"><block type="text"><field name="TEXT">说点什么...</field></block></value></block>
         <block type="world_currentTick"></block>
       </category>
       <category name="地形" expanded="true" colour="#8cc08c">
@@ -346,7 +346,7 @@
       </category>
       <category name="玩家" expanded="true" colour="#6d5ba5">
         
-      </category>>
+      </category>
       <category name="声音" expanded="true" colour="#6d5ba5">
         
       </category>
@@ -354,15 +354,15 @@
       <category name="列表" expanded="true" colour="#745ba5">
         <block type="lists_create_with"><mutation items="1"></block>
         <block type="lists_create_with"><mutation items="3"></block>
-        <block type="lists_repeat"></block>
-        <block type="lists_length">
-        <block type="lists_isEmpty">
-        <block type="lists_indexOf"></block>
-        <block type="lists_getIndex"></block>
-        <block type="lists_setIndex"></block>
-        <block type="lists_getSublist"></block>
-        <block type="lists_split"></block>
-        <block type="lists_sort"></block>
+        <block type="lists_repeat"><value name="NUM"><block type="math_number"><field name="NUM">5</field></block></value></block>
+        <block type="lists_length"></block>
+        <block type="lists_isEmpty"></block>
+        <block type="lists_indexOf"><field name="END">FIRST</field><value name="VALUE"><block type="variables_get"><field name="VAR" id="2G;)Eq${Io2,L:Ql*.Z7">list</field></block></value></block>
+        <block type="lists_getIndex"><mutation statement="false" at="true"/><field name="MODE">GET</field><field name="WHERE">FROM_START</field><value name="VALUE"><block type="variables_get"><field name="VAR" id="2G;)Eq${Io2,L:Ql*.Z7">list</field></block></value></block>
+        <block type="lists_setIndex"><mutation at="true"/><field name="MODE">SET</field><field name="WHERE">FROM_START</field><value name="LIST"><block type="variables_get"><field name="VAR" id="2G;)Eq${Io2,L:Ql*.Z7">list</field></block></value></block>
+        <block type="lists_getSublist"><mutation at1="true" at2="true"/><field name="WHERE1">FROM_START</field><field name="WHERE2">FROM_START</field><value name="LIST"><block type="variables_get"><field name="VAR" id="2G;)Eq${Io2,L:Ql*.Z7">list</field></block></value></block>
+        <block type="lists_split"><mutation mode="SPLIT"/><field name="MODE">SPLIT</field><value name="DELIM"><block type="text"><field name="TEXT">,</field></block></value></block>
+        <block type="lists_sort"><field name="TYPE">NUMERIC</field><field name="DIRECTION">1</field></block>
       </category>
       <category name="对象" expanded="true" colour="#745ba5">
         <!--by小宏-->
@@ -378,30 +378,30 @@
       </category>
       <category name="字符串" expanded="true" colour="#5ba58c">
         <block type="text"></block>
-        <block type="text_join"><mutation items="3"></block>
-        <block type="text_append"></block>
-        <block type="text_length"></block>
-        <block type="text_isEmpty"></block>
-        <block type="text_indexOf"></block>
-        <block type="text_charAt"> </block>
-        <block type="text_getSubstring"> </block>
-        <block type="text_changeCase"> </block>
-        <block type="text_trim"></block>
-        <block type="text_prompt_ext"></block>
+        <block type="text_join"><mutation items="2"></block>
+        <block type="text_append"><value name="TEXT"><block type="text"><field name="TEXT"/></block></value></block>
+        <block type="text_length"><value name="MESSAGE"><block type="text"><field name="TEXT">abc</field></block></value></block>
+        <block type="text_isEmpty"><value name="MESSAGE"><block type="text"><field name="TEXT"></field></block></value></block>
+        <block type="text_indexOf"><field name="END">FIRST</field><value name="VALUE"><block type="variables_get"><field name="VAR" id="o(H,3vpcGU*(B$;@WJos">text</field></block></value><value name="FIND"><block type="text"><field name="TEXT">abc</field></block></value></block>
+        <block type="text_charAt"><mutation at="true"/><field name="WHERE">FROM_START</field><value name="VALUE"><block type="variables_get"><field name="VAR" id="o(H,3vpcGU*(B$;@WJos">text</field></block></value></block>
+        <block type="text_getSubstring"><mutation at1="true" at2="true"/><field name="WHERE1">FROM_START</field><field name="WHERE2">FROM_START</field><value name="STRING"><block type="variables_get"><field name="VAR" id="o(H,3vpcGU*(B$;@WJos">text</field></block></value></block>
+        <block type="text_changeCase"><field name="CASE">UPPERCASE</field><value name="TEXT"><block type="text"><field name="TEXT">abc</field></block></value></block>
+        <block type="text_trim"><field name="MODE">BOTH</field><value name="TEXT"><block type="text"><field name="TEXT">abc</field></block></value></block>
+        <block type="text_prompt_ext"><mutation type="TEXT"/><field name="TYPE">TEXT</field><value name="TEXT"><block type="text"><field name="TEXT">abc</field></block></value></block>
       </category>
       <category name="运算" expanded="true" colour="#5b67a5">
         <block type="math_number"></block>
-        <block type="math_arithmetic"></block>
-        <block type="math_single"></block>
-        <block type="math_trig"></block>
+        <block type="math_arithmetic"><value name="A"><block type="math_number"><field name="NUM">1</field></block></value><value name="B"><block type="math_number"><field name="NUM">1</field></block></value></block>
+        <block type="math_single"><field name="OP">ROOT</field><value name="NUM"><block type="math_number"><field name="NUM">9</field></block></value></block>
+        <block type="math_trig"><field name="OP">SIN</field><value name="NUM"><block type="math_number"><field name="NUM">45</field></block></value></block>
         <block type="math_constant"></block>
-        <block type="math_number_property"></block>
-        <block type="math_round"></block>
+        <block type="math_number_property"><value name="NUMBER_TO_CHECK"><block type="math_number"><field name="NUM">0</field></block></value></block>
+        <block type="math_round"><value name="NUM"><block type="math_number"><field name="NUM">3.1</field></block></value></block>
         <block type="math_on_list"></block>
-        <block type="math_modulo"></block>
-        <block type="math_constrain"></block>
-        <block type="math_random_int"></block>
-        <block type="math_random_float"/></block>
+        <block type="math_modulo"><value name="DIVIDEND"><block type="math_number"><field name="NUM">64</field></block></value><value name="DIVISOR"><block type="math_number"><field name="NUM">10</field></block></value></block>
+        <block type="math_constrain"><value name="VALUE"><block type="math_number"><field name="NUM">50</field></block></value><value name="LOW"><block type="math_number"><field name="NUM">1</field></block></value><value name="HIGH"><block type="math_number"><field name="NUM">100</field></block></value></block>
+        <block type="math_random_int"><value name="FROM"><block type="math_number"><field name="NUM">1</field></block></value><value name="TO"><block type="math_number"><field name="NUM">100</field></block></value></block>
+        <block type="math_random_float"></block>
       </category>
       <category name="逻辑" expanded="true" colour="#5b80a5">
         <block type="logic_compare"></block>
@@ -458,7 +458,7 @@
           spacing: 20,//间隔
           length: 2,//大小
           colour: '#ccc',//颜色
-          snap: true,//当积木碰到一起时是否自动撞开
+          snap: false,//是否将积木对齐网格
         },
         move:{//移动设置
           scrollbars: true,//显示滑动条
@@ -577,8 +577,42 @@
          <a class="dialogCloseBtn" href="javascript:dialogClose();" title='关闭窗口'>×</a>
          <a class="dialogCloseBtn" title='全屏/还原窗口' href="javascript:dialogBig();" style="border-radius: 0;padding: 4px 19px;"><svg><use xlink:href="#icon-big-dialog"></use></svg></a>
        </div>
-      <div class="dialogBody">
-       
+      <div class="dialogBody" style="display: flex;justify-content: center;">
+        <div id="aboutDiv"></div>
+        <div id="updatalog"></div>
+        <style>
+          #updatalog {font-size: 12px;}
+          #updatalog .card {display:flex;justify-content: flex-start;flex-direction: column;}
+          #updatalog .card div{display:flex;flex-direction: row;}
+          #updatalog .card .times span{margin-right: 10px;}
+          #updatalog .card .times text{margin-right: 10px;padding:0px 3px;color:#000;background-color:#aaa}
+          #updatalog .card .times font{color:#aaa;}
+          #updatalog .card .content .ck{padding:0px 3px;color:#fff;margin-right:5px}
+          #updatalog .card .content .ctext{color:#fff}
+        </style>
+        <script>
+          function addAboutDiv(data){
+            var html = data.map((a)=>{
+              var b = ~~((new Date().valueOf() - new Date(a[0]).valueOf()) / 864e5)
+              return `<div class="card"><div class="times"><span>${a[0]}</span><text>v${a[1]}</text><font>${!b?"今天":`${b}天前`}</font></span></div><div class="content">${a[2].map((c)=>{
+                var d = ["a4ba80","a1c6c9","dbc693","a4ba80"];
+                var e = ["新增","优化","修复","上线"];
+                return `<div class="ck" style="background-color:#${d[c[0]]}">${e[c[0]]}</div><div class="ctext">${c[1]}</div>`
+              }).join("")}</div>`;
+            }).join("");
+            return html
+          };
+         var div = document.getElementById("aboutDiv");
+         var log = document.getElementById("updatalog");
+          log.innerHTML=addAboutDiv([
+            ["2022-07-29","1.0",[[3,"项目上线"]]],
+            ["2022-08-13","1.1",[[0,"转换代码上线"],[1,"界面"]]],
+            ["2022-08-15","1.2",[[2,"修复了一些blockly默认积木的文字显示问题"],[0,"右键菜单（复制等功能）上线"]]],
+            ["2022-08-15","1.3",[[0,"添加了一些积木 "]]],
+            ["2022-08-15","1.35",[[2,"修复bug"]]],
+          ])
+         div.innerHTML = `<div class="upcontent"><div style="display: flex;cursor:pointer;" title="让岛民没有难写的代码！"><img style="width:40px;margin-right:10px;" src="https://box3.codemao.cn/favicon.ico"><h1 style="font-size:27px">Box Blockly</h1></div></div>`
+        </script>
        </div>
        <script>
 
