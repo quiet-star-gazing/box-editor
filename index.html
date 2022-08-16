@@ -582,7 +582,7 @@
         <div id="updatalog"></div>
         <style>
           #aboutDiv {user-select:none}
-          #updatalog {font-size: 12px;margin-top: 20px;user-select:none}
+          #updatalog {font-size: 12px;margin-top: 20px;user-select:none;width: calc(100% - 50px);height: calc(100% - 80px);overflow: auto;}
           #updatalog .card {display:flex;justify-content: flex-start;flex-direction: column;margin-bottom: 20px;}
           #updatalog .card div{display:flex;flex-direction: row;}
           #updatalog .card .times {margin-bottom:5px}
@@ -593,15 +593,32 @@
           #updatalog .card .content .ccard {display:flex;flex-direction: row;margin-bottom: 5px;}
           #updatalog .card .content .ccard .ck{padding:1px 4px;color:#fff;margin-right:5px;border-radius: 3px;}
           #updatalog .card .content .ccard .ctext{color:#000}
+          #updatalog::-webkit-scrollbar {
+            height: 5px;
+            width: 5px;
+          }
+          #updatalog::-webkit-scrollbar-thumb {
+            background: #aaa5;
+          }
+          #updatalog::-webkit-scrollbar-thumb:hover {
+            background: #aaa;
+          }
+          #updatalog::-webkit-scrollbar-thumb:active {
+            background: #aaa3;
+          }
+          #updatalog::-webkit-scrollbar-track {
+            background: #0000;
+          }
         </style>
         <script>
           function addAboutDiv(data){
-            var html = data.map((a)=>{
+            var html = `<div class="card"><div class="times">Box Blockl已上线${~~((new Date().valueOf() - new Date("2022-07-29").valueOf()) / 864e5)}天</div><div class="times">最后更新时间：${data[0][0]}</div><div class="times">更多更新说明请访问语雀：<a target="_blank" href="https://www.yuque.com/bcm1086/blt5de/yihmka">https://www.yuque.com/bcm1086/blt5de/yihmka</a></div></div>` + data.map((a)=>{
               var b = ~~((new Date().valueOf() - new Date(a[0]).valueOf()) / 864e5)
               return `<div class="card"><div class="times"><span>${a[0]}</span><text>v${a[1]}</text><font>${!b?"今天":`${b}天前`}</font></span></div><div class="content">${a[2].map((c)=>{
-                var d = ["a4ba80","a1c6c9","dbc693","a4ba80"];
-                var e = ["新增","优化","修复","上线"];
-                return `<div class="ccard"><div class="ck" style="background-color:#${d[c[0]]}">${e[c[0]]}</div><div class="ctext">${c[1]}</div></div>`
+                var d = ["a4ba80","a1c6c9","dbc693","a4ba80","83acff"];
+                var e = ["新增","优化","修复","上线","PS","重大更新","内侧内容"];
+                var f = ["新添加的功能","优化程序出现的问题或加强用户体验","修复出现的bug","上线","补充说明","更新内容超多","预览版内容"];
+                return `<div class="ccard"><div class="ck" style="background-color:#${d[c[0]]}" title="${f[c[0]]}">${e[c[0]]}</div><div class="ctext">${c[1]}</div></div>`
               }).join("")}</div></div>`;
             }).join("");
             return html
@@ -609,12 +626,12 @@
          var div = document.getElementById("aboutDiv");
          var log = document.getElementById("updatalog");
           log.innerHTML=addAboutDiv([
-            ["2022-08-16","1.4",[[2,"修复列表的积木没有显示全的bug"],[0,"菜单栏上线"],[0,"作品可以保存到云端了"],[0,"可以下载作品到本地，也可以打开本地作品"],[0,"“关于”上线"],]],
-            ["2022-08-15","1.3.5",[[2,"修复bug"]]],
-            ["2022-08-15","1.3",[[0,"添加了亿些积木"]]],
-            ["2022-08-15","1.2",[[2,"修复了亿些blockly默认积木的文字显示问题"],[0,"右键菜单（复制等功能）上线"]]],
-            ["2022-08-13","1.1",[[0,"转换代码上线"],[1,"优化界面"]]],
-            ["2022-07-29","1.0",[[3,"项目上线"]]],
+            ["2022-08-16","1.4",[[[2],"修复列表的积木没有显示全的bug"],[[0,5],"菜单栏上线"],[[0],"作品可以保存到云端了"],[[0],"可以下载作品到本地，也可以打开本地作品"],[[0],"“关于”上线"],]],
+            ["2022-08-15","1.3.5",[[[2],"修复bug"]]],
+            ["2022-08-15","1.3",[[[0,5],"添加了一堆积木"]]],
+            ["2022-08-15","1.2",[[[2,5],"修复了blockly默认积木的文字显示问题"],[[0,5],"右键菜单（复制等功能）上线"]]],
+            ["2022-08-13","1.1",[[[0,5],"转换代码上线"],[[1],"优化界面"]]],
+            ["2022-07-29","1.0",[[[3],"项目上线"]]],
           ])
          div.innerHTML = `<div class="upcontent"><div style="display: flex;cursor:pointer;" title="让岛民没有难写的代码！"><img style="width:40px;margin-right:10px;" src="https://box3.codemao.cn/favicon.ico"><h1 style="font-size:27px">Box Blockly</h1></div></div>`
         </script>
