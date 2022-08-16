@@ -578,11 +578,24 @@
          <a class="dialogCloseBtn" title='全屏/还原窗口' href="javascript:dialogBig();" style="border-radius: 0;padding: 4px 19px;"><svg><use xlink:href="#icon-big-dialog"></use></svg></a>
        </div>
       <div class="dialogBody" style="display: flex;flex-direction: column;align-items: center;">
-        <div id="aboutDiv"></div>
+        <div id="aboutDiv">
+          <div class="upcontent">
+            <div style="display: flex;cursor:pointer;margin-top: 20px;margin-bottom: 10px;" title="让岛民没有难写的代码！">
+              <img style="width:40px;margin-right:10px;" src="https://box3.codemao.cn/favicon.ico">
+              <h1 style="font-size:27px;color:var(--theme-button-hover2);">Box Blockly</h1>
+            </div>
+            <div style="font-size: 16px;">一款基于 <a class="link" href="https://github.com/google/blockly" target="_blank">Google Blocky</a> 的<a class="link" target="_blank" href="https://box3.codemao.cn">神奇代码岛（Box3）</a>图形化编辑器</div>
+          </div>
+        </div>
         <div id="updatalog"></div>
         <style>
-          #aboutDiv {user-select:none}
-          #updatalog {font-size: 12px;margin-top: 20px;user-select:none;width: calc(100% - 50px);height: calc(100% - 80px);overflow: auto;}
+          #aboutDiv {user-select:none;}
+          #aboutDiv .upcontent {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+          }
+          #updatalog {font-size: 12px;margin-top: 20px;user-select:none;width: calc(100% - 50px);height: calc(100% - 120px);overflow: auto;}
           #updatalog .card {display:flex;justify-content: flex-start;flex-direction: column;margin-bottom: 20px;}
           #updatalog .card div{display:flex;flex-direction: row;}
           #updatalog .card .times {margin-bottom:5px}
@@ -609,10 +622,24 @@
           #updatalog::-webkit-scrollbar-track {
             background: #0000;
           }
+          a.link{text-decoration: none;color:currentcolor}
+          a.link:hover{text-decoration: underline;}
+          a.link:active{text-decoration: underline;color:#f00}
         </style>
         <script>
           function addAboutDiv(data){
-            var html = `<div class="card"><div class="times">Box Blockly 已上线 ${~~((new Date().valueOf() - new Date("2022-07-29").valueOf()) / 864e5)} 天</div><div class="times">最后更新时间：${data[0][0]}</div><div class="times">更多更新说明请访问语雀：<a target="_blank" href="https://www.yuque.com/bcm1086/blt5de/yihmka">https://www.yuque.com/bcm1086/blt5de/yihmka</a></div></div>` + data.map((a)=>{
+            var shangxianshijian = ~~((new Date().valueOf() - new Date("2022-07-29").valueOf()) / 864e5)
+            var html = 
+`<div class="card"><div class="times">Box Blockly 已上线 ${shangxianshijian} 天</div>
+<div class="times">作者：1086爱编程（<a class="link" href="https://box3.codemao.cn/bcm1086" target="_blank">Box3</a>，<a class="link" href="https://github.com/1086-loves-programming" target="_blank">GitHub</a>，<a class="link" href="https://www.yuque.com/bcm1086" target="_blank">语雀</a>）</div>
+<div class="times">特别鸣谢：</div>
+<div class="times">小宏XeLa（<a class="link" href="https://box3.codemao.cn/codemao2020" target="_blank">Box3</a>，<a class="link" href="https://github.com/xiaohong2022" target="_blank">GitHub</a>，<a class="link" href="https://www.yuque.com/xiaohong2022" target="_blank">语雀</a>）</div>
+<div class="times">广安awa（<a class="link" href="https://box3.codemao.cn/Guangan" target="_blank">Box3</a>，<a class="link" href="https://github.com/Guanganawa" target="_blank">GitHub</a>）</div>
+<div class="times">木水屑（<a class="link" href="https://box3.codemao.cn/mush123" target="_blank">Box3</a>，<a class="link" href="https://github.com/123213123123" target="_blank">GitHub</a>）</div>
+<div class="times">凌cloud（<a class="link" href="https://box3.codemao.cn/LingCloud" target="_blank">Box3</a>）</div>
+<div class="times">最后更新时间：${data[0][0]}</div>
+<div class="times">更多更新说明请访问语雀：<a target="_blank" class="link" href="https://www.yuque.com/bcm1086/blt5de/yihmka">https://www.yuque.com/bcm1086/blt5de/yihmka</a></div>
+</div>` + data.map((a)=>{
               var b = ~~((new Date().valueOf() - new Date(a[0]).valueOf()) / 864e5)
               return `<div class="card"><div class="times"><span>${a[0]}</span><text>v${a[1]}</text><font>${!b?"今天":`${b}天前`}</font></div><div class="content">${a[2].map((c)=>{
                 var d = ["a4ba80","a1c6c9","dbc693","a4ba80","aaa","83acff", "6cf"];
@@ -623,17 +650,15 @@
             }).join("");
             return html;
           };
-         var div = document.getElementById("aboutDiv");
          var log = document.getElementById("updatalog");
           log.innerHTML=addAboutDiv([
-            ["2022-08-16","1.4",[[[2],"修复列表的积木没有显示全的bug"],[[0,5],"菜单栏上线"],[[0],"作品可以保存到云端了"],[[0],"可以下载作品到本地，也可以打开本地作品"],[[0],"“关于”上线"],]],
-            ["2022-08-15","1.3.5",[[[2],"修复bug"]]],
-            ["2022-08-15","1.3",[[[0,5],"添加了一堆积木"]]],
-            ["2022-08-15","1.2",[[[2,5],"修复了blockly默认积木的文字显示问题"],[[0,5],"右键菜单（复制等功能）上线"]]],
-            ["2022-08-13","1.1",[[[0,5],"转换代码上线"],[[1],"优化界面"]]],
-            ["2022-07-29","1.0",[[[3],"项目上线"]]],
+            ["2022-08-16","1.5",[[[2],"修复列表的积木没有显示全的bug。"],[[0,5],"菜单栏上线！"],[[0,5],"作品可以保存到云端了！"],[[0],"可以下载作品到本地，也可以打开本地作品！"],[[0],"“关于”上线."],]],
+            ["2022-08-15","1.3.5",[[[2],"修复bug。"]]],
+            ["2022-08-15","1.3",[[[0,5],"添加了一堆积木。"]]],
+            ["2022-08-15","1.2",[[[2,5],"修复了blockly默认积木的文字显示问题！"],[[0,5],"右键菜单（复制等功能）上线！"]]],
+            ["2022-08-13","1.1",[[[0,5],"转换代码上线。"],[[1],"优化界面。"]]],
+            ["2022-07-29","1.0",[[[3],"项目上线。"]]],
           ])
-         div.innerHTML = `<div class="upcontent"><div style="display: flex;cursor:pointer;" title="让岛民没有难写的代码！"><img style="width:40px;margin-right:10px;" src="https://box3.codemao.cn/favicon.ico"><h1 style="font-size:27px">Box Blockly</h1></div></div>`
         </script>
        </div>
        <script>
@@ -647,7 +672,6 @@ function dialogOpen(){
   setTimeout(()=>{
     dialogn.style.transform = 'scale(1)'
     dialog.style.backgroundColor = '#000a'
-    dialog.style.backdropFilter ='blur(3px)'
     dialogn.style.opacity=1;
   },20)
 }
@@ -656,7 +680,6 @@ function dialogClose(){
   var dialogn = document.getElementsByName("dialog1")[0]
   dialogn.style.transform = 'scale(0.5)'
   dialog.style.backgroundColor = '#0000'
-  dialog.style.backdropFilter ='blur(0px)'
   dialogn.style.opacity = 0;
   setTimeout(()=>{
     document.getElementsByName("dialog")[0].style.display = 'none'
@@ -681,7 +704,6 @@ function dialogBig(){
   width: 100%;
   height: 100%;
   background-color: #0000;
-  backdrop-filter: blur(0px);
   transition-duration: 0.2s;
   color:#000;
   z-index: 999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999;
