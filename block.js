@@ -811,8 +811,7 @@ Blockly.defineBlocksWithJsonArray([
   "colour": 230,
   "tooltip": "运行一些代码",
   "helpUrl": ""
-},
-  {
+},{
   "type": "box3_runcode2",
   "message0": "运行代码 %1",
   "args0": [
@@ -885,9 +884,162 @@ Blockly.defineBlocksWithJsonArray([
   "colour": 230,
   "tooltip": "在控制台里输出一些值",
   "helpUrl": ""
+},
+  {
+  "type": "sql_createtable",
+  "message0": "建造SQL数据表 %1 %2 %3",
+  "args0": [
+    {
+      "type": "field_input",
+      "name": "tn",
+      "text": "player"
+    },
+    {
+      "type": "input_dummy"
+    },
+    {
+      "type": "input_statement",
+      "name": "NAME",
+      "check": "sql_createtable_keys_block"
+    }
+  ],
+  "previousStatement": null,
+  "nextStatement": null,
+  "colour": 230,
+  "tooltip": "建造一个数据表",
+  "helpUrl": "https://docs.box3.codemao.cn/box3databasepreface.html#%E5%88%9B%E5%BB%BA%E8%A1%A8"
+},
+  {
+  "type": "sql_createtable_keys_block",
+  "message0": "键名 %1 类型 %2 不能为空 %3 设为主键 %4 %5 其他配置 %6",
+  "args0": [
+    {
+      "type": "field_input",
+      "name": "kn",
+      "text": "key"
+    },
+    {
+      "type": "field_dropdown",
+      "name": "type",
+      "options": [
+        [
+          "文本",
+          "TEXT"
+        ],
+        [
+          "整数",
+          "INT"
+        ],
+        [
+          "小数",
+          "REAL"
+        ],
+        [
+          "空值",
+          "NULL"
+        ],
+        [
+          "二进制",
+          "BLOB"
+        ],
+        [
+          "其他",
+          "NUMERIC"
+        ]
+      ]
+    },
+    {
+      "type": "field_checkbox",
+      "name": "notnull",
+      "checked": true
+    },
+    {
+      "type": "field_checkbox",
+      "name": "ismain",
+      "checked": false
+    },
+    {
+      "type": "input_dummy"
+    },
+    {
+      "type": "input_statement",
+      "name": "NAME",
+      "check": "sql_createtable_keys_block"
+    }
+  ],
+  "inputsInline": true,
+  "previousStatement": "sql_createtable_keys_block",
+  "nextStatement": "sql_createtable_keys_block",
+  "colour": 230,
+  "tooltip": "",
+  "helpUrl": ""
+},{
+  "type": "sql_createtable_keys_blockxianzhi",
+  "message0": "限制长度 %1",
+  "args0": [
+    {
+      "type": "field_number",
+      "name": "chang",
+      "value": 20,
+      "min": 0
+    }
+  ],
+  "previousStatement": "sql_createtable_keys_block",
+  "nextStatement": "sql_createtable_keys_block",
+  "colour": 230,
+  "tooltip": "",
+  "helpUrl": ""
+},{
+  "type": "sql_createtable_keys_blockmorenzhi",
+  "message0": "如果为空，有默认值 %1",
+  "args0": [
+    {
+      "type": "input_value",
+      "name": "NAME",
+      "check": [
+        "Number",
+        "String"
+      ]
+    }
+  ],
+  "inputsInline": true,
+  "previousStatement": "sql_createtable_keys_block",
+  "nextStatement": "sql_createtable_keys_block",
+  "colour": 230,
+  "tooltip": "",
+  "helpUrl": ""
 }
 ]);
 
+Blockly.JavaScript['sql_createtable_keys_blockmorenzhi'] = function(block) {
+  var value_name = Blockly.JavaScript.valueToCode(block, 'NAME', Blockly.JavaScript.ORDER_ATOMIC);
+  // TODO: Assemble JavaScript into code variable.
+  var code = ` DEFAULT ${value_name}`;
+  return code;
+};
+Blockly.JavaScript['sql_createtable_keys_blockxianzhi'] = function(block) {
+  var number_chang = block.getFieldValue('chang');
+  // TODO: Assemble JavaScript into code variable.
+  var code = ` CHAR(${number_chang})`;
+  return code;
+};
+Blockly.JavaScript['sql_createtable_keys_block'] = function(block) {
+  var text_kn = block.getFieldValue('kn');
+  var dropdown_type = block.getFieldValue('type');
+  var checkbox_notnull = block.getFieldValue('notnull') == 'TRUE';
+  var checkbox_ismain = block.getFieldValue('ismain') == 'TRUE';
+  var statements_name = Blockly.JavaScript.statementToCode(block, 'NAME');
+  // TODO: Assemble JavaScript into code variable.
+  var code = `,\n"${text_kn}" ${dropdown_type}${checkbox_notnull?" NOT NULL":""}${checkbox_ismain?" PRIMARY KEY UNIQUE":""}${statements_name}`;
+  return code;
+};
+Blockly.JavaScript['sql_createtable'] = function(block) {
+  var text_tn = block.getFieldValue('tn');
+  var statements_name = Blockly.JavaScript.statementToCode(block, 'NAME');
+  // TODO: Assemble JavaScript into code variable.
+  var code = `db.sql\`CREATE TABLE IF NOT EXISTS "${text_tn}" (${statements_name.substring(1)})\`;\n`;
+  return code;
+};
 Blockly.JavaScript['console_clear'] = function(block) {
   // TODO: Assemble JavaScript into code variable.
   var code = 'console.clear();\n';
