@@ -354,7 +354,6 @@
         <block type="text_getSubstring"><mutation at1="true" at2="true"/><field name="WHERE1">FROM_START</field><field name="WHERE2">FROM_START</field><value name="STRING"><block type="variables_get"><field name="VAR" id="o(H,3vpcGU*(B$;@WJos">text</field></block></value></block>
         <block type="text_changeCase"><field name="CASE">UPPERCASE</field><value name="TEXT"><block type="text"><field name="TEXT">abc</field></block></value></block>
         <block type="text_trim"><field name="MODE">BOTH</field><value name="TEXT"><block type="text"><field name="TEXT">abc</field></block></value></block>
-        <block type="text_prompt_ext"><mutation type="TEXT"/><field name="TYPE">TEXT</field><value name="TEXT"><block type="text"><field name="TEXT">abc</field></block></value></block>
       </category>
       <category name="变量" expanded="true" colour="#a55b80" custom="VARIABLE"></category>
       <category name="列表" expanded="true" colour="#745ba5">
@@ -432,7 +431,12 @@
         
       </category>
       <category name="数据库" colour="#5b67a5">
-        <label text="数据库"></label>
+        <label text="建造表格"></label>
+        <block type="sql_createtable"></block>
+        <block type="sql_createtable_keys_block"></block>
+        <block type="sql_createtable_keys_blockxianzhi"></block>
+        <block type="sql_createtable_keys_blockmorenzhi"></block>
+        <label text="敬请期待！"></label>
       </category>
     </xml>
     <script>
@@ -510,9 +514,6 @@
         document.getElementsByClassName(
           "blocklyScrollbarHorizontal"
         )[0].style.transform = `translate(80.5px, calc(${h}px - 15px))`;
-        document.getElementsByClassName(
-          "blocklySvg"
-        )[0].attributes.height.value=`${h}px`;
       }, 1);
       const openfile = ()=>{
         if(document.getElementById("OpenFileSetting")){
