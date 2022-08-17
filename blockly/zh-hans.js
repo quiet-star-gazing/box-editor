@@ -1,9 +1,7 @@
-// This file was automatically generated.  Do not modify.
-
-'use strict';
-
+//建造一个对象
 const messages = Object.create(null);
 
+//写入消息
 messages["ADD_COMMENT"] = "添加注释";
 messages["CANNOT_DELETE_VARIABLE_PROCEDURE"] = "不能删除变量“%1”，因为它是函数“%2”定义的一部分";
 messages["CHANGE_VALUE_TITLE"] = "更改值：";
@@ -414,8 +412,9 @@ messages["PROCEDURES_DEFRETURN_TITLE"] = messages["PROCEDURES_DEFNORETURN_TITLE"
 messages["TEXT_APPEND_VARIABLE"] = messages["VARIABLES_DEFAULT_NAME"];
 messages["TEXT_CREATE_JOIN_ITEM_TITLE_ITEM"] = messages["VARIABLES_DEFAULT_NAME"];
 
+//积木颜色
 messages["MATH_HUE"] = "230";
-messages["LOOPS_HUE"] = "120";
+messages["LOOPS_HUE"] = "210";
 messages["LISTS_HUE"] = "260";
 messages["LOGIC_HUE"] = "210";
 messages["VARIABLES_HUE"] = "330";
@@ -424,4 +423,5 @@ messages["PROCEDURES_HUE"] = "290";
 messages["COLOUR_HUE"] = "20";
 messages["VARIABLES_DYNAMIC_HUE"] = "310";
 
-Object.assign(Blockly.Msg,messages);
+//把上面的东西全搞到Blockly.Msg里面
+Object.assign(Blockly.Msg, messages);
