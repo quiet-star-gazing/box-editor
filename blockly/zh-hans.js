@@ -423,3 +423,5 @@ messages["TEXTS_HUE"] = "160";
 messages["PROCEDURES_HUE"] = "290";
 messages["COLOUR_HUE"] = "20";
 messages["VARIABLES_DYNAMIC_HUE"] = "310";
+
+Object.assign(Blockly.Msg,messages);
