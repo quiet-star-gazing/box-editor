@@ -325,20 +325,8 @@
         <block type="controls_flow_statements" colour="#8ca6c0"></block>
         <block type="box3_sleep"><value name="object"><block type="math_number"><field name="NUM">1</field></block></value></block>
       </category>
-      <category name="字符串" expanded="true" colour="#5ba58c">
-        <block type="text"></block>
-        <block type="text_join"><mutation items="2"></block>
-        <block type="text_append"><value name="TEXT"><block type="text"><field name="TEXT"/></block></value></block>
-        <block type="text_length"><value name="MESSAGE"><block type="text"><field name="TEXT">abc</field></block></value></block>
-        <block type="text_isEmpty"><value name="MESSAGE"><block type="text"><field name="TEXT"></field></block></value></block>
-        <block type="text_indexOf"><field name="END">FIRST</field><value name="VALUE"><block type="variables_get"><field name="VAR" id="o(H,3vpcGU*(B$;@WJos">text</field></block></value><value name="FIND"><block type="text"><field name="TEXT">abc</field></block></value></block>
-        <block type="text_charAt"><mutation at="true"/><field name="WHERE">FROM_START</field><value name="VALUE"><block type="variables_get"><field name="VAR" id="o(H,3vpcGU*(B$;@WJos">text</field></block></value></block>
-        <block type="text_getSubstring"><mutation at1="true" at2="true"/><field name="WHERE1">FROM_START</field><field name="WHERE2">FROM_START</field><value name="STRING"><block type="variables_get"><field name="VAR" id="o(H,3vpcGU*(B$;@WJos">text</field></block></value></block>
-        <block type="text_changeCase"><field name="CASE">UPPERCASE</field><value name="TEXT"><block type="text"><field name="TEXT">abc</field></block></value></block>
-        <block type="text_trim"><field name="MODE">BOTH</field><value name="TEXT"><block type="text"><field name="TEXT">abc</field></block></value></block>
-        <block type="text_prompt_ext"><mutation type="TEXT"/><field name="TYPE">TEXT</field><value name="TEXT"><block type="text"><field name="TEXT">abc</field></block></value></block>
-      </category>
       <category name="运算" expanded="true" colour="#5b67a5">
+        <label text="数学"></label>
         <block type="math_number"></block>
         <block type="math_arithmetic"><value name="A"><block type="math_number"><field name="NUM">1</field></block></value><value name="B"><block type="math_number"><field name="NUM">1</field></block></value></block>
         <block type="math_single"><field name="OP">ROOT</field><value name="NUM"><block type="math_number"><field name="NUM">9</field></block></value></block>
@@ -351,13 +339,24 @@
         <block type="math_constrain"><value name="VALUE"><block type="math_number"><field name="NUM">50</field></block></value><value name="LOW"><block type="math_number"><field name="NUM">1</field></block></value><value name="HIGH"><block type="math_number"><field name="NUM">100</field></block></value></block>
         <block type="math_random_int"><value name="FROM"><block type="math_number"><field name="NUM">1</field></block></value><value name="TO"><block type="math_number"><field name="NUM">100</field></block></value></block>
         <block type="math_random_float"></block>
-      </category>
-      <category name="逻辑" expanded="true" colour="#5b80a5">
+        <label text="逻辑"></label>
         <block type="logic_compare"></block>
         <block type="logic_operation"></block>
         <block type="logic_boolean"></block>
         <block type="logic_null">
         <block type="logic_ternary">
+        <label text="字串符"></label>
+        <block type="text"></block>
+        <block type="text_join"><mutation items="2"></block>
+        <block type="text_append"><value name="TEXT"><block type="text"><field name="TEXT"/></block></value></block>
+        <block type="text_length"><value name="MESSAGE"><block type="text"><field name="TEXT">abc</field></block></value></block>
+        <block type="text_isEmpty"><value name="MESSAGE"><block type="text"><field name="TEXT"></field></block></value></block>
+        <block type="text_indexOf"><field name="END">FIRST</field><value name="VALUE"><block type="variables_get"><field name="VAR" id="o(H,3vpcGU*(B$;@WJos">text</field></block></value><value name="FIND"><block type="text"><field name="TEXT">abc</field></block></value></block>
+        <block type="text_charAt"><mutation at="true"/><field name="WHERE">FROM_START</field><value name="VALUE"><block type="variables_get"><field name="VAR" id="o(H,3vpcGU*(B$;@WJos">text</field></block></value></block>
+        <block type="text_getSubstring"><mutation at1="true" at2="true"/><field name="WHERE1">FROM_START</field><field name="WHERE2">FROM_START</field><value name="STRING"><block type="variables_get"><field name="VAR" id="o(H,3vpcGU*(B$;@WJos">text</field></block></value></block>
+        <block type="text_changeCase"><field name="CASE">UPPERCASE</field><value name="TEXT"><block type="text"><field name="TEXT">abc</field></block></value></block>
+        <block type="text_trim"><field name="MODE">BOTH</field><value name="TEXT"><block type="text"><field name="TEXT">abc</field></block></value></block>
+        <block type="text_prompt_ext"><mutation type="TEXT"/><field name="TYPE">TEXT</field><value name="TEXT"><block type="text"><field name="TEXT">abc</field></block></value></block>
       </category>
       <category name="变量" expanded="true" colour="#a55b80" custom="VARIABLE"></category>
       <category name="列表" expanded="true" colour="#745ba5">
@@ -386,7 +385,7 @@
         <block type="object_isfreeze"></block>
       </category>
       <category name="函数" expanded="true" colour="#995ba5" custom="PROCEDURE"></category>
-      <sep/>
+          <sep></sep>
       <category name="世界" expanded="true" colour="#5b67a5">
         <block type="world_projectname"></block>
         <block type="world_url"></block>
@@ -410,7 +409,7 @@
       <category name="玩家" expanded="true" colour="#6d5ba5">
         
       </category>
-      <sep/>
+          <sep></sep>
       <category name="Box3" expanded="true" colour="#a56d5b">
         <label text="代码（Code）"></label>
         <block type="box3_runcode1"></block>
