@@ -811,7 +811,8 @@ Blockly.defineBlocksWithJsonArray([
   "colour": 230,
   "tooltip": "运行一些代码",
   "helpUrl": ""
-},{
+},
+  {
   "type": "box3_runcode2",
   "message0": "运行代码 %1",
   "args0": [
