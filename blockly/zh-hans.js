@@ -1,3 +1,5 @@
+//This document was changed by XiaohongXela2022.
+
 //建造一个对象
 const messages = Object.create(null);
 
