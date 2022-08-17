@@ -1037,7 +1037,7 @@ Blockly.JavaScript['sql_createtable'] = function(block) {
   var text_tn = block.getFieldValue('tn');
   var statements_name = Blockly.JavaScript.statementToCode(block, 'NAME');
   // TODO: Assemble JavaScript into code variable.
-  var code = `db.sql\`CREATE TABLE IF NOT EXISTS "${text_tn}" (${statements_name.slice(3)})\n\`;\n`;
+  var code = `db.sql\`CREATE TABLE IF NOT EXISTS "${text_tn}" (${statements_name.slice(3)}\n)\`;\n`;
   return code;
 };
 Blockly.JavaScript['console_clear'] = function(block) {
