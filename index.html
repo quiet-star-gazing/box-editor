@@ -507,7 +507,7 @@
       workspace.addChangeListener(myUpdateFunction);
       setInterval(() => {
         var h = document.documentElement.clientHeight;
-        h -= 86;
+        h -= 80;
         document.getElementById("bcodeshow").style.height = String(h + "px");
         document.getElementsByClassName(
           "blocklyScrollbarHorizontal"
@@ -515,7 +515,6 @@
         document.getElementsByClassName(
           "blocklySvg"
         )[0].attributes.height.value=`${h}px`;
-        document.getElementById("blocklyDiv").style.height = String(h + "px");
       }, 1);
       const openfile = ()=>{
         if(document.getElementById("OpenFileSetting")){
