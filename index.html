@@ -343,8 +343,8 @@
         <block type="logic_compare"></block>
         <block type="logic_operation"></block>
         <block type="logic_boolean"></block>
-        <block type="logic_null">
-        <block type="logic_ternary">
+        <block type="logic_null"></block>
+        <block type="logic_ternary"></block>
         <label text="字串符"></label>
         <block type="text"></block>
         <block type="text_join"><mutation items="2"></block>
@@ -507,7 +507,7 @@
       workspace.addChangeListener(myUpdateFunction);
       setInterval(() => {
         var h = document.documentElement.clientHeight;
-        h -= 67.78;
+        h -= 100;
         document.getElementById("bcodeshow").style.height = String(h + "px");
         document.getElementsByClassName(
           "blocklyScrollbarHorizontal"
