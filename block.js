@@ -1030,7 +1030,7 @@ Blockly.JavaScript['sql_createtable_keys_block'] = function(block) {
   var checkbox_ismain = block.getFieldValue('ismain') == 'TRUE';
   var statements_name = Blockly.JavaScript.statementToCode(block, 'NAME');
   // TODO: Assemble JavaScript into code variable.
-  var code = `,\n"${text_kn}" ${checkbox_ismain?" PRIMARY KEY UNIQUE":""} ${statements_name.slice(3)}${dropdown_type}${checkbox_notnull?" NOT NULL":""}`;
+  var code = `,\n"${text_kn}" ${dropdown_type} ${statements_name.slice(3)}${checkbox_ismain?" PRIMARY KEY UNIQUE":""}${checkbox_notnull?" NOT NULL":""}`;
   return code;
 };
 Blockly.JavaScript['sql_createtable'] = function(block) {
