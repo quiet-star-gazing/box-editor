@@ -1,4 +1,4 @@
-# Box blockly
+# <img style="width:40px;margin-right:10px;" src="https://box3.codemao.cn/favicon.ico"> Box blockly
 为box3制作的图形化
 基于 Google Blockly
 ## 当前版本：V0.1.0 Build20220813
