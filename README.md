@@ -1,4 +1,4 @@
-# <div style="display: flex;cursor:pointer;margin-top: 20px;margin-bottom: 10px;flex-direction: row;" title="让岛民没有难写的代码！"><img style="width:40px;margin-right:10px;" src="https://box3.codemao.cn/favicon.ico"><div style="color:var(--theme-button-hover2);">Box Blockly</div></div>
+# <img style="width:40px;margin-right:10px;" src="https://box3.codemao.cn/favicon.ico">Box Blockly</div>
 为box3制作的图形化
 基于 Google Blockly
 ## 作者&合作者：
