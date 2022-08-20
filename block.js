@@ -1008,9 +1008,219 @@ Blockly.defineBlocksWithJsonArray([
   "colour": 230,
   "tooltip": "",
   "helpUrl": ""
-}
+},{
+  "type": "box3_vector",
+  "message0": "Box3向量 X %1 Y %2 Z %3",
+  "args0": [
+    {
+      "type": "input_value",
+      "name": "x",
+      "check": "Number"
+    },
+    {
+      "type": "input_value",
+      "name": "y",
+      "check": "Number"
+    },
+    {
+      "type": "input_value",
+      "name": "z",
+      "check": "Number"
+    }
+  ],
+  "inputsInline": true,
+  "output": "Box3Vector3",
+  "colour": 120,
+  "tooltip": "box3向量",
+  "helpUrl": "https://docs.box3.codemao.cn/box3vector3.html"
+},{
+  "type": "box3_bounds",
+  "message0": "Box3区域 最小 %1 最大 %2",
+  "args0": [
+    {
+      "type": "input_value",
+      "name": "x",
+      "check": "Box3Vector3"
+    },
+    {
+      "type": "input_value",
+      "name": "y",
+      "check": "Box3Vector3"
+    }
+  ],
+  "inputsInline": true,
+  "output": "Box3Bounds3",
+  "colour": 120,
+  "tooltip": "box3区域",
+  "helpUrl": "https://docs.box3.codemao.cn/box3bounds3.html"
+},{
+  "type": "box3_quaternion",
+  "message0": "Box3四元数 W %1 X %2 Y %3 Z %4",
+  "args0": [
+    {
+      "type": "input_value",
+      "name": "w",
+      "check": "Number"
+    },
+    {
+      "type": "input_value",
+      "name": "x",
+      "check": "Number"
+    },
+    {
+      "type": "input_value",
+      "name": "y",
+      "check": "Number"
+    },
+    {
+      "type": "input_value",
+      "name": "z",
+      "check": "Number"
+    }
+  ],
+  "inputsInline": true,
+  "output": "Box3Quaternion",
+  "colour": 160,
+  "tooltip": "box3四元数",
+  "helpUrl": "https://docs.box3.codemao.cn/box3quaternion.html"
+},{
+  "type": "box3_rgbcolor",
+  "message0": "Box3rgb颜色 r %1 g %2 b %3",
+  "args0": [
+    {
+      "type": "input_value",
+      "name": "r",
+      "check": "Number"
+    },
+    {
+      "type": "input_value",
+      "name": "g",
+      "check": "Number"
+    },
+    {
+      "type": "input_value",
+      "name": "b",
+      "check": "Number"
+    }
+  ],
+  "inputsInline": true,
+  "output": "Box3RGBColor",
+  "colour": 0,
+  "tooltip": "box3rgb颜色",
+  "helpUrl": ""
+},{
+  "type": "box3_rgbacolor",
+  "message0": "Box3rgba颜色 r %1 g %2 b %3 透明度 %4",
+  "args0": [
+    {
+      "type": "input_value",
+      "name": "r",
+      "check": "Number"
+    },
+    {
+      "type": "input_value",
+      "name": "g",
+      "check": "Number"
+    },
+    {
+      "type": "input_value",
+      "name": "b",
+      "check": "Number"
+    },
+    {
+      "type": "input_value",
+      "name": "a",
+      "check": "Number"
+    }
+  ],
+  "inputsInline": true,
+  "output": "Box3RGBAColor",
+  "colour": 0,
+  "tooltip": "box3rgba颜色",
+  "helpUrl": ""
+},{
+  "type": "box3_soundeffect",
+  "message0": "Box3音效 音频名字 %1 音量 %2 播放速度 %3",
+  "args0": [
+    {
+      "type": "field_input",
+      "name": "s",
+      "text": "bgm.mp3"
+    },
+    {
+      "type": "input_value",
+      "name": "d",
+      "check": "Number"
+    },
+    {
+      "type": "input_value",
+      "name": "g",
+      "check": "Number"
+    }
+  ],
+  "inputsInline": true,
+  "output": "Object",
+  "colour": 120,
+  "tooltip": "box3音效",
+  "helpUrl": ""
+},
 ]);
 
+Blockly.JavaScript['box3_soundeffect'] = function(block) {
+  var s = Blockly.JavaScript.valueToCode(block, 's', Blockly.JavaScript.ORDER_ATOMIC);
+  var d = Blockly.JavaScript.valueToCode(block, 'd', Blockly.JavaScript.ORDER_ATOMIC);
+  var g = Blockly.JavaScript.valueToCode(block, 'g', Blockly.JavaScript.ORDER_ATOMIC);
+  // TODO: Assemble JavaScript into code variable.
+  var code = `{sample:"audio/${s}",gain:${d},pitch:${g}}`;
+  // TODO: Change ORDER_NONE to the correct strength.
+  return [code, Blockly.JavaScript.ORDER_NONE];
+};
+Blockly.JavaScript['box3_rgbacolor'] = function(block) {
+  var r = Blockly.JavaScript.valueToCode(block, 'r', Blockly.JavaScript.ORDER_ATOMIC);
+  var g = Blockly.JavaScript.valueToCode(block, 'g', Blockly.JavaScript.ORDER_ATOMIC);
+  var b = Blockly.JavaScript.valueToCode(block, 'b', Blockly.JavaScript.ORDER_ATOMIC);
+  var a = Blockly.JavaScript.valueToCode(block, 'a', Blockly.JavaScript.ORDER_ATOMIC);
+  // TODO: Assemble JavaScript into code variable.
+  var code = `new Box3RGBAColor(${r},${g},${b},${a})`;
+  // TODO: Change ORDER_NONE to the correct strength.
+  return [code, Blockly.JavaScript.ORDER_NONE];
+};
+Blockly.JavaScript['box3_rgbcolor'] = function(block) {
+  var r = Blockly.JavaScript.valueToCode(block, 'r', Blockly.JavaScript.ORDER_ATOMIC);
+  var g = Blockly.JavaScript.valueToCode(block, 'g', Blockly.JavaScript.ORDER_ATOMIC);
+  var b = Blockly.JavaScript.valueToCode(block, 'b', Blockly.JavaScript.ORDER_ATOMIC);
+  // TODO: Assemble JavaScript into code variable.
+  var code = `new Box3RGBColor(${r},${g},${b})`;
+  // TODO: Change ORDER_NONE to the correct strength.
+  return [code, Blockly.JavaScript.ORDER_NONE];
+};
+Blockly.JavaScript['box3_quaternion'] = function(block) {
+  var w = Blockly.JavaScript.valueToCode(block, 'w', Blockly.JavaScript.ORDER_ATOMIC);
+  var x = Blockly.JavaScript.valueToCode(block, 'x', Blockly.JavaScript.ORDER_ATOMIC);
+  var y = Blockly.JavaScript.valueToCode(block, 'y', Blockly.JavaScript.ORDER_ATOMIC);
+  var z = Blockly.JavaScript.valueToCode(block, 'z', Blockly.JavaScript.ORDER_ATOMIC);
+  // TODO: Assemble JavaScript into code variable.
+  var code = `new Box3Quaternion(${w},${x},${y},${z})`;
+  // TODO: Change ORDER_NONE to the correct strength.
+  return [code, Blockly.JavaScript.ORDER_NONE];
+};
+Blockly.JavaScript['box3_bounds'] = function(block) {
+  var x = Blockly.JavaScript.valueToCode(block, 'x', Blockly.JavaScript.ORDER_ATOMIC);
+  var y = Blockly.JavaScript.valueToCode(block, 'y', Blockly.JavaScript.ORDER_ATOMIC);
+  // TODO: Assemble JavaScript into code variable.
+  var code = `new Box3Bounds3(${x},${y})`;
+  // TODO: Change ORDER_NONE to the correct strength.
+  return [code, Blockly.JavaScript.ORDER_NONE];
+};
+Blockly.JavaScript['box3_vector'] = function(block) {
+  var x = Blockly.JavaScript.valueToCode(block, 'x', Blockly.JavaScript.ORDER_ATOMIC);
+  var y = Blockly.JavaScript.valueToCode(block, 'y', Blockly.JavaScript.ORDER_ATOMIC);
+  var z = Blockly.JavaScript.valueToCode(block, 'z', Blockly.JavaScript.ORDER_ATOMIC);
+  // TODO: Assemble JavaScript into code variable.
+  var code = `new Box3Vector3(${x},${y},${z})`;
+  // TODO: Change ORDER_NONE to the correct strength.
+  return [code, Blockly.JavaScript.ORDER_NONE];
+};
 Blockly.JavaScript['sql_createtable_keys_blockmorenzhi'] = function(block) {
   var value_name = Blockly.JavaScript.valueToCode(block, 'NAME', Blockly.JavaScript.ORDER_ATOMIC);
   // TODO: Assemble JavaScript into code variable.
