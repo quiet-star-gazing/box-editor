@@ -1163,9 +1163,296 @@ Blockly.defineBlocksWithJsonArray([
   "colour": 120,
   "tooltip": "box3音效",
   "helpUrl": "https://docs.box3.codemao.cn/box3soundeffect.html"
-},
+},{
+  "type": "player_directmessage",
+  "message0": "向玩家 %1 发送私信 %2",
+  "args0": [
+    {
+      "type": "input_value",
+      "name": "p",
+      "check": "Object"
+    },
+    {
+      "type": "input_value",
+      "name": "m",
+      "check": "String"
+    }
+  ],
+  "inputsInline": true,
+  "previousStatement": null,
+  "nextStatement": null,
+  "colour": 260,
+  "tooltip": "向某个玩家发送私信",
+  "helpUrl": ""
+},{
+  "type": "player_muted",
+  "message0": "设置玩家 %1 禁言为 %2",
+  "args0": [
+    {
+      "type": "input_value",
+      "name": "p",
+      "check": "Object"
+    },
+    {
+      "type": "field_dropdown",
+      "name": "t",
+      "options": [
+        [
+          "开启",
+          "true"
+        ],
+        [
+          "关闭",
+          "false"
+        ]
+      ]
+    }
+  ],
+  "inputsInline": true,
+  "previousStatement": null,
+  "nextStatement": null,
+  "colour": 260,
+  "tooltip": "设置玩家禁言",
+  "helpUrl": ""
+},{
+  "type": "player_invisible",
+  "message0": "设置玩家 %1 的隐身为 %2",
+  "args0": [
+    {
+      "type": "input_value",
+      "name": "p",
+      "check": "Object"
+    },
+    {
+      "type": "field_dropdown",
+      "name": "t",
+      "options": [
+        [
+          "开启",
+          "true"
+        ],
+        [
+          "关闭",
+          "false"
+        ]
+      ]
+    }
+  ],
+  "inputsInline": true,
+  "previousStatement": null,
+  "nextStatement": null,
+  "colour": 260,
+  "tooltip": "设置玩家隐身",
+  "helpUrl": ""
+},{
+  "type": "player_showname",
+  "message0": "设置玩家 %1 的名字显示为 %2",
+  "args0": [
+    {
+      "type": "input_value",
+      "name": "p",
+      "check": "Object"
+    },
+    {
+      "type": "field_dropdown",
+      "name": "t",
+      "options": [
+        [
+          "开启",
+          "true"
+        ],
+        [
+          "关闭",
+          "false"
+        ]
+      ]
+    }
+  ],
+  "inputsInline": true,
+  "previousStatement": null,
+  "nextStatement": null,
+  "colour": 260,
+  "tooltip": "设置玩家名字显示",
+  "helpUrl": ""
+},{
+  "type": "player_scale",
+  "message0": "设置玩家 %1 的大小为 %2",
+  "args0": [
+    {
+      "type": "input_value",
+      "name": "p",
+      "check": "Object"
+    },
+    {
+      "type": "input_value",
+      "name": "s",
+      "check": "Number"
+    }
+  ],
+  "inputsInline": true,
+  "previousStatement": null,
+  "nextStatement": null,
+  "colour": 260,
+  "tooltip": "设置玩家大小",
+  "helpUrl": ""
+},{
+  "type": "player_metalness",
+  "message0": "设置玩家 %1 的金属感为 %2",
+  "args0": [
+    {
+      "type": "input_value",
+      "name": "p",
+      "check": "Object"
+    },
+    {
+      "type": "input_value",
+      "name": "s",
+      "check": "Number"
+    }
+  ],
+  "inputsInline": true,
+  "previousStatement": null,
+  "nextStatement": null,
+  "colour": 260,
+  "tooltip": "设置玩家金属感",
+  "helpUrl": ""
+},{
+  "type": "player_emissive",
+  "message0": "设置玩家 %1 的荧光度为 %2",
+  "args0": [
+    {
+      "type": "input_value",
+      "name": "p",
+      "check": "Object"
+    },
+    {
+      "type": "input_value",
+      "name": "s",
+      "check": "Number"
+    }
+  ],
+  "inputsInline": true,
+  "previousStatement": null,
+  "nextStatement": null,
+  "colour": 260,
+  "tooltip": "设置玩家荧光度",
+  "helpUrl": ""
+},{
+  "type": "player_shininess",
+  "message0": "设置玩家 %1 的反光度为 %2",
+  "args0": [
+    {
+      "type": "input_value",
+      "name": "p",
+      "check": "Object"
+    },
+    {
+      "type": "input_value",
+      "name": "s",
+      "check": "Number"
+    }
+  ],
+  "inputsInline": true,
+  "previousStatement": null,
+  "nextStatement": null,
+  "colour": 260,
+  "tooltip": "设置玩家反光度",
+  "helpUrl": ""
+},{
+  "type": "player_color",
+  "message0": "设置玩家 %1 的颜色为 %2",
+  "args0": [
+    {
+      "type": "input_value",
+      "name": "p",
+      "check": "Object"
+    },
+    {
+      "type": "input_value",
+      "name": "s",
+      "check": "Box3RGBColor"
+    }
+  ],
+  "inputsInline": true,
+  "previousStatement": null,
+  "nextStatement": null,
+  "colour": 260,
+  "tooltip": "设置玩家颜色",
+  "helpUrl": ""
+}
 ]);
 
+
+Blockly.JavaScript['player_color'] = function(block) {
+  var p = Blockly.JavaScript.valueToCode(block, 'p', Blockly.JavaScript.ORDER_ATOMIC);
+  var s = Blockly.JavaScript.valueToCode(block, 's', Blockly.JavaScript.ORDER_ATOMIC);
+  // TODO: Assemble JavaScript into code variable.
+  var code = `${p}.player.color = ${s};\n`;
+  return code;
+};
+
+
+Blockly.JavaScript['player_shininess'] = function(block) {
+  var p = Blockly.JavaScript.valueToCode(block, 'p', Blockly.JavaScript.ORDER_ATOMIC);
+  var s = Blockly.JavaScript.valueToCode(block, 's', Blockly.JavaScript.ORDER_ATOMIC);
+  // TODO: Assemble JavaScript into code variable.
+  var code = `${p}.player.shininess = ${s};\n`;
+  return code;
+};
+
+Blockly.JavaScript['player_emissive'] = function(block) {
+  var p = Blockly.JavaScript.valueToCode(block, 'p', Blockly.JavaScript.ORDER_ATOMIC);
+  var s = Blockly.JavaScript.valueToCode(block, 's', Blockly.JavaScript.ORDER_ATOMIC);
+  // TODO: Assemble JavaScript into code variable.
+  var code = `${p}.player.emissive = ${s};\n`;
+  return code;
+};
+
+
+Blockly.JavaScript['player_metalness'] = function(block) {
+  var p = Blockly.JavaScript.valueToCode(block, 'p', Blockly.JavaScript.ORDER_ATOMIC);
+  var s = Blockly.JavaScript.valueToCode(block, 's', Blockly.JavaScript.ORDER_ATOMIC);
+  // TODO: Assemble JavaScript into code variable.
+  var code = `${p}.player.metalness = ${s};\n`;
+  return code;
+};
+
+Blockly.JavaScript['player_scale'] = function(block) {
+  var p = Blockly.JavaScript.valueToCode(block, 'p', Blockly.JavaScript.ORDER_ATOMIC);
+  var s = Blockly.JavaScript.valueToCode(block, 's', Blockly.JavaScript.ORDER_ATOMIC);
+  // TODO: Assemble JavaScript into code variable.
+  var code = `${p}.player.scale = ${s};\n`;
+  return code;
+};
+Blockly.JavaScript['player_showname'] = function(block) {
+  var p = Blockly.JavaScript.valueToCode(block, 'p', Blockly.JavaScript.ORDER_ATOMIC);
+  var dropdown_t = block.getFieldValue('t');
+  // TODO: Assemble JavaScript into code variable.
+  var code = `${p}.player.showName = ${dropdown_t};\n`;
+  return code;
+};
+
+Blockly.JavaScript['player_invisible'] = function(block) {
+  var p = Blockly.JavaScript.valueToCode(block, 'p', Blockly.JavaScript.ORDER_ATOMIC);
+  var dropdown_t = block.getFieldValue('t');
+  // TODO: Assemble JavaScript into code variable.
+  var code = `${p}.player.invisible = ${dropdown_t};\n`;
+  return code;
+};
+Blockly.JavaScript['player_muted'] = function(block) {
+  var p = Blockly.JavaScript.valueToCode(block, 'p', Blockly.JavaScript.ORDER_ATOMIC);
+  var dropdown_t = block.getFieldValue('t');
+  // TODO: Assemble JavaScript into code variable.
+  var code = `{p}.player.muted = ${dropdown_t};\n`;
+  return code;
+};
+Blockly.JavaScript['player_directmessage'] = function(block) {
+  var p = Blockly.JavaScript.valueToCode(block, 'p', Blockly.JavaScript.ORDER_ATOMIC);
+  var m = Blockly.JavaScript.valueToCode(block, 'm', Blockly.JavaScript.ORDER_ATOMIC);
+  // TODO: Assemble JavaScript into code variable.
+  var code = `${p}.player.directMessage(${m});\n`;
+  return code;
+};
 Blockly.JavaScript['box3_sound'] = function(block) {
   var s = block.getFieldValue('s');
   var d = Blockly.JavaScript.valueToCode(block, 'd', Blockly.JavaScript.ORDER_ATOMIC);
