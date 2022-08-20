@@ -416,16 +416,16 @@
         <block type="console_clear"></block>
         <block type="console_log"></block>
         <label text="向量（Box3Vector3）"></label>
-        <block type="box3_vector"></block>
+        <block type="box3_vector"><value name="x"><block type="math_number"><field name="NUM">0</field></block></value><value name="y"><block type="math_number"><field name="NUM">0</field></block></value><value name="z"><block type="math_number"><field name="NUM">0</field></block></value></block>
         <label text="区域（Box3Bounds3）"></label>
-        <block type="box3_bounds"></block>
+        <block type="box3_bounds"><value name="x"><block type="box3_vector"></block></value><value name="y"><block type="box3_vector"></block></value></block>
         <label text="四元数（Box3Quaternion）"></label>
-        <block type="box3_quaternion"></block>
+        <block type="box3_quaternion"><value name="w"><block type="math_number"><field name="NUM">0</field></block></value><value name="x"><block type="math_number"><field name="NUM">0</field></block></value><value name="y"><block type="math_number"><field name="NUM">0</field></block></value><value name="z"><block type="math_number"><field name="NUM">1</field></block></value></block>
         <label text="色彩（Box3RGBAColor）"></label>
-        <block type="box3_rgbcolor"></block>
-        <block type="box3_rgbacolor"></block>
+        <block type="box3_rgbcolor"><value name="r"><block type="math_number"><field name="NUM">1</field></block></value><value name="g"><block type="math_number"><field name="NUM">1</field></block></value><value name="b"><block type="math_number"><field name="NUM">1</field></block></value></block>
+        <block type="box3_rgbacolor"><value name="r"><block type="math_number"><field name="NUM">1</field></block></value><value name="g"><block type="math_number"><field name="NUM">1</field></block></value><value name="b"><block type="math_number"><field name="NUM">1</field></block></value><value name="a"><block type="math_number"><field name="NUM">1</field></block></value></block>
         <label text="音效（Box3SoundEffect）"></label>
-        <block type="box3_sound"></block>
+        <block type="box3_sound"><value name="d"><block type="math_number"><field name="NUM">100</field></block></value><value name="g"><block type="math_number"><field name="NUM">1</field></block></value></block>
       </category>
       <category name="其他" expanded="true" colour="#5ba55b">
         
