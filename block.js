@@ -1139,7 +1139,7 @@ Blockly.defineBlocksWithJsonArray([
   "tooltip": "box3rgba颜色",
   "helpUrl": ""
 },{
-  "type": "box3_soundeffect",
+  "type": "box3_sound",
   "message0": "Box3音效 音频名字 %1 音量 %2 播放速度 %3",
   "args0": [
     {
@@ -1166,7 +1166,7 @@ Blockly.defineBlocksWithJsonArray([
 },
 ]);
 
-Blockly.JavaScript['box3_soundeffect'] = function(block) {
+Blockly.JavaScript['box3_sound'] = function(block) {
   var s = Blockly.JavaScript.valueToCode(block, 's', Blockly.JavaScript.ORDER_ATOMIC);
   var d = Blockly.JavaScript.valueToCode(block, 'd', Blockly.JavaScript.ORDER_ATOMIC);
   var g = Blockly.JavaScript.valueToCode(block, 'g', Blockly.JavaScript.ORDER_ATOMIC);
