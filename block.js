@@ -1167,7 +1167,7 @@ Blockly.defineBlocksWithJsonArray([
 ]);
 
 Blockly.JavaScript['box3_sound'] = function(block) {
-  var s = Blockly.JavaScript.valueToCode(block, 's', Blockly.JavaScript.ORDER_ATOMIC);
+  var s = block.getFieldValue('s');
   var d = Blockly.JavaScript.valueToCode(block, 'd', Blockly.JavaScript.ORDER_ATOMIC);
   var g = Blockly.JavaScript.valueToCode(block, 'g', Blockly.JavaScript.ORDER_ATOMIC);
   // TODO: Assemble JavaScript into code variable.
