@@ -1110,7 +1110,7 @@ Blockly.defineBlocksWithJsonArray([
   "helpUrl": ""
 },{
   "type": "box3_rgbacolor",
-  "message0": "Box3rgba颜色 r %1 g %2 b %3 透明度 %4",
+  "message0": "Box3rgba颜色 r %1 g %2 b %3 透明 %4",
   "args0": [
     {
       "type": "input_value",
@@ -1137,10 +1137,10 @@ Blockly.defineBlocksWithJsonArray([
   "output": "Box3RGBAColor",
   "colour": 0,
   "tooltip": "box3rgba颜色",
-  "helpUrl": ""
+  "helpUrl": "https://docs.box3.codemao.cn/box3rgbacolor.html"
 },{
   "type": "box3_sound",
-  "message0": "Box3音效 音频名字 %1 音量 %2 播放速度 %3",
+  "message0": "Box3音效 音频名字 %1 音量 %2 % 播放速度 %3 x",
   "args0": [
     {
       "type": "field_input",
@@ -1162,7 +1162,7 @@ Blockly.defineBlocksWithJsonArray([
   "output": "Object",
   "colour": 120,
   "tooltip": "box3音效",
-  "helpUrl": ""
+  "helpUrl": "https://docs.box3.codemao.cn/box3soundeffect.html"
 },
 ]);
 
@@ -1171,7 +1171,7 @@ Blockly.JavaScript['box3_sound'] = function(block) {
   var d = Blockly.JavaScript.valueToCode(block, 'd', Blockly.JavaScript.ORDER_ATOMIC);
   var g = Blockly.JavaScript.valueToCode(block, 'g', Blockly.JavaScript.ORDER_ATOMIC);
   // TODO: Assemble JavaScript into code variable.
-  var code = `{sample:"audio/${s}",gain:${d},pitch:${g}}`;
+  var code = `{sample:"audio/${s}",gain:${d}/100,pitch:${g}}`;
   // TODO: Change ORDER_NONE to the correct strength.
   return [code, Blockly.JavaScript.ORDER_NONE];
 };
@@ -1181,7 +1181,7 @@ Blockly.JavaScript['box3_rgbacolor'] = function(block) {
   var b = Blockly.JavaScript.valueToCode(block, 'b', Blockly.JavaScript.ORDER_ATOMIC);
   var a = Blockly.JavaScript.valueToCode(block, 'a', Blockly.JavaScript.ORDER_ATOMIC);
   // TODO: Assemble JavaScript into code variable.
-  var code = `new Box3RGBAColor(${r},${g},${b},${a})`;
+  var code = `new Box3RGBAColor(${r}/255,${g}/255,${b}/255,${a}/255)`;
   // TODO: Change ORDER_NONE to the correct strength.
   return [code, Blockly.JavaScript.ORDER_NONE];
 };
@@ -1190,7 +1190,7 @@ Blockly.JavaScript['box3_rgbcolor'] = function(block) {
   var g = Blockly.JavaScript.valueToCode(block, 'g', Blockly.JavaScript.ORDER_ATOMIC);
   var b = Blockly.JavaScript.valueToCode(block, 'b', Blockly.JavaScript.ORDER_ATOMIC);
   // TODO: Assemble JavaScript into code variable.
-  var code = `new Box3RGBColor(${r},${g},${b})`;
+  var code = `new Box3RGBColor(${r}/255,${g}/255,${b}/255)`;
   // TODO: Change ORDER_NONE to the correct strength.
   return [code, Blockly.JavaScript.ORDER_NONE];
 };
