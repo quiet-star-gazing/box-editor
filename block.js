@@ -419,9 +419,9 @@ Blockly.defineBlocksWithJsonArray([
   {
     "type": "world_onPlayerJoin_entity",
     "message0": "进入的玩家",
-    "output": "String",
+    "output": "Object",
     "colour": 210,
-    "tooltip": "玩家到被点击实体的距离",
+    "tooltip": "进入的玩家",
     "helpUrl": "",
   },{
     "type": "object_null",
