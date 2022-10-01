@@ -1,4 +1,4 @@
-# <img style="width: 30px;height: 30px;" src="https://box3.codemao.cn/favicon.ico">Box Blockly</div>
+# <img style="width: 30px;height: 30px;" src="https://box3.codemao.cn/favicon.ico">Box Editor</div>
 为box3制作的图形化
 基于 Google Blockly
 ## 作者&合作者：
