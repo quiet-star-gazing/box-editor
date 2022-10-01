@@ -1,0 +1,1264 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Box Editor - 让岛民没有难写的代码！</title>
+  <meta name="description" content="让岛民没有难写的代码！">
+  <link rel="shortcut icon" href="https://box3.codemao.cn/favicon.ico" />
+  <!--mdui-->
+  <link rel="stylesheet" href="https://unpkg.com/mdui@1.0.2/dist/css/mdui.min.css" />
+  <script src="https://unpkg.com/mdui@1.0.2/dist/js/mdui.min.js"></script>
+  <!-- 导入高亮块 -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js"></script>
+  <link href="./codehljscss.css" rel="stylesheet" />
+  <!-- 导入GoogleBlockly -->
+  <script src="./blockly/blockly_compressed.js"></script>
+  <script src="./blockly/blocks_compressed.js"></script>
+  <script src="./blockly/zh-hans.js"></script>
+  <script src="./blockly/javascript_compressed.js"></script>
+  <!-- 导入Blockly定义块 -->
+  <script src="./block.js"></script>
+</head>
+
+<body onload="loadfuncs()">
+  <noscript>You need start JavaScript to run this web.</noscript>
+  <div class="loding">
+    <div></div>
+    <font>Box Editor</font>
+    <span id="lodingtext"><noscript>请问你JavaScript启用了吗？</noscript></span>
+    <script>
+      (async function () {
+        const data = [
+          "让岛民没有难写的代码！",
+          "1086科技工作室致力制作",
+          "感谢您的使用",
+          "感谢您对我们的支持",
+        ];
+        document.getElementById("lodingtext").innerText =
+          data[~~(Math.random() * data.length)];
+      })();
+    </script>
+    <style>
+      :root {
+        --theme-color: #7986CB;
+        --theme-button-hover: #7986CB;
+        --theme-button-hover2: #7986CB;
+        --theme-button-active: #7986CB;
+      }
+
+      .loding {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: var(--theme-color);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        user-select: none;
+        color: #fff;
+        z-index: 99999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999;
+      }
+
+      .loding font {
+        font-size: 50px;
+      }
+
+      .loding span {
+        font-size: 20px;
+      }
+
+      .loding div {
+        width: 80px;
+        height: 80px;
+        border: solid 8px var(--theme-color);
+        border-top: solid 8px;
+        border-radius: 50%;
+        -webkit-animation: lodingAnimationWeb 0.5s linear infinite;
+        animation: lodingAnimationWeb 0.5s linear infinite;
+        margin-bottom: 50px;
+      }
+
+      @-webkit-keyframes lodingAnimationWeb {
+        25% {
+          transform: rotate(90deg);
+        }
+
+        50% {
+          transform: rotate(180deg);
+        }
+
+        75% {
+          transform: rotate(270deg);
+        }
+
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      @keyframes lodingAnimationWeb {
+        25% {
+          transform: rotate(90deg);
+        }
+
+        50% {
+          transform: rotate(180deg);
+        }
+
+        75% {
+          transform: rotate(270deg);
+        }
+
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+  </div>
+  <!-- <div class="htmlHead"></div> -->
+  <script>
+    const addhtml = (position, localName, data, html) => {
+      var newHtml = document.createElement(localName);
+      for (var name in data) {
+        newHtml.setAttribute(name, data[name]);
+      }
+      newHtml.innerHTML = html;
+      var newElement = position.appendChild(newHtml);
+      return newElement;
+    };
+    var htmlHead = document.getElementsByClassName("htmlHead")[0]
+    var op = addhtml(htmlHead, "div", { style: "padding:13px;display: flex;cursor:pointer;", "key-Z689Q1Yak9": "", onclick: "", title: document.getElementsByName("description")[0].content }, "")
+    addhtml(op, "img", { style: "width:40px;margin-right:10px;", src: "https://box3.codemao.cn/favicon.ico" }, "")
+    addhtml(op, "h1", { style: "font-size:27px" }, "Box Editor")
+    var op = addhtml(htmlHead, "div", { style: "display: flex;" }, "")
+    var ops = [
+      {
+        name: "文件", op: [
+          ["新建作品", "新建一个空白作品", "", 1],
+          ["保存作品", "保存作品", "saveWorks(true)", 1],
+          ["打开作品(.xml)", "打开本地作品", "openfile()"],
+          ["保存作品(.xml)", "将作品保存到本地", `saveFile("BoxBlockly1086"+new Date().valueOf()+".xml",Blockly.Xml.domToText(Blockly.Xml.workspaceToDom(workspace)))`, 1],
+        ]
+      },
+      {
+        name: "设置", op: [
+          ["暂无设置", "无设置", ""]
+        ]
+      },
+      {
+        name: "帮助", op: [
+          ["神岛首页", "打开神岛首页", "window.open('https://box3.codemao.cn')"],
+          ["开发API", "打开神岛开发API", "window.open('https://docs.box3.codemao.cn')", 1],
+          ["语雀", "打开语雀", "window.open('https://www.yuque.com/bcm1086/blockly')", 1],
+          ["关于", "关于Box Editor", "dialogOpen()"],
+        ]
+      }
+    ]
+    ops.forEach((v) => {
+      var div = addhtml(op, "div", { class: "headops", lab: v.name }, "");
+      addhtml(div, "div", { class: "option" }, v.name);
+      var div2 = addhtml(div, "div", { class: "options" }, "")
+      v.op.forEach((v1, n) => {
+        addhtml(div2, "div", { title: v1[1], onclick: v1[2], style: (v1[3] ? "border-bottom: 1px solid #ddd;" : "") + (n == (v.op.length - 1) ? "border-radius: 0px 0px 5px 5px;" : "") }, v1[0])
+      })
+    });
+    addhtml(htmlHead, "style", {}, `
+.htmlHead{
+    background: var(--theme-color);
+    display: flex;
+    color: #fff;
+    width:100%;
+    user-select:none;
+}
+.htmlHead .option{
+    background: #0000;
+    padding: 23.4px;
+    margin-right: 2px;
+}
+.htmlHead .options{
+    background: #fff;
+    color: #000;
+    position: absolute;
+    box-shadow: 0px 3px 10px grey;
+    top: 67.5px;
+    border-radius: 0px 0px 5px 5px;
+    display:none;
+    text-align: center;
+    z-index: 99999999999999999999999999;
+}
+.htmlHead .options div:hover{background:#ddd}
+.htmlHead .options div:active{background:#aaa}
+.htmlHead .options div {
+    padding: 8px 20px;
+    cursor: pointer;
+}
+.htmlHead .headops{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.htmlHead .headops:hover .options{display:block}
+.htmlHead .headops:hover .option{background:var(--theme-button-hover2)}
+*[key-Z689Q1Yak9]:hover{background:var(--theme-button-hover2)}
+*[key-Z689Q1Yak9]:active{background:var(--theme-button-active)}
+*[key-1ce2E2KYpb]{margin-bottom: 10px;user-select:none}`)
+  </script>
+  <div class="mdui-appbar">
+    <div class="mdui-toolbar mdui-color-indigo-300">
+      <span class="mdui-typo-title">Box Editor</span>
+      <div class="mdui-tab" mdui-tab>
+        <a href="" class="mdui-tab-active mdui-ripple">
+          <p class="mdui-text-color-white">文件</p>
+        </a>
+        <a mdui-dialog="{target: '#aboutdialog'}" class="mdui-ripple">
+          <p class="mdui-text-color-white">关于</p>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="mdui-dialog" id="aboutdialog">
+    <div class="mdui-dialog-title">
+      <p style="color:#FF5722;">关于</p>
+    </div>
+    <div class="mdui-dialog-content">
+      <p>一款基于 Google Blockly 的 神奇代码岛（Box3） 图形化编辑器<br>
+      图形化只是辅助你的工具，真正的编程需要你自己去学习——1086爱编程<br>
+      特别鸣谢<br>
+      小宏XeLa(<a href="https://github.com/xiaohong2022" class="link">GitHub    </a><a href="https://box3.codemao.cn/u/codemao2020" class="link">    box3</a>)<br>
+      广安awa(<a href="https://github.com/Guanganawa" class="link">GitHub    </a><a href="https://box3.codemao.cn/u/Guangan" class="link">    box3</a>)<br>
+      木水屑(<a href="https://github.com/123213123123" class="link">GitHub    </a><a href="https://box3.codemao.cn/u/mush123" class="link">    box3</a>)<br>
+      凌cloud(<a href="https://box3.codemao.cn/u/LingCloud" class="link">box3</a>)<br>
+    </p>
+    </div>
+    <div class="mdui-dialog-actions">
+      <button class="mdui-btn mdui-ripple" mdui-dialog-confirm>
+        <p style="color:#FF5722;">关闭</p>
+      </button>
+    </div>
+  </div>
+  <div id="app">
+    <div id="blocklyDiv" style="width: 60%"></div>
+    <div id="bcodeshow"></div>
+    <style>
+      body {
+        overflow: hidden;
+      }
+
+      * {
+        margin: 0;
+      }
+
+      #app {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+        overflow: hidden;
+      }
+
+      #bcodeshow {
+        width: 40%;
+        height: 900px;
+        padding: 10px;
+        background: #fff;
+        color: #000;
+        font-family: Menlo, Monaco, "Courier New", monospace;
+        border-left: double #aaa;
+        overflow: auto;
+      }
+
+      #bcodeshow::-webkit-scrollbar {
+        height: 5px;
+        width: 5px;
+      }
+
+      #bcodeshow::-webkit-scrollbar-thumb {
+        background: #aaa5;
+      }
+
+      #bcodeshow::-webkit-scrollbar-thumb:hover {
+        background: #aaa;
+      }
+
+      #bcodeshow::-webkit-scrollbar-thumb:active {
+        background: #aaa3;
+      }
+
+      #bcodeshow::-webkit-scrollbar-track {
+        background: #0000;
+      }
+
+      .blocklyTreeRow {
+        margin: 0;
+        padding: 5px;
+        cursor: pointer;
+      }
+    </style>
+    <!-- 复制代码的按钮 -->
+    <div>
+      <div id="copycodebtn" mdui-dialog="{target: '#copy'}">复制</div>
+      <div class="mdui-dialog" id="copy">
+        <div class="mdui-dialog-title">
+          <p style="color:#FF5722;">提示</p>
+        </div>
+        <div class="mdui-dialog-content">
+          <p style="color:#FF5722;">代码复制成功!</p>
+        </div>
+        <div class="mdui-dialog-actions">
+          <button class="mdui-btn mdui-ripple" mdui-dialog-confirm>
+            <p style="color:#FF5722;">关闭</p>
+          </button>
+        </div>
+      </div>
+    </div>
+    <style>
+      #copycodebtn {
+        padding: 20px;
+        font-size: 25px;
+        background-color: var(--theme-color);
+        border-radius: 50%;
+        color: #fff;
+        box-shadow: 0px 10px 20px #aaa;
+        transition: 0.3s;
+        position: fixed;
+        bottom: 50px;
+        right: 50px;
+        user-select: none;
+        cursor: pointer;
+      }
+
+      #copycodebtn:hover {
+        box-shadow: 0px 10px 25px #ccc;
+        background-color: var(--theme-button-hover);
+      }
+
+      #copycodebtn:active {
+        box-shadow: 0px 10px 25px #ccc;
+        background-color: var(--theme-button-active);
+      }
+    </style>
+    <script>
+      var copybtn = document.getElementById("copycodebtn");
+      copybtn.onclick = async () => {
+        await navigator.clipboard.writeText(
+          "//代码由 " +
+          window.location.href +
+          " 生成，感谢您对我们的支持。\n" +
+          Blockly.JavaScript.workspaceToCode(workspace)
+        );
+      };
+    </script>
+  </div>
+  <!-- 积木xml -->
+  <xml id="toolbox" style="display: none">
+    <category name="事件" expanded="true" colour="#5b80a5">
+      <block type="world_onPlayerJoin"></block>
+      <block type="world_onPlayerJoin_entity"></block>
+      <block type="world_onEntityDestroy"></block>
+      <block type="world_onEntityDestroy_entity"></block>
+      <block type="world_onInteract"></block>
+      <block type="world_onInteract_entity"></block>
+      <block type="world_onInteract_targetEntity"></block>
+      <block type="world_onClick_entity"></block>
+      <block type="world_onInteract_clicker"></block>
+      <block type="world_onInteract_button"></block>
+      <block type="world_onVoxelContact"></block>
+      <block type="world_onVoxelContact_entity"></block>
+      <block type="world_onVoxelContact_voxel"></block>
+      <block type="world_onFluidEnter"></block>
+      <block type="world_onFluidEnter_entity"></block>
+      <block type="world_onFluidEnter_voxel"></block>
+      <block type="world_onPress"></block>
+      <block type="world_onPress_entity"></block>
+      <block type="world_onPress_button"></block>
+    </category>
+    <category name="控制" expanded="true" colour="#8ca6c0">
+      <block type="controls_if"></block>
+      <block type="controls_repeat_ext" colour="#8ca6c0">
+        <value name="TIMES">
+          <block type="math_number">
+            <field name="NUM">10</field>
+          </block>
+        </value>
+      </block>
+      <block type="controls_whileUntil" colour="#8ca6c0"></block>
+      <block type="controls_for" colour="#8ca6c0">
+        <field name="VAR" id="57g(4![Bc(~B67SRUvvd">i</field>
+        <value name="FROM">
+          <block type="math_number">
+            <field name="NUM">1</field>
+          </block>
+        </value>
+        <value name="TO">
+          <block type="math_number">
+            <field name="NUM">10</field>
+          </block>
+        </value>
+        <value name="BY">
+          <block type="math_number">
+            <field name="NUM">1</field>
+          </block>
+        </value>
+      </block>
+      <block type="controls_forEach" colour="#8ca6c0">
+        <field name="VAR" id="=ea2SQ,8Dye^#~zQHfJV">j</field>
+      </block>
+      <block type="controls_flow_statements" colour="#8ca6c0"></block>
+      <block type="box3_sleep">
+        <value name="object">
+          <block type="math_number">
+            <field name="NUM">1</field>
+          </block>
+        </value>
+      </block>
+    </category>
+    <category name="运算" expanded="true" colour="#5b67a5">
+      <label text="数学"></label>
+      <block type="math_number"></block>
+      <block type="math_arithmetic">
+        <value name="A">
+          <block type="math_number">
+            <field name="NUM">1</field>
+          </block>
+        </value>
+        <value name="B">
+          <block type="math_number">
+            <field name="NUM">1</field>
+          </block>
+        </value>
+      </block>
+      <block type="math_single">
+        <field name="OP">ROOT</field>
+        <value name="NUM">
+          <block type="math_number">
+            <field name="NUM">9</field>
+          </block>
+        </value>
+      </block>
+      <block type="math_trig">
+        <field name="OP">SIN</field>
+        <value name="NUM">
+          <block type="math_number">
+            <field name="NUM">45</field>
+          </block>
+        </value>
+      </block>
+      <block type="math_constant"></block>
+      <block type="math_number_property">
+        <value name="NUMBER_TO_CHECK">
+          <block type="math_number">
+            <field name="NUM">0</field>
+          </block>
+        </value>
+      </block>
+      <block type="math_round">
+        <value name="NUM">
+          <block type="math_number">
+            <field name="NUM">3.1</field>
+          </block>
+        </value>
+      </block>
+      <block type="math_on_list"></block>
+      <block type="math_modulo">
+        <value name="DIVIDEND">
+          <block type="math_number">
+            <field name="NUM">64</field>
+          </block>
+        </value>
+        <value name="DIVISOR">
+          <block type="math_number">
+            <field name="NUM">10</field>
+          </block>
+        </value>
+      </block>
+      <block type="math_constrain">
+        <value name="VALUE">
+          <block type="math_number">
+            <field name="NUM">50</field>
+          </block>
+        </value>
+        <value name="LOW">
+          <block type="math_number">
+            <field name="NUM">1</field>
+          </block>
+        </value>
+        <value name="HIGH">
+          <block type="math_number">
+            <field name="NUM">100</field>
+          </block>
+        </value>
+      </block>
+      <block type="math_random_int">
+        <value name="FROM">
+          <block type="math_number">
+            <field name="NUM">1</field>
+          </block>
+        </value>
+        <value name="TO">
+          <block type="math_number">
+            <field name="NUM">100</field>
+          </block>
+        </value>
+      </block>
+      <block type="math_random_float"></block>
+      <label text="逻辑"></label>
+      <block type="logic_compare"></block>
+      <block type="logic_operation"></block>
+      <block type="logic_boolean"></block>
+      <block type="logic_null"></block>
+      <block type="logic_ternary"></block>
+      <label text="字串符"></label>
+      <block type="text"></block>
+      <block type="text_join">
+        <mutation items="2">
+      </block>
+      <block type="text_append">
+        <value name="TEXT">
+          <block type="text">
+            <field name="TEXT" />
+          </block>
+        </value>
+      </block>
+      <block type="text_length">
+        <value name="MESSAGE">
+          <block type="text">
+            <field name="TEXT">abc</field>
+          </block>
+        </value>
+      </block>
+      <block type="text_isEmpty">
+        <value name="MESSAGE">
+          <block type="text">
+            <field name="TEXT"></field>
+          </block>
+        </value>
+      </block>
+      <block type="text_indexOf">
+        <field name="END">FIRST</field>
+        <value name="VALUE">
+          <block type="variables_get">
+            <field name="VAR" id="o(H,3vpcGU*(B$;@WJos">text</field>
+          </block>
+        </value>
+        <value name="FIND">
+          <block type="text">
+            <field name="TEXT">abc</field>
+          </block>
+        </value>
+      </block>
+      <block type="text_charAt">
+        <mutation at="true" />
+        <field name="WHERE">FROM_START</field>
+        <value name="VALUE">
+          <block type="variables_get">
+            <field name="VAR" id="o(H,3vpcGU*(B$;@WJos">text</field>
+          </block>
+        </value>
+      </block>
+      <block type="text_getSubstring">
+        <mutation at1="true" at2="true" />
+        <field name="WHERE1">FROM_START</field>
+        <field name="WHERE2">FROM_START</field>
+        <value name="STRING">
+          <block type="variables_get">
+            <field name="VAR" id="o(H,3vpcGU*(B$;@WJos">text</field>
+          </block>
+        </value>
+      </block>
+      <block type="text_changeCase">
+        <field name="CASE">UPPERCASE</field>
+        <value name="TEXT">
+          <block type="text">
+            <field name="TEXT">abc</field>
+          </block>
+        </value>
+      </block>
+      <block type="text_trim">
+        <field name="MODE">BOTH</field>
+        <value name="TEXT">
+          <block type="text">
+            <field name="TEXT">abc</field>
+          </block>
+        </value>
+      </block>
+    </category>
+    <category name="变量" expanded="true" colour="#a55b80" custom="VARIABLE"></category>
+    <category name="列表" expanded="true" colour="#745ba5">
+      <block type="lists_create_with">
+        <mutation items="1">
+      </block>
+      <block type="lists_create_with">
+        <mutation items="3">
+      </block>
+      <block type="lists_repeat">
+        <value name="NUM">
+          <block type="math_number">
+            <field name="NUM">5</field>
+          </block>
+        </value>
+      </block>
+      <block type="lists_length"></block>
+      <block type="lists_isEmpty"></block>
+      <block type="lists_indexOf">
+        <field name="END">FIRST</field>
+        <value name="VALUE">
+          <block type="variables_get">
+            <field name="VAR" id="2G;)Eq${Io2,L:Ql*.Z7">list</field>
+          </block>
+        </value>
+      </block>
+      <block type="lists_getIndex">
+        <mutation statement="false" at="true" />
+        <field name="MODE">GET</field>
+        <field name="WHERE">FROM_START</field>
+        <value name="VALUE">
+          <block type="variables_get">
+            <field name="VAR" id="2G;)Eq${Io2,L:Ql*.Z7">list</field>
+          </block>
+        </value>
+      </block>
+      <block type="lists_setIndex">
+        <mutation at="true" />
+        <field name="MODE">SET</field>
+        <field name="WHERE">FROM_START</field>
+        <value name="LIST">
+          <block type="variables_get">
+            <field name="VAR" id="2G;)Eq${Io2,L:Ql*.Z7">list</field>
+          </block>
+        </value>
+      </block>
+      <block type="lists_getSublist">
+        <mutation at1="true" at2="true" />
+        <field name="WHERE1">FROM_START</field>
+        <field name="WHERE2">FROM_START</field>
+        <value name="LIST">
+          <block type="variables_get">
+            <field name="VAR" id="2G;)Eq${Io2,L:Ql*.Z7">list</field>
+          </block>
+        </value>
+      </block>
+      <block type="lists_split">
+        <mutation mode="SPLIT" />
+        <field name="MODE">SPLIT</field>
+        <value name="DELIM">
+          <block type="text">
+            <field name="TEXT">,</field>
+          </block>
+        </value>
+      </block>
+      <block type="lists_sort">
+        <field name="TYPE">NUMERIC</field>
+        <field name="DIRECTION">1</field>
+      </block>
+    </category>
+    <category name="对象" expanded="true" colour="#745ba5">
+      <!--by小宏-->
+      <block type="object_null"></block>
+      <block type="object_set"></block>
+      <block type="object_get"></block>
+      <block type="object_copy"></block>
+      <block type="object_inc"></block>
+      <block type="object_geto"></block>
+      <block type="object_delete"></block>
+      <block type="object_freeze"></block>
+      <block type="object_isfreeze"></block>
+    </category>
+    <category name="函数" expanded="true" colour="#995ba5" custom="PROCEDURE"></category>
+    <sep></sep>
+    <category name="世界" expanded="true" colour="#5b67a5">
+      <block type="world_projectname"></block>
+      <block type="world_url"></block>
+      <block type="world_say">
+        <value name="MESSAGE">
+          <block type="text">
+            <field name="TEXT">说点什么...</field>
+          </block>
+        </value>
+      </block>
+      <block type="world_currentTick"></block>
+    </category>
+    <category name="地形" expanded="true" colour="#8cc08c">
+      <block type="voxels_types"></block>
+      <block type="voxels_typesid"></block>
+      <block type="voxels_setid"></block>
+      <block type="voxels_setname"></block>
+      <block type="voxels_get"></block>
+      <block type="voxels_Rotation"></block>
+      <block type="voxels_id"></block>
+      <block type="voxels_name"></block>
+    </category>
+    <category name="实体" expanded="true" colour="#6d5ba5">
+      <block type="world_entityQuota"></block>
+      <block type="world_worldentitylength"></block>
+    </category>
+    <category name="玩家" expanded="true" colour="#6d5ba5">
+      <label text="基本"></label>
+      <block type="player_name"></block>
+      <block type="player_boxid"></block>
+      <block type="player_userkey"></block>
+      <!--block type="player_spawnpoint"></block>
+        <block type="player_movementbounds"></block-->
+      <label text="消息"></label>
+      <block type="player_directmessage"></block>
+      <block type="player_muted"></block>
+      <label text="外观"></label>
+      <block type="player_color"></block>
+      <block type="player_emissive"></block>
+      <block type="player_showname"></block>
+      <block type="player_scale"></block>
+      <block type="player_metalness"></block>
+      <block type="player_shininess"></block>
+      <label text="Web相关"></label>
+      <label text="复活/死亡"></label>
+      <label text="视角"></label>
+      <label text="按钮"></label>
+      <label text="行动"></label>
+      <label text="状态"></label>
+      <label text="音效"></label>
+      <label text="滤镜"></label>
+      <label text="动画"></label>
+    </category>
+    <sep></sep>
+    <category name="Box3" expanded="true" colour="#a56d5b">
+      <label text="代码（Code）"></label>
+      <block type="box3_runcode1"></block>
+      <block type="box3_runcode2"></block>
+      <block type="box3_require"></block>
+      <label text="控制台（Console）"></label>
+      <block type="console_clear"></block>
+      <block type="console_log"></block>
+      <label text="向量（Box3Vector3）"></label>
+      <block type="box3_vector">
+        <value name="x">
+          <block type="math_number">
+            <field name="NUM">0</field>
+          </block>
+        </value>
+        <value name="y">
+          <block type="math_number">
+            <field name="NUM">0</field>
+          </block>
+        </value>
+        <value name="z">
+          <block type="math_number">
+            <field name="NUM">0</field>
+          </block>
+        </value>
+      </block>
+      <label text="区域（Box3Bounds3）"></label>
+      <block type="box3_bounds">
+        <value name="x">
+          <block type="box3_vector"></block>
+        </value>
+        <value name="y">
+          <block type="box3_vector"></block>
+        </value>
+      </block>
+      <label text="四元数（Box3Quaternion）"></label>
+      <block type="box3_quaternion">
+        <value name="w">
+          <block type="math_number">
+            <field name="NUM">0</field>
+          </block>
+        </value>
+        <value name="x">
+          <block type="math_number">
+            <field name="NUM">0</field>
+          </block>
+        </value>
+        <value name="y">
+          <block type="math_number">
+            <field name="NUM">0</field>
+          </block>
+        </value>
+        <value name="z">
+          <block type="math_number">
+            <field name="NUM">1</field>
+          </block>
+        </value>
+      </block>
+      <label text="色彩（Box3RGBAColor）"></label>
+      <block type="box3_rgbcolor">
+        <value name="r">
+          <block type="math_number">
+            <field name="NUM">1</field>
+          </block>
+        </value>
+        <value name="g">
+          <block type="math_number">
+            <field name="NUM">1</field>
+          </block>
+        </value>
+        <value name="b">
+          <block type="math_number">
+            <field name="NUM">1</field>
+          </block>
+        </value>
+      </block>
+      <block type="box3_rgbacolor">
+        <value name="r">
+          <block type="math_number">
+            <field name="NUM">1</field>
+          </block>
+        </value>
+        <value name="g">
+          <block type="math_number">
+            <field name="NUM">1</field>
+          </block>
+        </value>
+        <value name="b">
+          <block type="math_number">
+            <field name="NUM">1</field>
+          </block>
+        </value>
+        <value name="a">
+          <block type="math_number">
+            <field name="NUM">1</field>
+          </block>
+        </value>
+      </block>
+      <label text="音效（Box3SoundEffect）"></label>
+      <block type="box3_sound">
+        <value name="d">
+          <block type="math_number">
+            <field name="NUM">100</field>
+          </block>
+        </value>
+        <value name="g">
+          <block type="math_number">
+            <field name="NUM">1</field>
+          </block>
+        </value>
+      </block>
+    </category>
+    <category name="其他" expanded="true" colour="#5ba55b">
+
+    </category>
+    <category name="数据库" colour="#5b67a5">
+      <label text="建造表格"></label>
+      <block type="sql_createtable"></block>
+      <block type="sql_createtable_keys_block"></block>
+      <block type="sql_createtable_keys_blockxianzhi"></block>
+      <block type="sql_createtable_keys_blockmorenzhi"></block>
+      <label text="敬请期待！"></label>
+    </category>
+  </xml>
+  <script>
+    function loadfuncs() {
+      document.getElementsByClassName("loding")[0].style.display = "none";
+      showWorks()
+    }
+    var workspace = Blockly.inject("blocklyDiv", {
+      toolbox: document.getElementById("toolbox"),
+      zoom: {//缩放设置
+        controls: false,//显示缩放按钮控件
+        wheel: false,//允许使用鼠标滚轮缩放
+        startScale: 1,//初始积木大小
+        maxScale: 3,//最大大小
+        minScale: 0.3,//最小大小
+        scaleSpeed: 1,//缩放速度
+        Pinch: true,//在移动端允许两根手指捏合缩放
+      },
+      grid: {//网格设置
+        spacing: 20,//间隔
+        length: 2,//大小
+        colour: '#ccc',//颜色
+        snap: false,//是否将积木对齐网格
+      },
+      move: {//移动设置
+        scrollbars: true,//显示滑动条
+        drag: true,//允许拖拽移动
+        wheel: true,//允许鼠标滚轮滑动
+      },
+      collapse: true,//允许折叠块
+      comments: true,//允许注释块
+      sounds: true,//有音效
+      trashcan: false,//显示垃圾桶
+      media: "https://static.codemao.cn/blockly/media/",//资源文件链接（这里用kitten4的）
+    });
+  </script>
+  <script>
+    const $ = (s) => {
+      return document.querySelector(s);
+    };
+    async function sleep(ms) {
+      const tms = ms || 0;
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          resolve();
+        }, tms);
+      });
+    }
+    document.getElementById("bcodeshow").innerHTML =
+      `<span class="hljs-comment">//代码由 ` +
+      window.location.href +
+      ` 生成，感谢您对我们的支持。<br></span>`;
+    function myUpdateFunction(event) {
+      saveWorks(false)
+      var code = Blockly.JavaScript.workspaceToCode(workspace);
+      var html = hljs
+        .highlight(
+          "//代码由 " +
+          window.location.href +
+          " 生成，感谢您对我们的支持。\n" +
+          code,
+          { language: "JavaScript" }
+        )
+        .value.split("\n")
+        .join("<br>")
+        .split("  ")
+        .join("&nbsp;&nbsp;")
+      document.getElementById("bcodeshow").innerHTML = html
+    }
+    workspace.addChangeListener(myUpdateFunction);
+    setInterval(() => {
+      var h = document.documentElement.clientHeight;
+      h -= 80;
+      document.getElementById("bcodeshow").style.height = String(h + "px");
+      document.getElementsByClassName(
+        "blocklyScrollbarHorizontal"
+      )[0].style.transform = `translate(80.5px, calc(${h}px - 15px))`;
+    }, 1);
+    const openfile = () => {
+      if (document.getElementById("OpenFileSetting")) {
+        document.getElementById("OpenFileSetting").remove()
+      }
+      var input = addhtml(document.body, "input", { type: "file", id: "OpenFileSetting", style: "display:none", accept: ".xml" }, "");
+      input.click();
+      var data = "";
+      input.onchange = (() => {
+        data = input.files;
+        var file = input.files[0];
+        var fileread = new FileReader();
+        fileread.onload = () => {
+          var v = fileread.result;
+          try { if (v) { Blockly.Xml.domToWorkspace(Blockly.Xml.textToDom(!v ? morenxml : v), workspace) } else { alert("打开作品失败！\n注意只能打开类型为xml的作品哦") } } catch (e) { alert("打开作品失败！\n注意只能打开类型为xml的作品哦") }
+        };
+        fileread.readAsText(file, "UTF-8");
+      });
+    };
+    function showWorks() {
+      var v = localStorage.getItem("UserBlocklyWorksXML");
+      var morenxml = '<xml xmlns="https://developers.google.com/blockly/xml"><block type="world_say" id="9rq,O8^H?DVWY%p37s*:" x="50" y="110"><value name="MESSAGE"><block type="text" id="G0xm-qjAvVI9|~=.DY`C"><field name="TEXT">Hello, Box3!</field></block></value></block></xml>'
+      Blockly.Xml.domToWorkspace(Blockly.Xml.textToDom(!v ? morenxml : v), workspace)
+    }
+    function saveWorks(t) {
+      localStorage.setItem("UserBlocklyWorksXML", Blockly.Xml.domToText(Blockly.Xml.workspaceToDom(workspace)))//保存作品
+      if (t) alert("保存成功！")
+    }
+    function saveData(obj) {
+      var ev = document.createEvent("MouseEvents");
+      ev.initMouseEvent(
+        "click", true, false, window, 0, 0, 0, 0, 0
+        , false, false, false, false, 0, null
+      );
+      obj.dispatchEvent(ev);
+    };
+    function saveFile(name, data) {
+      var urlObject = window.URL || window.webkitURL || window;
+      var export_blob = new Blob([data]);
+      var save_link = document.createElementNS("http://www.w3.org/1999/xhtml", "a")
+      save_link.href = urlObject.createObjectURL(export_blob);
+      save_link.download = name;
+      saveData(save_link);
+    };
+  </script>
+  <svg style="position:absolute;top:0;left:0;display:none" overflow="hidden" aria-hidden="true">
+    <defs>
+      <symbol id="icon-big-dialog" viewBox="0 0 1024 1024">
+        <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path fill="currentColor"
+            d="m160 96.064 192 .192a32 32 0 0 1 0 64l-192-.192V352a32 32 0 0 1-64 0V96h64v.064zm0 831.872V928H96V672a32 32 0 1 1 64 0v191.936l192-.192a32 32 0 1 1 0 64l-192 .192zM864 96.064V96h64v256a32 32 0 1 1-64 0V160.064l-192 .192a32 32 0 1 1 0-64l192-.192zm0 831.872-192-.192a32 32 0 0 1 0-64l192 .192V672a32 32 0 1 1 64 0v256h-64v-.064z">
+          </path>
+        </g>
+      </symbol>
+    </defs>
+  </svg>
+  <div style='z-index:9999999999999999'>
+    <!-- 弹窗开始 -->
+    <div class='dialogBackground' style="display: none;" name='dialog'>
+      <!-- 关于弹窗开始 -->
+      <div class="dialog" name='dialog1'>
+        <div class="dialogHead">
+          <span class='dialogHeadText'>关于Box Editor</span>
+          <a class="dialogCloseBtn" href="javascript:dialogClose();" title='关闭窗口'>×</a>
+          <a class="dialogCloseBtn" title='全屏/还原窗口' href="javascript:dialogBig();"
+            style="border-radius: 0;padding: 4px 19px;"><svg>
+              <use xlink:href="#icon-big-dialog"></use>
+            </svg></a>
+        </div>
+        <div class="dialogBody" style="display: flex;flex-direction: column;align-items: center;">
+          <div id="aboutDiv">
+            <div class="upcontent">
+              <div style="display: flex;cursor:pointer;margin-top: 20px;margin-bottom: 10px;" title="让岛民没有难写的代码！">
+                <img style="width:40px;margin-right:10px;" src="https://box3.codemao.cn/favicon.ico">
+                <h1 style="font-size:27px;color:var(--theme-button-hover2);">Box Editor</h1>
+              </div>
+              <div style="font-size: 16px;">一款基于 <a class="link" href="https://github.com/google/blockly"
+                  target="_blank">Google Blockly</a> 的 <a class="link" target="_blank"
+                  href="https://box3.codemao.cn">神奇代码岛（Box3）</a> 图形化编辑器</div>
+              <div style="font-size: 16px;">图形化只是辅助你的东西，真正的东西都需要你自己去学习——1086爱编程</div>
+            </div>
+          </div>
+          <div id="updatalog"></div>
+          <style>
+            #aboutDiv {
+              user-select: none;
+            }
+
+            #aboutDiv .upcontent {
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+            }
+
+            #updatalog {
+              font-size: 12px;
+              margin-top: 20px;
+              user-select: none;
+              width: calc(100% - 50px);
+              height: calc(100% - 120px);
+              overflow: auto;
+            }
+
+            #updatalog .card {
+              display: flex;
+              justify-content: flex-start;
+              flex-direction: column;
+              margin-bottom: 20px;
+            }
+
+            #updatalog .card div {
+              display: flex;
+              flex-direction: row;
+            }
+
+            #updatalog .card .times {
+              margin-bottom: 5px
+            }
+
+            #updatalog .card .times span {
+              margin-right: 10px;
+            }
+
+            #updatalog .card .times text {
+              margin-right: 10px;
+              padding: 1px 4px;
+              color: #000;
+              background-color: #eee;
+              border-radius: 3px;
+            }
+
+            #updatalog .card .times font {
+              color: #aaa;
+            }
+
+            #updatalog .card .content {
+              display: flex;
+              flex-direction: column;
+            }
+
+            #updatalog .card .content .ccard {
+              display: flex;
+              flex-direction: row;
+              margin-bottom: 5px;
+            }
+
+            #updatalog .card .content .ccard .ck {
+              padding: 1px 4px;
+              color: #fff;
+              margin-right: 5px;
+              border-radius: 3px;
+            }
+
+            #updatalog .card .content .ccard .ctext {
+              color: #000
+            }
+
+            #updatalog::-webkit-scrollbar {
+              height: 5px;
+              width: 5px;
+            }
+
+            #updatalog::-webkit-scrollbar-thumb {
+              background: #aaa5;
+            }
+
+            #updatalog::-webkit-scrollbar-thumb:hover {
+              background: #aaa;
+            }
+
+            #updatalog::-webkit-scrollbar-thumb:active {
+              background: #aaa3;
+            }
+
+            #updatalog::-webkit-scrollbar-track {
+              background: #0000;
+            }
+
+            a.link {
+              text-decoration: none;
+              color: currentcolor
+            }
+
+            a.link:hover {
+              text-decoration: underline;
+            }
+
+            a.link:active {
+              text-decoration: underline;
+              color: #f00
+            }
+          </style>
+          <script>
+            function addAboutDiv(data) {
+              var shangxianshijian = ~~((new Date().valueOf() - new Date("2022-07-29").valueOf()) / 864e5)
+              var html =
+                `<div class="card"><div class="times">Box Editor 已上线 ${shangxianshijian} 天</div>
+<div class="times">作者：1086爱编程（<a class="link" href="https://box3.codemao.cn/u/bcm1086" target="_blank">Box3</a>，<a class="link" href="https://github.com/1086-loves-programming" target="_blank">GitHub</a>，<a class="link" href="https://www.yuque.com/bcm1086" target="_blank">语雀</a>，<a class="link" href="https://shequ.codemao.cn/user/13869990" target="_blank">Codemao</a>）</div>
+<div class="times">特别鸣谢：</div>
+<div class="times">小宏XeLa（<a class="link" href="https://box3.codemao.cn/u/codemao2020" target="_blank">Box3</a>，<a class="link" href="https://github.com/xiaohong2022" target="_blank">GitHub</a>，<a class="link" href="https://www.yuque.com/xiaohong2022" target="_blank">语雀</a>，<a class="link" href="https://gitee.com/xiaohong2022" target="_blank">Gitee</a>，<a class="link" href="https://shequ.codemao.cn/user/9232151" target="_blank">Codemao</a>）</div>
+<div class="times">广安awa（<a class="link" href="https://box3.codemao.cn/u/Guangan" target="_blank">Box3</a>，<a class="link" href="https://github.com/Guanganawa" target="_blank">GitHub</a>）</div>
+<div class="times">木水屑（<a class="link" href="https://box3.codemao.cn/u/mush123" target="_blank">Box3</a>，<a class="link" href="https://github.com/123213123123" target="_blank">GitHub</a>）</div>
+<div class="times">凌cloud（<a class="link" href="https://box3.codemao.cn/u/LingCloud" target="_blank">Box3</a>）</div>
+</div><iframe src="https://www.yuque.com/bcm1086/blockly/update" style="border:0;width:100%;height:100%"></iframe>`
+              return html;
+            };
+            var log = document.getElementById("updatalog");
+            log.innerHTML = addAboutDiv()
+          </script>
+        </div>
+        <script>
+
+          function dialogOpen() {
+            var dialog = document.getElementsByName("dialog")[0]
+            var dialogn = document.getElementsByName("dialog1")[0]
+            dialog.style.display = 'block'
+            dialogn.style.display = 'block'
+            setTimeout(() => {
+              dialogn.style.transform = 'scale(1)'
+              dialog.style.backgroundColor = '#000a'
+              dialogn.style.opacity = 1;
+            }, 20)
+          }
+          function dialogClose() {
+            var dialog = document.getElementsByName("dialog")[0]
+            var dialogn = document.getElementsByName("dialog1")[0]
+            dialogn.style.transform = 'scale(0.5)'
+            dialog.style.backgroundColor = '#0000'
+            dialogn.style.opacity = 0;
+            setTimeout(() => {
+              document.getElementsByName("dialog")[0].style.display = 'none'
+              dialogn.style.display = 'none'
+            }, 300)
+            if (dialogn.className == 'dialog dialogBig') dialogBig();
+          }
+          function dialogBig() {
+            var dialogn = document.getElementsByName("dialog1")[0]
+            if (dialogn.className == 'dialog dialogBig') {
+              dialogn.className = 'dialog'
+            } else { dialogn.className = 'dialog dialogBig' }
+          }
+
+        </script>
+        <style>
+          .dialogBackground {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #0000;
+            transition-duration: 0.2s;
+            color: #000;
+            z-index: 999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999;
+          }
+
+          .dialog {
+            transform: scale(0.5);
+            align-items: center;
+            justify-content: center;
+            margin: 5% auto;
+            background-color: #fefefe;
+            border-radius: 10px;
+            box-shadow: 0 0 130px 20px #333;
+            transition-duration: 0.2s;
+            display: none;
+            opacity: 0.1;
+            width: 80%;
+            height: 80%;
+          }
+
+          .dialogHead {
+            border-radius: 10px 10px 0px 0px;
+            background-color: var(--theme-color);
+            text-align: left;
+            cursor: default;
+            user-select: none
+          }
+
+          .dialogHeadText {
+            line-height: 60px;
+            font-size: 30px;
+            padding: 0px 25px;
+            color: #fff
+          }
+
+          .dialogBody {
+            font-size: 20px;
+            overflow: auto;
+            width: calc(100% - 60px);
+            height: calc(100% - 70px);
+            padding: 10px 30px 0px 30px
+          }
+
+          .dialogCloseBtn {
+            color: #fff;
+            float: right;
+            font-size: 40px;
+            padding: 0px 16px 7px 16px;
+            border-radius: 0px 10px 0px 0px;
+            font-weight: 100;
+            text-decoration: none;
+            transition-property: all;
+            transition-duration: 0.25s;
+            transition-timing-function: ease;
+            transition-delay: 0s
+          }
+
+          .dialogCloseBtn svg {
+            width: 25px;
+            height: 25px;
+          }
+
+          .dialogCloseBtn:hover {
+            background-color: var(--theme-button-hover)
+          }
+
+          .dialogCloseBtn:active {
+            background-color: var(--theme-button-active)
+          }
+
+          .dialogBig {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            border-radius: 0;
+          }
+
+          .dialogBig .dialogHead {
+            border-radius: 0;
+          }
+
+          .dialogBig .dialogHead .dialogCloseBtn {
+            border-radius: 0;
+          }
+        </style>
+      </div>
+    </div>
+
+</html>
