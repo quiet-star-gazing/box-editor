@@ -39,6 +39,7 @@
         ];
         document.getElementById("lodingtext").innerText =
           data[~~(Math.random() * data.length)];
+        // 
       })();
     </script>
     <style>
@@ -75,7 +76,7 @@
          width: 80px;
          height: 80px;
          margin-bottom: 50px;
-      } .mdui-spinner-layer {
+      } .loding .mdui-spinner-layer {
     border-color: #fff;
 }
     </style>
@@ -266,9 +267,7 @@
         <div class="mdui-dialog-title">
           <p style="color:#FF5722;">提示</p>
         </div>
-        <div class="mdui-dialog-content">
-          <p style="color:#FF5722;">代码复制成功!</p>
-        </div>
+        <div class="mdui-dialog-content">代码复制成功!</div>
         <div class="mdui-dialog-actions">
           <button class="mdui-btn mdui-ripple" mdui-dialog-confirm>
             <p style="color:#FF5722;">关闭</p>
@@ -1223,3 +1222,5 @@
     </div>
 
 </html>
+
+ 
