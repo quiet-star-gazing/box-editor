@@ -26,7 +26,7 @@
 <body onload="loadfuncs()">
   <noscript>You need start JavaScript to run this web.</noscript>
   <div class="loding">
-    <div></div>
+    <div><div class="mdui-spinner"></div></div>
     <font>Box Editor</font>
     <span id="lodingtext"><noscript>请问你JavaScript启用了吗？</noscript></span>
     <script>
@@ -74,14 +74,14 @@
       .loding div {
         width: 80px;
         height: 80px;
-        border: solid 8px var(--theme-color);
+        /*border: solid 8px var(--theme-color);
         border-top: solid 8px;
         border-radius: 50%;
         -webkit-animation: lodingAnimationWeb 0.5s linear infinite;
-        animation: lodingAnimationWeb 0.5s linear infinite;
+        animation: lodingAnimationWeb 0.5s linear infinite;*/
         margin-bottom: 50px;
       }
-
+/*
       @-webkit-keyframes lodingAnimationWeb {
         25% {
           transform: rotate(90deg);
@@ -116,11 +116,11 @@
         100% {
           transform: rotate(360deg);
         }
-      }
+      }*/
     </style>
   </div>
   <!-- <div class="htmlHead"></div> -->
-  <script>
+  <!--script>
     const addhtml = (position, localName, data, html) => {
       var newHtml = document.createElement(localName);
       for (var name in data) {
@@ -206,7 +206,7 @@
 *[key-Z689Q1Yak9]:hover{background:var(--theme-button-hover2)}
 *[key-Z689Q1Yak9]:active{background:var(--theme-button-active)}
 *[key-1ce2E2KYpb]{margin-bottom: 10px;user-select:none}`)
-  </script>
+  </script-->
   <div class="mdui-appbar">
     <div class="mdui-toolbar mdui-color-indigo-300">
       <span class="mdui-typo-title">Box Editor</span>
